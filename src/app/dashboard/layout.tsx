@@ -60,7 +60,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     : [];
 
   return (
-    <div className="min-h-screen flex text-black bg-[#FFF5F7] transition-colors">
+    <div className="min-h-screen flex text-black dark:text-white bg-transparent transition-colors">
       {/* Sidebar Navigation */}
       <aside className="w-64 hidden md:flex flex-col border-r border-pink-200 bg-white/95 backdrop-blur-xl p-5 justify-between sticky top-0 h-screen shadow-sm">
         <div className="space-y-6">

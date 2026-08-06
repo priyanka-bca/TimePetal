@@ -56,7 +56,7 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen text-black bg-[#FFF5F7] dark:bg-[#0A0714] selection:bg-pink-200 selection:text-black transition-colors overflow-hidden">
+    <div className="min-h-screen text-black dark:text-white bg-transparent selection:bg-pink-200 selection:text-black transition-colors overflow-hidden">
       <Navbar />
 
       {/* Hero Section with Soft & Pastel Pink Glows */}
@@ -769,7 +769,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer - Solid Black Text */}
-      <footer className="py-12 border-t border-pink-200 dark:border-purple-900 text-xs text-black dark:text-white font-extrabold bg-[#FFF5F7] dark:bg-[#0A0714]">
+      <footer className="py-12 border-t border-pink-200 dark:border-purple-900 text-xs text-black dark:text-white font-extrabold bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <Heart className="w-4 h-4 text-pink-500 fill-pink-500" />

@@ -3,12 +3,12 @@
 @layer base {
   /* Day Mode (Soft Pink Aesthetic) */
   :root {
-    --bg-main: #FFF0F5;
-    --card-bg: rgba(255, 255, 255, 0.88);
-    --card-border: #FCE7F3;
+    --bg-main: #FCE7F3;
+    --card-bg: rgba(255, 255, 255, 0.92);
+    --card-border: #FBCFE8;
     --primary: #F472B6;
     --primary-hover: #EC4899;
-    --accent: #FBCFE8;
+    --accent: #FDF2F8;
     --text-main: #000000;
     --text-muted: #000000;
   }
@@ -16,7 +16,7 @@
   /* Night Mode (Cosmic Night Sky Background) */
   .dark {
     --bg-main: #0A0714;
-    --card-bg: rgba(22, 17, 33, 0.82);
+    --card-bg: rgba(22, 17, 33, 0.88);
     --card-border: #3B2E52;
     --primary: #F472B6;
     --primary-hover: #EC4899;
@@ -26,23 +26,23 @@
   }
 }
 
-/* Day Mode Body: Soft Pink Aesthetic with Floating Petal Highlights */
+/* Day Mode Body: Distinct Rich Soft Pink Aesthetic Background */
 body {
   min-height: 100vh;
-  background-color: #FFF0F5;
+  background-color: #FCE7F3;
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(254, 205, 232, 0.6) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(251, 207, 232, 0.5) 0%, transparent 40%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%23F472B6' opacity='0.12'%3E%3Ccircle cx='40' cy='40' r='5'/%3E%3Cpath d='M40,24 C44,32 48,36 40,40 C32,36 36,32 40,24 Z'/%3E%3Cpath d='M40,56 C44,48 48,44 40,40 C32,44 36,48 40,56 Z'/%3E%3Cpath d='M24,40 C32,44 36,48 40,40 C36,32 32,36 24,40 Z'/%3E%3Cpath d='M56,40 C48,44 44,48 40,40 C44,32 48,36 56,40 Z'/%3E%3C/g%3E%3Cpath d='M110,32 C114,26 122,28 119,35 C115,40 107,38 110,32 Z' fill='%23FBCFE8' opacity='0.25'/%3E%3Cpath d='M22,110 C26,104 34,106 31,113 C27,118 19,116 22,110 Z' fill='%23F472B6' opacity='0.15'/%3E%3C/svg%3E");
+    radial-gradient(circle at 10% 20%, rgba(253, 242, 248, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(251, 207, 232, 0.8) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%23F472B6' opacity='0.15'%3E%3Ccircle cx='40' cy='40' r='5'/%3E%3Cpath d='M40,24 C44,32 48,36 40,40 C32,36 36,32 40,24 Z'/%3E%3Cpath d='M40,56 C44,48 48,44 40,40 C32,44 36,48 40,56 Z'/%3E%3Cpath d='M24,40 C32,44 36,48 40,40 C36,32 32,36 24,40 Z'/%3E%3Cpath d='M56,40 C48,44 44,48 40,40 C44,32 48,36 56,40 Z'/%3E%3C/g%3E%3Cpath d='M110,32 C114,26 122,28 119,35 C115,40 107,38 110,32 Z' fill='%23FBCFE8' opacity='0.3'/%3E%3Cpath d='M22,110 C26,104 34,106 31,113 C27,118 19,116 22,110 Z' fill='%23F472B6' opacity='0.2'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-attachment: fixed;
   color: #000000;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  transition: background 0.5s ease, color 0.5s ease;
+  transition: background 0.4s ease, color 0.4s ease;
   overflow-x: hidden;
 }
 
-/* Night Mode Body: Deep Night Sky with Moving Twinkling Stars */
+/* Night Mode Body: Deep Cosmic Night Sky with Moving Twinkling Stars */
 .dark body {
   background-color: #090614;
   background-image: 
@@ -63,16 +63,17 @@ body {
   100% { background-position: 0 0, 250px 250px, 250px 250px, 250px 250px, 250px 250px, 250px 250px; }
 }
 
-/* Text Colors: Solid Black in Day Mode, Solid White in Night Mode */
+/* Day Mode Text Enforcement: Solid Pure Black */
 p, span, h1, h2, h3, h4, h5, h6, a, button, label, input, textarea, select, option, div, li, td, th {
   color: #000000;
 }
 
+/* Night Mode Text Enforcement: Crisp White */
 .dark p, .dark span, .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6, .dark a, .dark button, .dark label, .dark input, .dark textarea, .dark select, .dark option, .dark div, .dark li, .dark td, .dark th {
   color: #FFFFFF !important;
 }
 
-/* Glassmorphism Cards: Translucent so background shows through */
+/* Glassmorphism Cards */
 .glass-card {
   background: var(--card-bg);
   backdrop-filter: blur(16px);
