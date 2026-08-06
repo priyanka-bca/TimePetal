@@ -154,17 +154,18 @@ export default function AlbumsPage() {
         </div>
       )}
 
-      {/* Upload Photo Modal */}
+      {/* Upload Photo Modal with Smooth Scrollable Container */}
       <AnimatePresence>
         {uploadModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pink-950/20 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pink-950/30 backdrop-blur-sm overflow-y-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full max-w-lg bg-[#FAF5F0] rounded-3xl p-6 border border-[#EFE6D8] shadow-2xl space-y-5"
+              className="w-full max-w-lg bg-[#FAF5F0] rounded-3xl p-6 border border-[#EFE6D8] shadow-2xl my-auto max-h-[90vh] flex flex-col justify-between"
             >
-              <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-3">
+              {/* Modal Header */}
+              <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-3 mb-4 flex-shrink-0">
                 <h3 className="font-serif text-xl font-extrabold text-black flex items-center gap-2">
                   <Upload className="w-5 h-5 text-pink-500" /> Upload Memory Photo
                 </h3>
@@ -176,16 +177,17 @@ export default function AlbumsPage() {
                 </button>
               </div>
 
-              <div className="space-y-4">
+              {/* Scrollable Form Body */}
+              <div className="overflow-y-auto space-y-4 pr-1 flex-1">
                 {/* File Upload Drop Zone */}
                 <div>
                   <label className="text-xs font-extrabold text-black uppercase tracking-wider block mb-1.5">
                     1. Select Local Photo File
                   </label>
-                  <label className="flex flex-col items-center justify-center p-5 rounded-2xl border-2 border-dashed border-[#EFE6D8] bg-[#F5EFE6] hover:bg-pink-50 cursor-pointer transition-colors text-center">
-                    <ImageIcon className="w-8 h-8 text-pink-500 mb-2" />
+                  <label className="flex flex-col items-center justify-center p-4 rounded-2xl border-2 border-dashed border-[#EFE6D8] bg-[#F5EFE6] hover:bg-pink-50 cursor-pointer transition-colors text-center">
+                    <ImageIcon className="w-7 h-7 text-pink-500 mb-1.5" />
                     <span className="text-xs font-extrabold text-black">Click to Choose Photo File</span>
-                    <span className="text-[10px] text-black font-semibold mt-1">PNG, JPG, WEBP formats supported</span>
+                    <span className="text-[10px] text-black font-semibold mt-0.5">PNG, JPG, WEBP formats supported</span>
                     <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
                   </label>
                 </div>
@@ -207,10 +209,10 @@ export default function AlbumsPage() {
                   />
                 </div>
 
-                {/* Photo Preview */}
+                {/* Compact Photo Preview */}
                 {previewUrl && (
-                  <div className="relative aspect-video rounded-xl overflow-hidden border border-[#EFE6D8] bg-black/5">
-                    <img src={previewUrl} alt="Preview" className="w-full h-full object-cover" />
+                  <div className="relative max-h-48 rounded-2xl overflow-hidden border border-[#EFE6D8] bg-black/5 flex items-center justify-center">
+                    <img src={previewUrl} alt="Preview" className="max-h-48 w-full object-cover" />
                   </div>
                 )}
 
@@ -244,7 +246,10 @@ export default function AlbumsPage() {
                     <option value="Family Moments">Family Moments</option>
                   </select>
                 </div>
+              </div>
 
+              {/* Submit Button (Sticky at Modal Bottom) */}
+              <div className="pt-4 mt-2 border-t border-[#EFE6D8] flex-shrink-0">
                 <button
                   onClick={handleSavePhoto}
                   className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-sm shadow-md border border-pink-300 flex items-center justify-center gap-2 btn-shimmer"
