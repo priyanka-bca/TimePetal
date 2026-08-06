@@ -3,13 +3,16 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useTheme } from "@/components/theme-provider";
-import { Heart, Sparkles, Moon, Sun, Menu, X, ArrowRight, Clock, Smile, Mail, Palette } from "lucide-react";
+import { useAuth } from "@/lib/auth";
+import { Heart, Sparkles, Moon, Sun, Menu, X, ArrowRight, Clock, Smile, Mail, Palette, User, LogOut, ShieldCheck, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Navbar() {
   const { theme, setTheme, isDarkMode, toggleDarkMode } = useTheme();
+  const { user, isAuthenticated, openAuthModal, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
   const themeOptions: { id: "blush" | "lavender" | "sunset" | "midnight"; name: string; icon: string }[] = [
     { id: "blush", name: "Soft Blush Pink", icon: "🌸" },
@@ -67,7 +70,7 @@ export function Navbar() {
           </Link>
         </nav>
 
-        {/* Action Controls: Theme Switcher & Day/Night Toggle & CTA */}
+        {/* Action Controls */}
         <div className="hidden md:flex items-center gap-2">
           {/* Theme Palette Switcher Dropdown */}
           <div className="relative">
@@ -130,6 +133,63 @@ export function Navbar() {
             )}
           </button>
 
+          {/* User Account Controls */}
+          {isAuthenticated && user ? (
+            <div className="relative">
+              <button
+                onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                className="px-3 py-2 rounded-xl bg-[#FAF5F0] border border-[#EFE6D8] hover:bg-pink-50 text-xs font-extrabold flex items-center gap-2 transition-all shadow-sm"
+              >
+                <div className="w-6 h-6 rounded-full bg-pink-300 flex items-center justify-center font-bold text-black text-[11px]">
+                  {user.avatar || user.name.charAt(0)}
+                </div>
+                <span className="text-black">{user.name}</span>
+                <ChevronDown className="w-3.5 h-3.5 text-pink-500 opacity-80" />
+              </button>
+
+              <AnimatePresence>
+                {userDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    className="absolute right-0 mt-2 w-56 rounded-2xl bg-[#FAF5F0] border border-[#EFE6D8] shadow-xl p-3 z-50 space-y-2"
+                  >
+                    <div className="pb-2 border-b border-[#EFE6D8]">
+                      <p className="text-xs font-extrabold text-black">{user.name}</p>
+                      <p className="text-[10px] font-semibold text-pink-600 truncate">{user.email}</p>
+                    </div>
+
+                    <Link
+                      href="/dashboard"
+                      onClick={() => setUserDropdownOpen(false)}
+                      className="block px-3 py-2 rounded-xl text-xs font-extrabold text-black hover:bg-pink-100 transition-colors"
+                    >
+                      Open Private Vault
+                    </Link>
+
+                    <button
+                      onClick={() => {
+                        logout();
+                        setUserDropdownOpen(false);
+                      }}
+                      className="w-full text-left px-3 py-2 rounded-xl text-xs font-extrabold text-red-600 hover:bg-red-50 flex items-center gap-2 transition-colors"
+                    >
+                      <LogOut className="w-3.5 h-3.5 text-red-500" /> Log Out
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ) : (
+            <button
+              onClick={() => openAuthModal("login")}
+              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 to-rose-400 text-black font-extrabold text-xs shadow-md border border-pink-300 flex items-center gap-1.5 btn-shimmer"
+            >
+              <User className="w-4 h-4 text-black" /> Sign In / Sign Up
+            </button>
+          )}
+
           {/* Dashboard Entry CTA */}
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
             <Link
@@ -144,12 +204,14 @@ export function Navbar() {
 
         {/* Mobile Menu Button */}
         <div className="flex lg:hidden items-center gap-2">
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-lg bg-[#FAF5F0] text-black border border-[#EFE6D8]"
-          >
-            {isDarkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4 text-pink-500" />}
-          </button>
+          {!isAuthenticated && (
+            <button
+              onClick={() => openAuthModal("login")}
+              className="p-2 rounded-lg bg-[#FAF5F0] text-black border border-[#EFE6D8] text-xs font-extrabold"
+            >
+              Sign In
+            </button>
+          )}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2.5 rounded-xl bg-[#FAF5F0] text-black border border-[#EFE6D8]"
@@ -158,35 +220,6 @@ export function Navbar() {
           </button>
         </div>
       </div>
-
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-b border-[#EFE6D8] bg-[#FAF5F0]/98 backdrop-blur-lg px-6 py-6 space-y-4"
-          >
-            <nav className="flex flex-col gap-3 font-extrabold text-black text-base">
-              <Link href="/dashboard/ai" onClick={() => setMobileMenuOpen(false)} className="text-black">⭐ AI Diary Companion</Link>
-              <Link href="/dashboard/timeline" onClick={() => setMobileMenuOpen(false)} className="text-black">⭐ Memory Timeline</Link>
-              <Link href="/dashboard/mood" onClick={() => setMobileMenuOpen(false)} className="text-black">⭐ Mood Analytics</Link>
-              <Link href="/dashboard/letters" onClick={() => setMobileMenuOpen(false)} className="text-black">⭐ Future Letters</Link>
-              <Link href="/dashboard/themes" onClick={() => setMobileMenuOpen(false)} className="text-black">⭐ Premium Themes</Link>
-            </nav>
-            <div className="pt-4 border-t border-[#EFE6D8] flex flex-col gap-3">
-              <Link
-                href="/dashboard"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-400 to-rose-400 text-black text-center font-extrabold text-sm shadow-md border border-pink-300 btn-shimmer"
-              >
-                Go to My Private Vault
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.header>
   );
 }

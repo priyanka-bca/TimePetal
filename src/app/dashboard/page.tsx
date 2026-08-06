@@ -18,7 +18,10 @@ import {
   Volume2
 } from "lucide-react";
 
+import { useAuth } from "@/lib/auth";
+
 export default function DashboardPage() {
+  const { user } = useAuth();
   const [entries, setEntries] = useState<DiaryEntry[]>([]);
   const [moods, setMoods] = useState<MoodLog[]>([]);
   const [letters, setLetters] = useState<FutureLetter[]>([]);
@@ -40,7 +43,7 @@ export default function DashboardPage() {
       <div className="glass-card rounded-3xl p-6 sm:p-8 border border-[#EFE6D8] bg-[#FAF5F0] relative overflow-hidden shadow-sm">
         <div className="max-w-2xl relative z-10 space-y-3">
           <span className="px-3 py-1 rounded-full bg-[#F5EFE6] text-black text-xs font-extrabold inline-flex items-center gap-1.5 border border-[#EFE6D8] shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-pink-500 fill-pink-500" /> Good Morning, Sophia ✨
+            <Sparkles className="w-3.5 h-3.5 text-pink-500 fill-pink-500" /> Good Morning, {user?.name || "Sophia"} ✨
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl font-extrabold text-black tracking-tight">
             How does your heart feel today?

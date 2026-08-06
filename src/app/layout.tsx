@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AuthProvider } from "@/lib/auth";
+import { AuthModal } from "@/components/auth-modal";
 
 export const metadata: Metadata = {
   title: "DearDiary • Your Private Space for Memories & Emotions",
-  description: "A private, beautiful, and end-to-end encrypted digital diary. Write daily journals, record voice notes, track mood analytics, preserve photo albums, and seal future time-capsule letters.",
+  description: "A private, beautiful, and end-to-end encrypted digital diary. Write daily journals, track mood analytics, preserve photo albums, and seal future time-capsule letters.",
   keywords: ["digital diary", "private journal", "mood tracker", "future letters", "photo album vault", "memory timeline", "aesthetic journal"],
   openGraph: {
     title: "DearDiary • Private Digital Diary & Memory Preservation",
-    description: "Preserve life's softest moments with rich text journaling, voice clips, mood trends, photo albums, and time-capsule letters.",
+    description: "Preserve life's softest moments with rich text journaling, mood trends, photo albums, and time-capsule letters.",
     url: "https://deardiary.app",
     siteName: "DearDiary",
     images: [
@@ -57,7 +59,12 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            {children}
+            <AuthModal />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

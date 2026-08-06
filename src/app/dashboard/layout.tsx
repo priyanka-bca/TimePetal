@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useTheme } from "@/components/theme-provider";
+import { useAuth } from "@/lib/auth";
 import { getStoredData, DiaryEntry } from "@/lib/store";
 import {
   Heart,
@@ -19,13 +20,16 @@ import {
   Palette,
   Flame,
   ChevronRight,
-  X
+  X,
+  LogOut,
+  User as UserIcon
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { isDarkMode, toggleDarkMode } = useTheme();
+  const { user, logout, openAuthModal } = useAuth();
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [entries, setEntries] = useState<DiaryEntry[]>([]);
@@ -71,7 +75,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 DearDiary
               </h1>
               <p className="text-[10px] text-pink-600 font-extrabold uppercase tracking-wider">
-                5 Core Functional Sanctuary
+                Private Vault
               </p>
             </div>
           </Link>
@@ -89,7 +93,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </kbd>
           </button>
 
-          {/* Streamlined 5 Core Features Navigation Links */}
+          {/* Streamlined Navigation Links */}
           <nav className="space-y-1.5">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -115,7 +119,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </nav>
         </div>
 
-        {/* User Profile & Streak Footer */}
+        {/* User Profile & Session Footer */}
         <div className="pt-4 border-t border-[#EFE6D8] space-y-3">
           <div className="p-3 rounded-xl bg-[#F5EFE6] text-black border border-[#EFE6D8] flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -126,23 +130,43 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
 
           <div className="flex items-center justify-between px-2">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-pink-300 flex items-center justify-center font-serif font-extrabold text-black text-xs">
-                S
+            {user ? (
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-8 h-8 rounded-full bg-pink-300 flex items-center justify-center font-serif font-extrabold text-black text-xs flex-shrink-0">
+                  {user.avatar || user.name.charAt(0)}
+                </div>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-xs font-extrabold text-black truncate">{user.name}</span>
+                  <span className="text-[10px] text-pink-600 font-bold truncate">{user.plan === "premium" ? "Premium Vault" : "Free Member"}</span>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <span className="text-xs font-extrabold text-black">Sophia Rose</span>
-                <span className="text-[10px] text-black font-semibold">Premium Member</span>
-              </div>
-            </div>
+            ) : (
+              <button
+                onClick={() => openAuthModal("login")}
+                className="text-xs font-extrabold text-pink-600 hover:underline flex items-center gap-1"
+              >
+                <UserIcon className="w-3.5 h-3.5" /> Sign In
+              </button>
+            )}
 
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-lg bg-[#FAF5F0] text-black border border-[#EFE6D8]"
-              title="Toggle Theme Mode"
-            >
-              {isDarkMode ? <Sun className="w-3.5 h-3.5 text-amber-500" /> : <Moon className="w-3.5 h-3.5 text-pink-500" />}
-            </button>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={toggleDarkMode}
+                className="p-1.5 rounded-lg bg-[#FAF5F0] text-black border border-[#EFE6D8]"
+                title="Toggle Theme Mode"
+              >
+                {isDarkMode ? <Sun className="w-3.5 h-3.5 text-amber-500" /> : <Moon className="w-3.5 h-3.5 text-pink-500" />}
+              </button>
+              {user && (
+                <button
+                  onClick={logout}
+                  className="p-1.5 rounded-lg bg-[#FAF5F0] text-red-600 border border-[#EFE6D8] hover:bg-red-50"
+                  title="Log Out"
+                >
+                  <LogOut className="w-3.5 h-3.5 text-red-500" />
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </aside>
