@@ -41,40 +41,40 @@ export default function DashboardPage() {
   );
 
   return (
-    <div className="space-y-8 text-[#3C5556] dark:text-[#F6EFE7]">
+    <div className="space-y-8 text-black dark:text-white">
       {/* Welcome Banner */}
-      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-[#E09789]/30 bg-[#F5D4C3]/30 dark:bg-[#3C5556] relative overflow-hidden">
+      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-pink-200 bg-white dark:bg-zinc-900 relative overflow-hidden shadow-sm">
         <div className="max-w-2xl relative z-10 space-y-3">
-          <span className="px-3 py-1 rounded-full bg-[#F5D4C3] text-[#3C5556] text-xs font-semibold inline-flex items-center gap-1.5 border border-[#E09789]/20">
-            <Sparkles className="w-3.5 h-3.5 text-[#E09789]" /> Good Morning, Sophia ✨
+          <span className="px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold inline-flex items-center gap-1.5 border border-pink-200">
+            <Sparkles className="w-3.5 h-3.5 text-pink-500" /> Good Morning, Sophia ✨
           </span>
-          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#3C5556] dark:text-[#F6EFE7] tracking-tight">
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-black dark:text-white tracking-tight">
             How does your heart feel today?
           </h1>
-          <p className="text-sm text-[#3C5556]/80 dark:text-[#C8DBD7] font-light">
-            You are on a <span className="font-bold text-[#E09789]">14-day writing streak</span>. Capture today's soft moments and preserve them forever.
+          <p className="text-sm text-zinc-700 dark:text-zinc-300 font-medium">
+            You are on a <span className="font-bold text-pink-500">14-day writing streak</span>. Capture today's soft moments and preserve them forever.
           </p>
 
           <div className="pt-2 flex flex-wrap gap-3">
             <Link
               href="/dashboard/journal"
-              className="px-6 py-3 rounded-2xl bg-[#E09789] hover:bg-[#c88173] text-[#F6EFE7] font-semibold text-xs shadow-md shadow-[#E09789]/30 flex items-center gap-2 transition-all hover:scale-105"
+              className="px-6 py-3 rounded-2xl bg-pink-500 hover:bg-pink-600 text-white font-bold text-xs shadow-md shadow-pink-200 flex items-center gap-2 transition-all hover:scale-105"
             >
               <PlusCircle className="w-4 h-4" />
               {todaysEntry ? "Edit Today's Journal" : "Write Today's Memory"}
             </Link>
             <Link
               href="/dashboard/ai"
-              className="px-5 py-3 rounded-2xl glass-card hover:bg-[#F5D4C3]/40 text-[#3C5556] dark:text-[#F6EFE7] text-xs font-semibold border border-[#E09789]/30 flex items-center gap-2"
+              className="px-5 py-3 rounded-2xl bg-pink-50 hover:bg-pink-100 text-black dark:text-white text-xs font-bold border border-pink-200 flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4 text-[#E09789]" />
+              <Sparkles className="w-4 h-4 text-pink-500" />
               Daily Reflection Prompt
             </Link>
           </div>
         </div>
 
         {/* Ambient Decorative Heart Icon */}
-        <Heart className="absolute right-4 bottom-4 w-48 h-48 text-[#E09789]/15 pointer-events-none -rotate-12" />
+        <Heart className="absolute right-4 bottom-4 w-48 h-48 text-pink-200/40 pointer-events-none -rotate-12" />
       </div>
 
       {/* Quick Metrics & Modules Grid */}
@@ -82,68 +82,68 @@ export default function DashboardPage() {
         {/* Metric 1 */}
         <Link
           href="/dashboard/timeline"
-          className="glass-card glass-card-hover rounded-2xl p-5 border border-[#E09789]/25 flex items-center justify-between"
+          className="glass-card glass-card-hover rounded-2xl p-5 border border-pink-100 flex items-center justify-between bg-white dark:bg-zinc-900"
         >
           <div>
-            <p className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7] font-medium">Total Memories</p>
-            <p className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7] mt-1">
+            <p className="text-xs text-zinc-600 dark:text-zinc-400 font-semibold">Total Memories</p>
+            <p className="font-serif text-2xl font-bold text-black dark:text-white mt-1">
               {entries.length} Entries
             </p>
-            <p className="text-[10px] text-[#3C5556] dark:text-[#C8DBD7] font-semibold mt-1">Stored securely</p>
+            <p className="text-[10px] text-black dark:text-white font-bold mt-1">Stored securely</p>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-[#F5D4C3] text-[#3C5556] flex items-center justify-center">
-            <Clock className="w-5 h-5 text-[#E09789]" />
+          <div className="w-11 h-11 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center">
+            <Clock className="w-5 h-5" />
           </div>
         </Link>
 
         {/* Metric 2 */}
         <Link
           href="/dashboard/mood"
-          className="glass-card glass-card-hover rounded-2xl p-5 border border-[#E09789]/25 flex items-center justify-between"
+          className="glass-card glass-card-hover rounded-2xl p-5 border border-pink-100 flex items-center justify-between bg-white dark:bg-zinc-900"
         >
           <div>
-            <p className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7] font-medium">Dominant Mood</p>
-            <p className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7] mt-1">
+            <p className="text-xs text-zinc-600 dark:text-zinc-400 font-semibold">Dominant Mood</p>
+            <p className="font-serif text-2xl font-bold text-black dark:text-white mt-1">
               😌 Calm
             </p>
-            <p className="text-[10px] text-[#E09789] font-semibold mt-1">88% Positive trends</p>
+            <p className="text-[10px] text-pink-600 font-bold mt-1">88% Positive trends</p>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-[#C8DBD7] text-[#3C5556] flex items-center justify-center">
-            <Smile className="w-5 h-5 text-[#3C5556]" />
+          <div className="w-11 h-11 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center">
+            <Smile className="w-5 h-5" />
           </div>
         </Link>
 
         {/* Metric 3 */}
         <Link
           href="/dashboard/albums"
-          className="glass-card glass-card-hover rounded-2xl p-5 border border-[#E09789]/25 flex items-center justify-between"
+          className="glass-card glass-card-hover rounded-2xl p-5 border border-pink-100 flex items-center justify-between bg-white dark:bg-zinc-900"
         >
           <div>
-            <p className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7] font-medium">Photo Vault</p>
-            <p className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7] mt-1">
+            <p className="text-xs text-zinc-600 dark:text-zinc-400 font-semibold">Photo Vault</p>
+            <p className="font-serif text-2xl font-bold text-black dark:text-white mt-1">
               {photos.length} Photos
             </p>
-            <p className="text-[10px] text-[#E09789] font-semibold mt-1">2 Albums created</p>
+            <p className="text-[10px] text-pink-600 font-bold mt-1">2 Albums created</p>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-[#F5D4C3] text-[#3C5556] flex items-center justify-center">
-            <Camera className="w-5 h-5 text-[#E09789]" />
+          <div className="w-11 h-11 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center">
+            <Camera className="w-5 h-5" />
           </div>
         </Link>
 
         {/* Metric 4 */}
         <Link
           href="/dashboard/letters"
-          className="glass-card glass-card-hover rounded-2xl p-5 border border-[#E09789]/25 flex items-center justify-between"
+          className="glass-card glass-card-hover rounded-2xl p-5 border border-pink-100 flex items-center justify-between bg-white dark:bg-zinc-900"
         >
           <div>
-            <p className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7] font-medium">Future Letters</p>
-            <p className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7] mt-1">
+            <p className="text-xs text-zinc-600 dark:text-zinc-400 font-semibold">Future Letters</p>
+            <p className="font-serif text-2xl font-bold text-black dark:text-white mt-1">
               {letters.length} Sealed
             </p>
-            <p className="text-[10px] text-[#3C5556] dark:text-[#C8DBD7] font-semibold mt-1">Time capsules active</p>
+            <p className="text-[10px] text-black dark:text-white font-bold mt-1">Time capsules active</p>
           </div>
-          <div className="w-11 h-11 rounded-xl bg-[#C8DBD7] text-[#3C5556] flex items-center justify-center">
-            <Mail className="w-5 h-5 text-[#3C5556]" />
+          <div className="w-11 h-11 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center">
+            <Mail className="w-5 h-5" />
           </div>
         </Link>
       </div>
@@ -153,12 +153,12 @@ export default function DashboardPage() {
         {/* Left 2 Columns: Recent Memories Feed */}
         <div className="lg:col-span-2 space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7] flex items-center gap-2">
-              Recent Memories <span className="text-xs font-sans font-medium text-[#3C5556]/60 dark:text-[#C8DBD7]">({entries.length})</span>
+            <h2 className="font-serif text-2xl font-bold text-black dark:text-white flex items-center gap-2">
+              Recent Memories <span className="text-xs font-sans font-semibold text-zinc-600">({entries.length})</span>
             </h2>
             <Link
               href="/dashboard/timeline"
-              className="text-xs font-semibold text-[#E09789] hover:text-[#c88173] flex items-center gap-1"
+              className="text-xs font-bold text-pink-500 hover:text-pink-600 flex items-center gap-1"
             >
               View Timeline <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -170,44 +170,44 @@ export default function DashboardPage() {
                 key={entry.id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="glass-card glass-card-hover rounded-2xl p-6 border border-[#E09789]/25 space-y-3"
+                className="glass-card glass-card-hover rounded-2xl p-6 border border-pink-100 space-y-3 bg-white dark:bg-zinc-900"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-1 rounded-full bg-[#F5D4C3] text-[#3C5556] text-xs font-semibold">
+                    <span className="px-2.5 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold">
                       {entry.mood} ({entry.moodRating}/10)
                     </span>
                     {entry.weather && (
-                      <span className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7] flex items-center gap-1">
+                      <span className="text-xs text-zinc-600 font-medium flex items-center gap-1">
                         {entry.weather}
                       </span>
                     )}
                   </div>
-                  <span className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7]">
+                  <span className="text-xs text-zinc-600 font-semibold">
                     {new Date(entry.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                   </span>
                 </div>
 
-                <h3 className="font-serif text-xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+                <h3 className="font-serif text-xl font-bold text-black dark:text-white">
                   {entry.title}
                 </h3>
 
                 <div
-                  className="text-[#3C5556]/80 dark:text-[#C8DBD7] text-sm line-clamp-2 leading-relaxed font-light"
+                  className="text-zinc-800 dark:text-zinc-200 text-sm line-clamp-2 leading-relaxed font-normal"
                   dangerouslySetInnerHTML={{ __html: entry.content }}
                 />
 
-                <div className="pt-2 flex items-center justify-between border-t border-[#E09789]/20 text-xs text-[#3C5556]/60 dark:text-[#C8DBD7]">
+                <div className="pt-2 flex items-center justify-between border-t border-pink-100 text-xs text-zinc-600">
                   <div className="flex items-center gap-2">
                     {entry.tags.map((t) => (
-                      <span key={t} className="px-2 py-0.5 rounded bg-[#E9F1EF] dark:bg-[#3C5556] text-[11px] border border-[#E09789]/20">
+                      <span key={t} className="px-2 py-0.5 rounded bg-pink-50 text-black text-[11px] font-semibold border border-pink-100">
                         #{t}
                       </span>
                     ))}
                   </div>
 
                   {entry.photos.length > 0 && (
-                    <span className="text-[#E09789] font-medium flex items-center gap-1">
+                    <span className="text-pink-600 font-bold flex items-center gap-1">
                       <Camera className="w-3.5 h-3.5" /> {entry.photos.length} Photos
                     </span>
                   )}
@@ -220,65 +220,65 @@ export default function DashboardPage() {
         {/* Right Column: Mood Distribution & Photo Snippets */}
         <div className="space-y-6">
           {/* Mood Trends Snippet */}
-          <div className="glass-card rounded-2xl p-6 border border-[#E09789]/25 space-y-4">
-            <h3 className="font-serif text-lg font-bold text-[#3C5556] dark:text-[#F6EFE7] flex items-center gap-2">
-              <Smile className="w-4 h-4 text-[#E09789]" /> Weekly Mood Balance
+          <div className="glass-card rounded-2xl p-6 border border-pink-100 space-y-4 bg-white dark:bg-zinc-900">
+            <h3 className="font-serif text-lg font-bold text-black dark:text-white flex items-center gap-2">
+              <Smile className="w-4 h-4 text-pink-500" /> Weekly Mood Balance
             </h3>
 
-            <div className="space-y-2.5 text-xs font-semibold">
+            <div className="space-y-2.5 text-xs font-bold text-black">
               <div>
-                <div className="flex justify-between text-[#3C5556] dark:text-[#C8DBD7] mb-1">
+                <div className="flex justify-between text-black dark:text-white mb-1">
                   <span>Calm & Peaceful</span>
                   <span>45%</span>
                 </div>
-                <div className="w-full bg-[#E9F1EF] dark:bg-[#3C5556] h-2 rounded-full overflow-hidden">
-                  <div className="bg-[#C8DBD7] h-full w-[45%]" />
+                <div className="w-full bg-pink-100 h-2 rounded-full overflow-hidden">
+                  <div className="bg-pink-400 h-full w-[45%]" />
                 </div>
               </div>
 
               <div>
-                <div className="flex justify-between text-[#3C5556] dark:text-[#C8DBD7] mb-1">
+                <div className="flex justify-between text-black dark:text-white mb-1">
                   <span>Loved & Cherished</span>
                   <span>35%</span>
                 </div>
-                <div className="w-full bg-[#E9F1EF] dark:bg-[#3C5556] h-2 rounded-full overflow-hidden">
-                  <div className="bg-[#E09789] h-full w-[35%]" />
+                <div className="w-full bg-pink-100 h-2 rounded-full overflow-hidden">
+                  <div className="bg-pink-500 h-full w-[35%]" />
                 </div>
               </div>
 
               <div>
-                <div className="flex justify-between text-[#3C5556] dark:text-[#C8DBD7] mb-1">
+                <div className="flex justify-between text-black dark:text-white mb-1">
                   <span>Excited & Creative</span>
                   <span>20%</span>
                 </div>
-                <div className="w-full bg-[#E9F1EF] dark:bg-[#3C5556] h-2 rounded-full overflow-hidden">
-                  <div className="bg-[#F5D4C3] h-full w-[20%]" />
+                <div className="w-full bg-pink-100 h-2 rounded-full overflow-hidden">
+                  <div className="bg-pink-300 h-full w-[20%]" />
                 </div>
               </div>
             </div>
 
             <Link
               href="/dashboard/mood"
-              className="block w-full text-center py-2.5 rounded-xl bg-[#E9F1EF] dark:bg-[#3C5556] text-[#3C5556] dark:text-[#F6EFE7] text-xs font-semibold hover:bg-[#F5D4C3]/40 transition-colors"
+              className="block w-full text-center py-2.5 rounded-xl bg-pink-50 text-black text-xs font-bold hover:bg-pink-100 transition-colors border border-pink-100"
             >
               Open Full Mood Analytics
             </Link>
           </div>
 
           {/* Photo Vault Quick Preview */}
-          <div className="glass-card rounded-2xl p-6 border border-[#E09789]/25 space-y-4">
+          <div className="glass-card rounded-2xl p-6 border border-pink-100 space-y-4 bg-white dark:bg-zinc-900">
             <div className="flex items-center justify-between">
-              <h3 className="font-serif text-lg font-bold text-[#3C5556] dark:text-[#F6EFE7] flex items-center gap-2">
-                <Camera className="w-4 h-4 text-[#E09789]" /> Photo Memories
+              <h3 className="font-serif text-lg font-bold text-black dark:text-white flex items-center gap-2">
+                <Camera className="w-4 h-4 text-pink-500" /> Photo Memories
               </h3>
-              <Link href="/dashboard/albums" className="text-xs text-[#E09789] font-semibold">View All</Link>
+              <Link href="/dashboard/albums" className="text-xs text-pink-500 font-bold">View All</Link>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
               {photos.slice(0, 4).map((p) => (
                 <div key={p.id} className="relative aspect-square rounded-xl overflow-hidden group">
                   <img src={p.url} alt={p.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#3C5556]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 text-[10px] text-[#F6EFE7]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 text-[10px] text-white font-medium">
                     {p.caption}
                   </div>
                 </div>

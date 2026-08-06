@@ -53,33 +53,26 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen text-[#3C5556] dark:text-[#F6EFE7] selection:bg-[#F5D4C3] selection:text-[#3C5556] transition-colors">
+    <div className="min-h-screen text-black dark:text-white selection:bg-pink-200 selection:text-black transition-colors">
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden">
-        {/* Soft background ambient glows in Sweet Summer tones */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-gradient-to-tr from-[#F5D4C3]/40 via-[#E09789]/25 to-[#C8DBD7]/30 blur-3xl rounded-full pointer-events-none -z-10" />
+        {/* Ambient aesthetic pink & cream glows */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-pink-200/40 via-rose-100/30 to-amber-100/30 blur-3xl rounded-full pointer-events-none -z-10" />
 
-        {/* Floating Blossom Petal Particles */}
+        {/* Floating Petal Accents */}
         <motion.div
           animate={{ y: [0, -15, 0], rotate: [0, 10, -5, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-16 left-[15%] w-8 h-8 pointer-events-none opacity-40 text-[#E09789]"
+          className="absolute top-16 left-[15%] pointer-events-none opacity-40 text-pink-400 text-xl"
         >
           🌸
         </motion.div>
         <motion.div
           animate={{ y: [0, 20, 0], rotate: [0, -12, 8, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-36 right-[12%] w-10 h-10 pointer-events-none opacity-30 text-[#F5D4C3]"
-        >
-          🌺
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, -12, 0], rotate: [0, 15, -10, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-20 left-[8%] w-6 h-6 pointer-events-none opacity-45 text-[#C8DBD7]"
+          className="absolute top-36 right-[12%] pointer-events-none opacity-35 text-pink-300 text-2xl"
         >
           🌸
         </motion.div>
@@ -90,10 +83,10 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-[#E09789]/30 text-xs font-semibold text-[#3C5556] dark:text-[#F6EFE7] mb-8 shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-50 dark:bg-zinc-800 border border-pink-200/80 text-xs font-semibold text-black dark:text-white mb-8 shadow-sm"
           >
-            <Sparkles className="w-3.5 h-3.5 fill-[#E09789] text-[#E09789]" />
-            <span>Introducing DearDiary 2.0 • Your Sanctuary for Life&apos;s Softest Moments</span>
+            <Sparkles className="w-3.5 h-3.5 text-pink-500 fill-pink-500" />
+            <span>Introducing DearDiary 2.0 • Your Minimal Sanctuary for Memories</span>
           </motion.div>
 
           {/* Main Headline */}
@@ -101,7 +94,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#3C5556] dark:text-[#F6EFE7] max-w-4xl mx-auto leading-[1.15]"
+            className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-black dark:text-white max-w-4xl mx-auto leading-[1.15]"
           >
             Your private space for{" "}
             <span className="gradient-text italic font-serif">memories, thoughts,</span> and emotions.
@@ -112,7 +105,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-lg sm:text-xl text-[#3C5556]/80 dark:text-[#C8DBD7] max-w-2xl mx-auto font-normal leading-relaxed"
+            className="mt-6 text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto font-normal leading-relaxed"
           >
             A calm, aesthetic, end-to-end private sanctuary where you can write daily journals, record voice clips, track mood trends, preserve photo albums, and seal letters to your future self.
           </motion.p>
@@ -126,16 +119,16 @@ export default function LandingPage() {
           >
             <Link
               href="/dashboard"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#E09789] hover:bg-[#c88173] text-[#F6EFE7] font-semibold text-base shadow-xl shadow-[#E09789]/30 hover:shadow-2xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-pink-500 hover:bg-pink-600 text-white font-semibold text-base shadow-xl shadow-pink-200 hover:shadow-2xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2 group"
             >
               Start Writing Free
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
               href="#interactive-demo"
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl glass-card hover:bg-[#F5D4C3]/30 text-[#3C5556] dark:text-[#F6EFE7] font-semibold text-base border border-[#E09789]/30 transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white dark:bg-zinc-800 hover:bg-pink-50 text-black dark:text-white font-semibold text-base border border-pink-200 transition-all flex items-center justify-center gap-2 shadow-sm"
             >
-              <Sparkle className="w-4 h-4 text-[#E09789]" />
+              <Sparkle className="w-4 h-4 text-pink-500" />
               Explore Live Demo
             </a>
           </motion.div>
@@ -145,16 +138,16 @@ export default function LandingPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs font-medium text-[#3C5556]/80 dark:text-[#C8DBD7]"
+            className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-zinc-800 dark:text-zinc-300"
           >
             <span className="flex items-center gap-1.5">
-              <Lock className="w-4 h-4 text-[#3C5556]" /> 256-Bit Encrypted Vault
+              <Lock className="w-4 h-4 text-black dark:text-white" /> 256-Bit Encrypted Vault
             </span>
             <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#E09789]" /> Zero Ad Trackers
+              <ShieldCheck className="w-4 h-4 text-pink-500" /> Zero Ad Trackers
             </span>
             <span className="flex items-center gap-1.5">
-              <Star className="w-4 h-4 text-[#E09789] fill-[#E09789]" /> 4.9/5 Rating by 12,000+ Journalers
+              <Star className="w-4 h-4 text-amber-400 fill-amber-400" /> 4.9/5 Rating by 12,000+ Journalers
             </span>
           </motion.div>
 
@@ -165,19 +158,19 @@ export default function LandingPage() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="mt-16 relative max-w-5xl mx-auto"
           >
-            <div className="glass-card rounded-3xl p-4 sm:p-8 shadow-2xl border border-[#E09789]/30 backdrop-blur-xl relative">
+            <div className="glass-card rounded-3xl p-4 sm:p-8 shadow-xl border border-pink-100 dark:border-zinc-800 relative bg-white/95 dark:bg-zinc-900/95">
               {/* Fake Browser Top Bar */}
-              <div className="flex items-center justify-between pb-4 border-b border-[#E09789]/20 mb-6">
+              <div className="flex items-center justify-between pb-4 border-b border-pink-100 dark:border-zinc-800 mb-6">
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#E09789]" />
-                  <div className="w-3 h-3 rounded-full bg-[#F5D4C3]" />
-                  <div className="w-3 h-3 rounded-full bg-[#C8DBD7]" />
+                  <div className="w-3 h-3 rounded-full bg-pink-400" />
+                  <div className="w-3 h-3 rounded-full bg-amber-300" />
+                  <div className="w-3 h-3 rounded-full bg-emerald-400" />
                 </div>
-                <div className="px-4 py-1 rounded-full bg-[#E9F1EF] dark:bg-[#3C5556] text-[11px] font-medium text-[#3C5556] dark:text-[#F6EFE7] flex items-center gap-1.5 border border-[#E09789]/20">
-                  <Lock className="w-3 h-3 text-[#3C5556]" /> deardiary.app/dashboard/journal
+                <div className="px-4 py-1 rounded-full bg-pink-50 dark:bg-zinc-800 text-[11px] font-semibold text-black dark:text-white flex items-center gap-1.5 border border-pink-100">
+                  <Lock className="w-3 h-3 text-pink-500" /> deardiary.app/dashboard/journal
                 </div>
-                <div className="text-xs font-semibold text-[#E09789] flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-[#3C5556] animate-ping" /> Auto-Saved
+                <div className="text-xs font-semibold text-pink-500 flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-pink-500 animate-ping" /> Auto-Saved
                 </div>
               </div>
 
@@ -186,55 +179,55 @@ export default function LandingPage() {
                 {/* Left Card: Entry Summary */}
                 <div className="md:col-span-2 space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full bg-[#F5D4C3] text-[#3C5556] text-xs font-semibold flex items-center gap-1">
-                      <Smile className="w-3.5 h-3.5 text-[#E09789]" /> Mood: Calm & Grateful
+                    <span className="px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold flex items-center gap-1">
+                      <Smile className="w-3.5 h-3.5 text-pink-600" /> Mood: Calm & Grateful
                     </span>
-                    <span className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7] font-medium">Thursday, August 6, 2026</span>
+                    <span className="text-xs text-zinc-600 font-semibold">Thursday, August 6, 2026</span>
                   </div>
 
-                  <h3 className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+                  <h3 className="font-serif text-2xl font-bold text-black dark:text-white">
                     A Quiet Sunday Morning with Matcha & Warm Rain
                   </h3>
 
-                  <p className="text-[#3C5556]/80 dark:text-[#C8DBD7] text-sm leading-relaxed font-light">
+                  <p className="text-zinc-800 dark:text-zinc-200 text-sm leading-relaxed font-light">
                     Woke up to the gentle patter of raindrops against the bedroom window. Brewed a fresh cup of ceremonial matcha, wrapped myself in cashmere, and listened to classical piano while watching the fog settle...
                   </p>
 
                   <div className="flex flex-wrap items-center gap-2 pt-2">
-                    <span className="px-2.5 py-1 rounded-lg bg-[#E9F1EF] dark:bg-[#3C5556] text-[#3C5556] dark:text-[#F6EFE7] text-xs font-medium border border-[#E09789]/20">
+                    <span className="px-2.5 py-1 rounded-lg bg-pink-50 dark:bg-zinc-800 text-black dark:text-white text-xs font-semibold border border-pink-100">
                       #Mindfulness
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-[#E9F1EF] dark:bg-[#3C5556] text-[#3C5556] dark:text-[#F6EFE7] text-xs font-medium border border-[#E09789]/20">
+                    <span className="px-2.5 py-1 rounded-lg bg-pink-50 dark:bg-zinc-800 text-black dark:text-white text-xs font-semibold border border-pink-100">
                       #SlowLiving
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg text-[#3C5556] bg-[#C8DBD7] text-xs font-medium flex items-center gap-1">
-                      <Volume2 className="w-3 h-3 text-[#3C5556]" /> Voice Note attached (0:42)
+                    <span className="px-2.5 py-1 rounded-lg text-black bg-emerald-100 text-xs font-semibold flex items-center gap-1">
+                      <Volume2 className="w-3.5 h-3.5 text-emerald-600" /> Voice Note attached (0:42)
                     </span>
                   </div>
                 </div>
 
                 {/* Right Card: Quick Stats Widget */}
-                <div className="glass-card rounded-2xl p-5 border border-[#E09789]/25 space-y-4 flex flex-col justify-between">
+                <div className="glass-card rounded-2xl p-5 border border-pink-100 dark:border-zinc-800 space-y-4 flex flex-col justify-between bg-white dark:bg-zinc-800">
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between text-xs text-[#3C5556] dark:text-[#C8DBD7]">
+                    <div className="flex items-center justify-between text-xs text-black dark:text-white font-semibold">
                       <span>Writing Streak</span>
-                      <span className="font-bold text-[#E09789]">🔥 14 Days</span>
+                      <span className="font-bold text-pink-500">🔥 14 Days</span>
                     </div>
-                    <div className="w-full bg-[#E9F1EF] dark:bg-[#3C5556] h-2 rounded-full overflow-hidden">
-                      <div className="bg-[#E09789] h-full w-[85%]" />
+                    <div className="w-full bg-pink-100 dark:bg-zinc-700 h-2 rounded-full overflow-hidden">
+                      <div className="bg-pink-500 h-full w-[85%]" />
                     </div>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-[#F5D4C3]/50 dark:bg-[#3C5556] border border-[#E09789]/30 space-y-1">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#E09789]">AI Daily Reflection</p>
-                    <p className="text-xs text-[#3C5556] dark:text-[#F6EFE7] italic">
+                  <div className="p-3 rounded-xl bg-pink-50 dark:bg-zinc-900 border border-pink-100 space-y-1">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-pink-600">AI Daily Reflection</p>
+                    <p className="text-xs text-black dark:text-white italic font-medium">
                       &ldquo;You seem most calm on rainy mornings. Remember to breathe deeply today.&rdquo;
                     </p>
                   </div>
 
                   <div className="flex items-center justify-between text-xs pt-1">
-                    <span className="text-[#3C5556]/60 dark:text-[#C8DBD7]">Photos Vault</span>
-                    <span className="font-semibold text-[#3C5556] dark:text-[#F6EFE7]">128 Memories</span>
+                    <span className="text-zinc-600 dark:text-zinc-400 font-medium">Photos Vault</span>
+                    <span className="font-bold text-black dark:text-white">128 Memories</span>
                   </div>
                 </div>
               </div>
@@ -244,54 +237,54 @@ export default function LandingPage() {
       </section>
 
       {/* Interactive Demo Section */}
-      <section id="interactive-demo" className="py-20 bg-[#F6EFE7]/80 dark:bg-[#3C5556]/80 border-y border-[#E09789]/30">
+      <section id="interactive-demo" className="py-20 bg-white/80 dark:bg-zinc-900/80 border-y border-pink-100 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-black dark:text-white">
               Designed for tranquility and effortless expression.
             </h2>
-            <p className="mt-4 text-[#3C5556]/80 dark:text-[#C8DBD7] text-base">
+            <p className="mt-4 text-zinc-700 dark:text-zinc-300 text-base">
               Try out the core modules of DearDiary right here before creating your private account.
             </p>
 
             {/* Tab Selectors */}
-            <div className="mt-8 inline-flex p-1.5 rounded-2xl bg-[#E9F1EF] dark:bg-[#3C5556] gap-1 border border-[#E09789]/30">
+            <div className="mt-8 inline-flex p-1.5 rounded-2xl bg-pink-50 dark:bg-zinc-800 gap-1 border border-pink-200">
               <button
                 onClick={() => setActivePreviewTab("journal")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
                   activePreviewTab === "journal"
-                    ? "bg-[#E09789] text-[#F6EFE7] shadow-sm"
-                    : "text-[#3C5556] dark:text-[#C8DBD7] hover:text-[#E09789]"
+                    ? "bg-pink-500 text-white shadow-sm"
+                    : "text-black dark:text-white hover:text-pink-500"
                 }`}
               >
                 <FileText className="w-4 h-4" /> Daily Journal
               </button>
               <button
                 onClick={() => setActivePreviewTab("timeline")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
                   activePreviewTab === "timeline"
-                    ? "bg-[#E09789] text-[#F6EFE7] shadow-sm"
-                    : "text-[#3C5556] dark:text-[#C8DBD7] hover:text-[#E09789]"
+                    ? "bg-pink-500 text-white shadow-sm"
+                    : "text-black dark:text-white hover:text-pink-500"
                 }`}
               >
                 <Clock className="w-4 h-4" /> Memory Timeline
               </button>
               <button
                 onClick={() => setActivePreviewTab("mood")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
                   activePreviewTab === "mood"
-                    ? "bg-[#E09789] text-[#F6EFE7] shadow-sm"
-                    : "text-[#3C5556] dark:text-[#C8DBD7] hover:text-[#E09789]"
+                    ? "bg-pink-500 text-white shadow-sm"
+                    : "text-black dark:text-white hover:text-pink-500"
                 }`}
               >
                 <Smile className="w-4 h-4" /> Mood Analytics
               </button>
               <button
                 onClick={() => setActivePreviewTab("letters")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
                   activePreviewTab === "letters"
-                    ? "bg-[#E09789] text-[#F6EFE7] shadow-sm"
-                    : "text-[#3C5556] dark:text-[#C8DBD7] hover:text-[#E09789]"
+                    ? "bg-pink-500 text-white shadow-sm"
+                    : "text-black dark:text-white hover:text-pink-500"
                 }`}
               >
                 <Mail className="w-4 h-4" /> Future Letters
@@ -300,7 +293,7 @@ export default function LandingPage() {
           </div>
 
           {/* Active Tab Preview Display */}
-          <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 sm:p-10 shadow-xl border border-[#E09789]/30">
+          <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 sm:p-10 shadow-xl border border-pink-100 bg-white dark:bg-zinc-900">
             <AnimatePresence mode="wait">
               {activePreviewTab === "journal" && (
                 <motion.div
@@ -310,25 +303,25 @@ export default function LandingPage() {
                   exit={{ opacity: 0, x: 10 }}
                   className="space-y-6"
                 >
-                  <div className="flex items-center justify-between border-b border-[#E09789]/20 pb-4">
+                  <div className="flex items-center justify-between border-b border-pink-100 pb-4">
                     <div>
-                      <h4 className="font-serif text-xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+                      <h4 className="font-serif text-xl font-bold text-black dark:text-white">
                         Rich Text Journal Editor
                       </h4>
-                      <p className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7]">Format text, attach voice clips, assign weather & location tags.</p>
+                      <p className="text-xs text-zinc-600">Format text, attach voice clips, assign weather & location tags.</p>
                     </div>
                     <div className="flex gap-2">
-                      <button className="px-3 py-1.5 rounded-lg bg-[#F5D4C3] text-[#3C5556] text-xs font-semibold flex items-center gap-1">
-                        <Mic className="w-3.5 h-3.5 text-[#E09789]" /> Record Audio
+                      <button className="px-3 py-1.5 rounded-lg bg-pink-100 text-pink-700 text-xs font-bold flex items-center gap-1">
+                        <Mic className="w-3.5 h-3.5 text-pink-600" /> Record Audio
                       </button>
-                      <button className="px-3 py-1.5 rounded-lg bg-[#C8DBD7] text-[#3C5556] text-xs font-semibold flex items-center gap-1">
-                        <Camera className="w-3.5 h-3.5 text-[#3C5556]" /> Add Photos
+                      <button className="px-3 py-1.5 rounded-lg bg-pink-50 text-black text-xs font-bold flex items-center gap-1 border border-pink-100">
+                        <Camera className="w-3.5 h-3.5 text-black" /> Add Photos
                       </button>
                     </div>
                   </div>
-                  <div className="p-4 rounded-2xl bg-[#F6EFE7] dark:bg-[#3C5556] border border-[#E09789]/30 space-y-3 font-serif text-[#3C5556] dark:text-[#F6EFE7]">
-                    <p className="text-lg font-bold text-[#E09789]">Title: Walking through the Kyoto bamboo forest</p>
-                    <p className="text-sm font-sans leading-relaxed text-[#3C5556]/80 dark:text-[#C8DBD7]">
+                  <div className="p-4 rounded-2xl bg-[#FAF5F0] dark:bg-zinc-800 border border-pink-100 space-y-3 font-serif text-black dark:text-white">
+                    <p className="text-lg font-bold text-pink-600">Title: Walking through the Kyoto bamboo forest</p>
+                    <p className="text-sm font-sans leading-relaxed text-zinc-800 dark:text-zinc-200">
                       The sunlight filtered through the tall emerald stems like glowing ribbons. I stood still for five minutes just listening to the rustle of leaves...
                     </p>
                   </div>
@@ -343,37 +336,37 @@ export default function LandingPage() {
                   exit={{ opacity: 0, x: 10 }}
                   className="space-y-4"
                 >
-                  <div className="flex items-center justify-between border-b border-[#E09789]/20 pb-3">
-                    <h4 className="font-serif text-xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+                  <div className="flex items-center justify-between border-b border-pink-100 pb-3">
+                    <h4 className="font-serif text-xl font-bold text-black dark:text-white">
                       Memory Timeline & Filters
                     </h4>
-                    <span className="text-xs font-medium text-[#E09789]">Filter by Year • Mood • Tag</span>
+                    <span className="text-xs font-bold text-pink-500">Filter by Year • Mood • Tag</span>
                   </div>
                   <div className="space-y-3">
-                    <div className="p-4 rounded-xl bg-[#F6EFE7] dark:bg-[#3C5556] border border-[#E09789]/20 flex items-center justify-between">
+                    <div className="p-4 rounded-xl bg-[#FAF5F0] dark:bg-zinc-800 border border-pink-100 flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-[#F5D4C3] flex items-center justify-center text-[#3C5556] font-bold text-sm">
+                        <div className="w-10 h-10 rounded-xl bg-pink-200 text-pink-800 flex items-center justify-center font-bold text-xs">
                           AUG 06
                         </div>
                         <div>
-                          <p className="font-semibold text-sm text-[#3C5556] dark:text-[#F6EFE7]">Matcha Morning & Warm Rain</p>
-                          <p className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7]">Calm • #Mindfulness • Kyoto</p>
+                          <p className="font-bold text-sm text-black dark:text-white">Matcha Morning & Warm Rain</p>
+                          <p className="text-xs text-zinc-600 font-medium">Calm • #Mindfulness • Kyoto</p>
                         </div>
                       </div>
-                      <span className="text-xs text-[#E09789] font-semibold">★ Favorite</span>
+                      <span className="text-xs text-amber-500 font-bold">★ Favorite</span>
                     </div>
 
-                    <div className="p-4 rounded-xl bg-[#F6EFE7] dark:bg-[#3C5556] border border-[#E09789]/20 flex items-center justify-between">
+                    <div className="p-4 rounded-xl bg-[#FAF5F0] dark:bg-zinc-800 border border-pink-100 flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-[#C8DBD7] flex items-center justify-center text-[#3C5556] font-bold text-sm">
+                        <div className="w-10 h-10 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center font-bold text-xs">
                           AUG 03
                         </div>
                         <div>
-                          <p className="font-semibold text-sm text-[#3C5556] dark:text-[#F6EFE7]">Sunset Stroll Along Botanical Coast</p>
-                          <p className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7]">Loved • #Family • Sunset</p>
+                          <p className="font-bold text-sm text-black dark:text-white">Sunset Stroll Along Botanical Coast</p>
+                          <p className="text-xs text-zinc-600 font-medium">Loved • #Family • Sunset</p>
                         </div>
                       </div>
-                      <span className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7]">1 Photo</span>
+                      <span className="text-xs text-zinc-600 font-medium">1 Photo</span>
                     </div>
                   </div>
                 </motion.div>
@@ -387,24 +380,24 @@ export default function LandingPage() {
                   exit={{ opacity: 0, x: 10 }}
                   className="space-y-4"
                 >
-                  <div className="flex items-center justify-between border-b border-[#E09789]/20 pb-3">
-                    <h4 className="font-serif text-xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+                  <div className="flex items-center justify-between border-b border-pink-100 pb-3">
+                    <h4 className="font-serif text-xl font-bold text-black dark:text-white">
                       Emotional Trends & Mood Calendar
                     </h4>
-                    <span className="text-xs text-[#3C5556] dark:text-[#C8DBD7] font-semibold">88% Positive Emotions This Month</span>
+                    <span className="text-xs text-black dark:text-white font-bold">88% Positive Emotions This Month</span>
                   </div>
-                  <div className="grid grid-cols-7 gap-2 text-center text-xs font-semibold text-[#3C5556] py-2">
+                  <div className="grid grid-cols-7 gap-2 text-center text-xs font-bold text-black py-2">
                     {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
                       <div key={day}>{day}</div>
                     ))}
                     {[
-                      { emoji: "😌", bg: "bg-[#C8DBD7] text-[#3C5556]" },
-                      { emoji: "🥰", bg: "bg-[#F5D4C3] text-[#3C5556]" },
-                      { emoji: "🤩", bg: "bg-[#E09789] text-[#F6EFE7]" },
-                      { emoji: "😊", bg: "bg-[#F5D4C3] text-[#3C5556]" },
-                      { emoji: "😌", bg: "bg-[#C8DBD7] text-[#3C5556]" },
-                      { emoji: "🥰", bg: "bg-[#F5D4C3] text-[#3C5556]" },
-                      { emoji: "😌", bg: "bg-[#C8DBD7] text-[#3C5556]" }
+                      { emoji: "😌", bg: "bg-pink-100 text-black" },
+                      { emoji: "🥰", bg: "bg-pink-200 text-black" },
+                      { emoji: "🤩", bg: "bg-pink-300 text-black" },
+                      { emoji: "😊", bg: "bg-pink-100 text-black" },
+                      { emoji: "😌", bg: "bg-pink-100 text-black" },
+                      { emoji: "🥰", bg: "bg-pink-200 text-black" },
+                      { emoji: "😌", bg: "bg-pink-100 text-black" }
                     ].map((item, idx) => (
                       <div key={idx} className={`h-12 rounded-xl flex items-center justify-center text-lg ${item.bg}`}>
                         {item.emoji}
@@ -422,23 +415,23 @@ export default function LandingPage() {
                   exit={{ opacity: 0, x: 10 }}
                   className="space-y-4"
                 >
-                  <div className="flex items-center justify-between border-b border-[#E09789]/20 pb-3">
-                    <h4 className="font-serif text-xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+                  <div className="flex items-center justify-between border-b border-pink-100 pb-3">
+                    <h4 className="font-serif text-xl font-bold text-black dark:text-white">
                       Sealed Future Time Capsule Letters
                     </h4>
-                    <span className="text-xs text-[#E09789] font-semibold">Automatic Email Notification</span>
+                    <span className="text-xs text-pink-500 font-bold">Automatic Email Notification</span>
                   </div>
-                  <div className="p-5 rounded-2xl bg-[#F5D4C3]/40 dark:bg-[#3C5556] border border-[#E09789]/30 space-y-2">
+                  <div className="p-5 rounded-2xl bg-pink-50 dark:bg-zinc-800 border border-pink-200 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-[#E09789] uppercase tracking-wider">
+                      <span className="text-xs font-bold text-pink-600 uppercase tracking-wider">
                         🔒 Sealed Letter to Future Self
                       </span>
-                      <span className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7]">Unlocks: Feb 20, 2027</span>
+                      <span className="text-xs text-zinc-600 font-semibold">Unlocks: Feb 20, 2027</span>
                     </div>
-                    <p className="font-serif text-lg font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+                    <p className="font-serif text-lg font-bold text-black dark:text-white">
                       &ldquo;To Me on My 30th Birthday: Are You Still Living Softly?&rdquo;
                     </p>
-                    <p className="text-xs text-[#3C5556]/70 dark:text-[#C8DBD7] italic">
+                    <p className="text-xs text-zinc-700 dark:text-zinc-300 italic font-medium">
                       Sealed with 256-bit encryption. Countdown active: 180 Days remaining.
                     </p>
                   </div>
@@ -453,77 +446,77 @@ export default function LandingPage() {
       <section id="features" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-black dark:text-white">
               Everything you need to preserve your life&apos;s story.
             </h2>
-            <p className="mt-4 text-[#3C5556]/80 dark:text-[#C8DBD7] text-lg">
+            <p className="mt-4 text-zinc-700 dark:text-zinc-300 text-lg font-medium">
               Carefully engineered with gentle elegance, deep privacy, and joyful self-reflection.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Feature 1 */}
-            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-[#E09789]/25 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#F5D4C3] text-[#3C5556] flex items-center justify-center">
-                <FileText className="w-6 h-6 text-[#E09789]" />
+            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-pink-100 space-y-4 bg-white dark:bg-zinc-900">
+              <div className="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center">
+                <FileText className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">Daily Journal</h3>
-              <p className="text-[#3C5556]/80 dark:text-[#C8DBD7] text-sm leading-relaxed">
+              <h3 className="font-serif text-2xl font-bold text-black dark:text-white">Daily Journal</h3>
+              <p className="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
                 Rich text formatting, mood tags, location and weather markers, voice clips, and photo attachments in a minimal editor.
               </p>
             </div>
 
             {/* Feature 2 */}
-            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-[#E09789]/25 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#C8DBD7] text-[#3C5556] flex items-center justify-center">
-                <Clock className="w-6 h-6 text-[#3C5556]" />
+            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-pink-100 space-y-4 bg-white dark:bg-zinc-900">
+              <div className="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center">
+                <Clock className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">Memory Timeline</h3>
-              <p className="text-[#3C5556]/80 dark:text-[#C8DBD7] text-sm leading-relaxed">
+              <h3 className="font-serif text-2xl font-bold text-black dark:text-white">Memory Timeline</h3>
+              <p className="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
                 Look back on your journey through a visual timeline filtered by years, months, emotional states, and custom tags.
               </p>
             </div>
 
             {/* Feature 3 */}
-            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-[#E09789]/25 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#F5D4C3] text-[#3C5556] flex items-center justify-center">
-                <Smile className="w-6 h-6 text-[#E09789]" />
+            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-pink-100 space-y-4 bg-white dark:bg-zinc-900">
+              <div className="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center">
+                <Smile className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">Mood Tracking</h3>
-              <p className="text-[#3C5556]/80 dark:text-[#C8DBD7] text-sm leading-relaxed">
+              <h3 className="font-serif text-2xl font-bold text-black dark:text-white">Mood Tracking</h3>
+              <p className="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
                 Log daily emotional intensity, discover patterns, view monthly calendars, and gain compassionate mood insights.
               </p>
             </div>
 
             {/* Feature 4 */}
-            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-[#E09789]/25 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#C8DBD7] text-[#3C5556] flex items-center justify-center">
-                <Camera className="w-6 h-6 text-[#3C5556]" />
+            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-pink-100 space-y-4 bg-white dark:bg-zinc-900">
+              <div className="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center">
+                <Camera className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">Private Photo Albums</h3>
-              <p className="text-[#3C5556]/80 dark:text-[#C8DBD7] text-sm leading-relaxed">
+              <h3 className="font-serif text-2xl font-bold text-black dark:text-white">Private Photo Albums</h3>
+              <p className="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
                 Organize precious moments into curated albums, favorite special shots, and link photos directly to journal entries.
               </p>
             </div>
 
             {/* Feature 5 */}
-            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-[#E09789]/25 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#F5D4C3] text-[#3C5556] flex items-center justify-center">
-                <Mail className="w-6 h-6 text-[#E09789]" />
+            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-pink-100 space-y-4 bg-white dark:bg-zinc-900">
+              <div className="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center">
+                <Mail className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">Future Time Capsules</h3>
-              <p className="text-[#3C5556]/80 dark:text-[#C8DBD7] text-sm leading-relaxed">
+              <h3 className="font-serif text-2xl font-bold text-black dark:text-white">Future Time Capsules</h3>
+              <p className="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
                 Write letters to your future self or loved ones with scheduled unlock dates and automated email notifications.
               </p>
             </div>
 
             {/* Feature 6 */}
-            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-[#E09789]/25 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#C8DBD7] text-[#3C5556] flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-[#3C5556]" />
+            <div className="glass-card glass-card-hover rounded-3xl p-8 border border-pink-100 space-y-4 bg-white dark:bg-zinc-900">
+              <div className="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center">
+                <Sparkles className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">AI Reflection Companion</h3>
-              <p className="text-[#3C5556]/80 dark:text-[#C8DBD7] text-sm leading-relaxed">
+              <h3 className="font-serif text-2xl font-bold text-black dark:text-white">AI Reflection Companion</h3>
+              <p className="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
                 Get daily writing prompts, summarize memory chapters, and receive gentle emotional reflections when you feel stuck.
               </p>
             </div>
@@ -532,15 +525,15 @@ export default function LandingPage() {
       </section>
 
       {/* Privacy Guarantee Section */}
-      <section id="privacy" className="py-20 bg-[#E09789] text-[#F6EFE7] relative overflow-hidden">
+      <section id="privacy" className="py-20 bg-pink-500 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="w-16 h-16 rounded-3xl bg-[#F6EFE7]/20 backdrop-blur-md flex items-center justify-center mx-auto mb-6 border border-[#F6EFE7]/30">
-            <Lock className="w-8 h-8 text-[#F6EFE7]" />
+          <div className="w-16 h-16 rounded-3xl bg-white/20 backdrop-blur-md flex items-center justify-center mx-auto mb-6 border border-white/30">
+            <Lock className="w-8 h-8 text-white" />
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold max-w-3xl mx-auto">
             Your thoughts belong to you. Always.
           </h2>
-          <p className="mt-4 text-[#F6EFE7]/90 text-lg max-w-2xl mx-auto font-light">
+          <p className="mt-4 text-white/90 text-lg max-w-2xl mx-auto font-normal">
             We built DearDiary with zero tracking, database encryption, and complete export portability so your heart&apos;s memories stay strictly private.
           </p>
         </div>
@@ -550,19 +543,19 @@ export default function LandingPage() {
       <section id="pricing" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-black dark:text-white">
               Simple, transparent pricing.
             </h2>
-            <p className="mt-4 text-[#3C5556]/80 dark:text-[#C8DBD7] text-lg">
+            <p className="mt-4 text-zinc-700 dark:text-zinc-300 text-lg font-medium">
               Start writing completely free today. Upgrade anytime for unlimited memories & AI reflection tools.
             </p>
 
             {/* Toggle Monthly / Yearly */}
-            <div className="mt-8 inline-flex items-center gap-3 p-1.5 rounded-full bg-[#E9F1EF] dark:bg-[#3C5556] border border-[#E09789]/30 text-xs font-semibold">
+            <div className="mt-8 inline-flex items-center gap-3 p-1.5 rounded-full bg-pink-50 dark:bg-zinc-800 border border-pink-200 text-xs font-bold">
               <button
                 onClick={() => setSelectedPlan("monthly")}
                 className={`px-4 py-2 rounded-full transition-all ${
-                  selectedPlan === "monthly" ? "bg-[#E09789] text-[#F6EFE7] shadow-sm" : "text-[#3C5556] dark:text-[#C8DBD7]"
+                  selectedPlan === "monthly" ? "bg-pink-500 text-white shadow-sm" : "text-black dark:text-white"
                 }`}
               >
                 Monthly Billing
@@ -570,91 +563,91 @@ export default function LandingPage() {
               <button
                 onClick={() => setSelectedPlan("yearly")}
                 className={`px-4 py-2 rounded-full transition-all flex items-center gap-1.5 ${
-                  selectedPlan === "yearly" ? "bg-[#E09789] text-[#F6EFE7] shadow-sm" : "text-[#3C5556] dark:text-[#C8DBD7]"
+                  selectedPlan === "yearly" ? "bg-pink-500 text-white shadow-sm" : "text-black dark:text-white"
                 }`}
               >
-                Yearly Billing <span className="px-2 py-0.5 rounded-full bg-[#F5D4C3] text-[#3C5556] text-[10px] font-bold">SAVE 30%</span>
+                Yearly Billing <span className="px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 text-[10px] font-bold">SAVE 30%</span>
               </button>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Free Tier */}
-            <div className="glass-card rounded-3xl p-8 border border-[#E09789]/30 space-y-6 flex flex-col justify-between">
+            <div className="glass-card rounded-3xl p-8 border border-pink-200 space-y-6 flex flex-col justify-between bg-white dark:bg-zinc-900">
               <div>
-                <span className="px-3 py-1 rounded-full bg-[#E9F1EF] dark:bg-[#3C5556] text-[#3C5556] dark:text-[#F6EFE7] text-xs font-bold uppercase border border-[#E09789]/20">
+                <span className="px-3 py-1 rounded-full bg-pink-50 dark:bg-zinc-800 text-black dark:text-white text-xs font-bold uppercase border border-pink-200">
                   Free Forever
                 </span>
-                <h3 className="font-serif text-3xl font-bold text-[#3C5556] dark:text-[#F6EFE7] mt-4">$0</h3>
-                <p className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7]">Perfect for casual daily journaling.</p>
+                <h3 className="font-serif text-3xl font-bold text-black dark:text-white mt-4">$0</h3>
+                <p className="text-xs text-zinc-600 font-semibold">Perfect for casual daily journaling.</p>
 
-                <ul className="mt-6 space-y-3 text-sm text-[#3C5556]/80 dark:text-[#C8DBD7]">
+                <ul className="mt-6 space-y-3 text-sm text-black dark:text-white font-medium">
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#3C5556]" /> Up to 50 Diary Entries
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Up to 50 Diary Entries
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#3C5556]" /> Memory Timeline & Search
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Memory Timeline & Search
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#3C5556]" /> Basic Mood Tracking
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Basic Mood Tracking
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#3C5556]" /> 1 Photo Album
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> 1 Photo Album
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#3C5556]" /> Sweet Summer Theme
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Aesthetic Pink Theme
                   </li>
                 </ul>
               </div>
 
               <Link
                 href="/dashboard"
-                className="w-full py-3.5 rounded-2xl glass-card hover:bg-[#F5D4C3]/40 text-center text-[#3C5556] dark:text-[#F6EFE7] font-semibold text-sm border border-[#E09789]/30 transition-colors"
+                className="w-full py-3.5 rounded-2xl glass-card hover:bg-pink-50 text-center text-black dark:text-white font-bold text-sm border border-pink-200 transition-colors"
               >
                 Get Started Free
               </Link>
             </div>
 
             {/* Premium Tier */}
-            <div className="glass-card rounded-3xl p-8 border-2 border-[#E09789] space-y-6 flex flex-col justify-between relative shadow-xl shadow-[#E09789]/20">
-              <div className="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-[#E09789] text-[#F6EFE7] text-[11px] font-bold uppercase tracking-wider shadow-md">
+            <div className="glass-card rounded-3xl p-8 border-2 border-pink-500 space-y-6 flex flex-col justify-between relative shadow-xl shadow-pink-100 bg-white dark:bg-zinc-900">
+              <div className="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-pink-500 text-white text-[11px] font-bold uppercase tracking-wider shadow-md">
                 Most Popular
               </div>
 
               <div>
-                <span className="px-3 py-1 rounded-full bg-[#F5D4C3] text-[#3C5556] text-xs font-bold uppercase">
+                <span className="px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold uppercase">
                   Premium Sanctuary
                 </span>
                 <div className="flex items-baseline gap-1 mt-4">
-                  <h3 className="font-serif text-4xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+                  <h3 className="font-serif text-4xl font-bold text-black dark:text-white">
                     {selectedPlan === "yearly" ? "$4.99" : "$6.99"}
                   </h3>
-                  <span className="text-xs text-[#3C5556]/60 dark:text-[#C8DBD7]">/ month {selectedPlan === "yearly" && "(billed annually)"}</span>
+                  <span className="text-xs text-zinc-600 font-semibold">/ month {selectedPlan === "yearly" && "(billed annually)"}</span>
                 </div>
-                <p className="text-xs text-[#E09789] font-medium">Includes 14-day free trial. Cancel anytime.</p>
+                <p className="text-xs text-pink-500 font-bold">Includes 14-day free trial. Cancel anytime.</p>
 
-                <ul className="mt-6 space-y-3 text-sm text-[#3C5556]/90 dark:text-[#C8DBD7]">
-                  <li className="flex items-center gap-2 font-medium text-[#3C5556] dark:text-[#F6EFE7]">
-                    <CheckCircle2 className="w-4 h-4 text-[#E09789]" /> Unlimited Diary Entries & Photos
-                  </li>
-                  <li className="flex items-center gap-2 font-medium text-[#3C5556] dark:text-[#F6EFE7]">
-                    <CheckCircle2 className="w-4 h-4 text-[#E09789]" /> AI Prompts, Summarization & Reflections
+                <ul className="mt-6 space-y-3 text-sm text-black dark:text-white font-semibold">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Unlimited Diary Entries & Photos
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#E09789]" /> Voice Notes Recorder & Audio Storage
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> AI Prompts, Summarization & Reflections
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#E09789]" /> Future Time Capsule Letters & Reminders
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Voice Notes Recorder & Audio Storage
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#E09789]" /> Sweet Summer Custom Palettes
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Future Time Capsule Letters & Reminders
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> All Aesthetic Color Themes
                   </li>
                 </ul>
               </div>
 
               <Link
                 href="/dashboard"
-                className="w-full py-3.5 rounded-2xl bg-[#E09789] hover:bg-[#c88173] text-[#F6EFE7] text-center font-bold text-sm shadow-md shadow-[#E09789]/30 transition-all"
+                className="w-full py-3.5 rounded-2xl bg-pink-500 hover:bg-pink-600 text-white text-center font-bold text-sm shadow-md shadow-pink-200 transition-all"
               >
                 Start Free Trial
               </Link>
@@ -664,13 +657,13 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ Accordion Section */}
-      <section id="faq" className="py-20 bg-[#F6EFE7]/80 dark:bg-[#3C5556]/80 border-t border-[#E09789]/30">
+      <section id="faq" className="py-20 bg-white/80 dark:bg-zinc-900/80 border-t border-pink-100 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#3C5556] dark:text-[#F6EFE7]">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-black dark:text-white">
               Frequently Asked Questions
             </h2>
-            <p className="mt-2 text-[#3C5556]/80 dark:text-[#C8DBD7] text-sm">
+            <p className="mt-2 text-zinc-700 dark:text-zinc-300 text-sm font-medium">
               Have questions? We&apos;re here to help you feel safe and confident.
             </p>
           </div>
@@ -679,21 +672,21 @@ export default function LandingPage() {
             {faqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="glass-card rounded-2xl border border-[#E09789]/25 overflow-hidden"
+                className="glass-card rounded-2xl border border-pink-200 overflow-hidden bg-white dark:bg-zinc-900"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full px-6 py-4 text-left font-semibold text-[#3C5556] dark:text-[#F6EFE7] flex items-center justify-between gap-4"
+                  className="w-full px-6 py-4 text-left font-bold text-black dark:text-white flex items-center justify-between gap-4"
                 >
                   <span className="text-base">{faq.q}</span>
                   <ChevronDown
-                    className={`w-5 h-5 text-[#E09789] transition-transform duration-200 ${
+                    className={`w-5 h-5 text-pink-500 transition-transform duration-200 ${
                       openFaq === idx ? "rotate-180" : ""
                     }`}
                   />
                 </button>
                 {openFaq === idx && (
-                  <div className="px-6 pb-5 text-sm text-[#3C5556]/80 dark:text-[#C8DBD7] leading-relaxed font-light">
+                  <div className="px-6 pb-5 text-sm text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal">
                     {faq.a}
                   </div>
                 )}
@@ -704,18 +697,18 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-[#E09789]/30 text-xs text-[#3C5556]/70 dark:text-[#C8DBD7]">
+      <footer className="py-12 border-t border-pink-200 dark:border-zinc-800 text-xs text-black dark:text-zinc-300 font-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <Heart className="w-4 h-4 text-[#E09789] fill-[#E09789]" />
-            <span className="font-serif font-bold text-[#3C5556] dark:text-[#F6EFE7] text-sm">DearDiary</span>
+            <Heart className="w-4 h-4 text-pink-500 fill-pink-500" />
+            <span className="font-serif font-bold text-black dark:text-white text-sm">DearDiary</span>
             <span>© 2026 DearDiary Inc. All rights reserved.</span>
           </div>
 
-          <div className="flex items-center gap-6 font-medium">
-            <Link href="#privacy" className="hover:text-[#E09789] transition-colors">Privacy Policy</Link>
-            <Link href="#terms" className="hover:text-[#E09789] transition-colors">Terms of Service</Link>
-            <Link href="/admin" className="hover:text-[#E09789] transition-colors">Admin Portal</Link>
+          <div className="flex items-center gap-6 font-semibold">
+            <Link href="#privacy" className="hover:text-pink-500 transition-colors">Privacy Policy</Link>
+            <Link href="#terms" className="hover:text-pink-500 transition-colors">Terms of Service</Link>
+            <Link href="/admin" className="hover:text-pink-500 transition-colors">Admin Portal</Link>
           </div>
         </div>
       </footer>
