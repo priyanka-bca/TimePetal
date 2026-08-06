@@ -15,7 +15,7 @@ export function Navbar() {
       initial={{ y: -25, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="sticky top-0 z-50 backdrop-blur-md bg-[#FFF5F7]/95 dark:bg-[#0F0C1B]/95 border-b border-pink-200 dark:border-purple-900/50 transition-colors duration-300 shadow-sm"
+      className="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-[#0A0714]/70 border-b border-pink-200 dark:border-purple-900/50 transition-colors duration-300 shadow-sm"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
@@ -64,7 +64,7 @@ export function Navbar() {
           {/* Day/Night Switcher Button */}
           <button
             onClick={toggleDarkMode}
-            className="p-2.5 rounded-xl bg-white dark:bg-slate-900 text-black dark:text-white hover:bg-pink-50 dark:hover:bg-purple-950/50 transition-all border border-pink-200 dark:border-purple-800 shadow-sm flex items-center gap-2 text-xs font-extrabold btn-shimmer"
+            className="p-2.5 rounded-xl bg-white/80 dark:bg-slate-900/80 text-black dark:text-white hover:bg-pink-50 dark:hover:bg-purple-950/50 transition-all border border-pink-200 dark:border-purple-800 shadow-sm flex items-center gap-2 text-xs font-extrabold btn-shimmer"
             title="Toggle Day / Night Sky"
           >
             {isDarkMode ? (
@@ -96,7 +96,7 @@ export function Navbar() {
         <div className="flex md:hidden items-center gap-2">
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-lg bg-white dark:bg-slate-900 text-black dark:text-white border border-pink-200 dark:border-purple-800"
+            className="p-2 rounded-lg bg-white/80 dark:bg-slate-900/80 text-black dark:text-white border border-pink-200 dark:border-purple-800"
           >
             {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-pink-500" />}
           </button>
@@ -116,7 +116,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-b border-pink-200 dark:border-purple-900 bg-[#FFF5F7]/98 dark:bg-[#0F0C1B]/98 backdrop-blur-lg px-6 py-6 space-y-4"
+            className="md:hidden border-b border-pink-200 dark:border-purple-900 bg-white/95 dark:bg-[#0A0714]/95 backdrop-blur-lg px-6 py-6 space-y-4"
           >
             <nav className="flex flex-col gap-3 font-extrabold text-black dark:text-white text-base">
               <Link href="#features" onClick={() => setMobileMenuOpen(false)}>Features</Link>

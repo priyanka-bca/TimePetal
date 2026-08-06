@@ -3,8 +3,8 @@
 @layer base {
   /* Day Mode (Soft Pink Aesthetic) */
   :root {
-    --bg-main: #FFF5F7;
-    --card-bg: #FFFFFF;
+    --bg-main: #FFF0F5;
+    --card-bg: rgba(255, 255, 255, 0.88);
     --card-border: #FCE7F3;
     --primary: #F472B6;
     --primary-hover: #EC4899;
@@ -16,7 +16,7 @@
   /* Night Mode (Cosmic Night Sky Background) */
   .dark {
     --bg-main: #0A0714;
-    --card-bg: #1A1526;
+    --card-bg: rgba(22, 17, 33, 0.82);
     --card-border: #3B2E52;
     --primary: #F472B6;
     --primary-hover: #EC4899;
@@ -26,50 +26,53 @@
   }
 }
 
-/* Base Body Styles */
+/* Day Mode Body: Soft Pink Aesthetic with Floating Petal Highlights */
 body {
   min-height: 100vh;
-  background-color: var(--bg-main);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%23F472B6' opacity='0.12'%3E%3Ccircle cx='40' cy='40' r='5'/%3E%3Cpath d='M40,24 C44,32 48,36 40,40 C32,36 36,32 40,24 Z'/%3E%3Cpath d='M40,56 C44,48 48,44 40,40 C32,44 36,48 40,56 Z'/%3E%3Cpath d='M24,40 C32,44 36,48 40,40 C36,32 32,36 24,40 Z'/%3E%3Cpath d='M56,40 C48,44 44,48 40,40 C44,32 48,36 56,40 Z'/%3E%3C/g%3E%3Cpath d='M110,32 C114,26 122,28 119,35 C115,40 107,38 110,32 Z' fill='%23FBCFE8' opacity='0.25'/%3E%3Cpath d='M22,110 C26,104 34,106 31,113 C27,118 19,116 22,110 Z' fill='%23F472B6' opacity='0.15'/%3E%3C/svg%3E");
+  background-color: #FFF0F5;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(254, 205, 232, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(251, 207, 232, 0.5) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%23F472B6' opacity='0.12'%3E%3Ccircle cx='40' cy='40' r='5'/%3E%3Cpath d='M40,24 C44,32 48,36 40,40 C32,36 36,32 40,24 Z'/%3E%3Cpath d='M40,56 C44,48 48,44 40,40 C32,44 36,48 40,56 Z'/%3E%3Cpath d='M24,40 C32,44 36,48 40,40 C36,32 32,36 24,40 Z'/%3E%3Cpath d='M56,40 C48,44 44,48 40,40 C44,32 48,36 56,40 Z'/%3E%3C/g%3E%3Cpath d='M110,32 C114,26 122,28 119,35 C115,40 107,38 110,32 Z' fill='%23FBCFE8' opacity='0.25'/%3E%3Cpath d='M22,110 C26,104 34,106 31,113 C27,118 19,116 22,110 Z' fill='%23F472B6' opacity='0.15'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-attachment: fixed;
   color: #000000;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  transition: background 0.4s ease, color 0.4s ease;
+  transition: background 0.5s ease, color 0.5s ease;
   overflow-x: hidden;
 }
 
-/* Night Mode: Moving Starry Cosmic Background */
+/* Night Mode Body: Deep Night Sky with Moving Twinkling Stars */
 .dark body {
-  background-color: #0A0714;
+  background-color: #090614;
   background-image: 
+    radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 60%),
     radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 40px 70px, #fbcfe8, rgba(0,0,0,0)),
+    radial-gradient(2.5px 2.5px at 40px 70px, #fbcfe8, rgba(0,0,0,0)),
     radial-gradient(3px 3px at 90px 130px, #ffffff, rgba(0,0,0,0)),
     radial-gradient(2px 2px at 160px 80px, #f472b6, rgba(0,0,0,0)),
     radial-gradient(2.5px 2.5px at 210px 170px, #ffffff, rgba(0,0,0,0));
   background-repeat: repeat;
-  background-size: 250px 250px;
+  background-size: 100% 100%, 250px 250px, 250px 250px, 250px 250px, 250px 250px, 250px 250px;
   animation: starry-twinkle 25s linear infinite;
   color: #FFFFFF;
 }
 
 @keyframes starry-twinkle {
-  0% { background-position: 0 0; }
-  100% { background-position: 250px 250px; }
+  0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
+  100% { background-position: 0 0, 250px 250px, 250px 250px, 250px 250px, 250px 250px, 250px 250px; }
 }
 
-/* Day Mode Text Enforcement: Solid Black */
+/* Text Colors: Solid Black in Day Mode, Solid White in Night Mode */
 p, span, h1, h2, h3, h4, h5, h6, a, button, label, input, textarea, select, option, div, li, td, th {
-  color: #000000 !important;
+  color: #000000;
 }
 
-/* Night Mode Text Enforcement: Crisp White */
 .dark p, .dark span, .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6, .dark a, .dark button, .dark label, .dark input, .dark textarea, .dark select, .dark option, .dark div, .dark li, .dark td, .dark th {
   color: #FFFFFF !important;
 }
 
-/* Glassmorphism Cards */
+/* Glassmorphism Cards: Translucent so background shows through */
 .glass-card {
   background: var(--card-bg);
   backdrop-filter: blur(16px);
