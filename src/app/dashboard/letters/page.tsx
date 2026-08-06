@@ -24,11 +24,12 @@ export default function LettersPage() {
 
     const newLetter: FutureLetter = {
       id: `letter-${Date.now()}`,
+      recipient: "Self",
       title: title.trim(),
       content: content.trim(),
       deliverDate: unlockDate,
-      isSealed: true,
-      recipientEmail,
+      isOpened: false,
+      notifyEmail: recipientEmail,
       createdAt: new Date().toISOString()
     };
 
@@ -136,7 +137,7 @@ export default function LettersPage() {
               </div>
               <h4 className="font-serif text-lg font-extrabold text-black">{letter.title}</h4>
               <p className="text-xs text-black italic font-semibold">
-                To: {letter.recipientEmail}
+                To: {letter.notifyEmail || "Self"}
               </p>
             </div>
           ))}

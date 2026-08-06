@@ -39,7 +39,7 @@ export default function AlbumsPage() {
             <div className="p-4 space-y-1">
               <h3 className="font-serif text-lg font-extrabold text-black">{photo.caption}</h3>
               <div className="flex justify-between text-xs text-black font-extrabold pt-2 border-t border-pink-100">
-                <span>{photo.album}</span>
+                <span>{photo.albumId || "Private Vault"}</span>
                 <span>{photo.date}</span>
               </div>
             </div>
