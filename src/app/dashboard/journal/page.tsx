@@ -190,8 +190,9 @@ export default function JournalEditorPage() {
       weather,
       tags,
       photos,
-      audioUrl: recordedAudio || undefined,
-      isFavorite: false
+      voiceNoteUrl: recordedAudio || undefined,
+      isFavorite: false,
+      createdAt: new Date().toISOString()
     };
 
     const existing = getStoredData<DiaryEntry[]>("deardiary_entries", []);
