@@ -53,49 +53,56 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen text-black bg-[#FFF5F7] selection:bg-pink-200 selection:text-black transition-colors">
+    <div className="min-h-screen text-black bg-[#FFF5F7] selection:bg-pink-200 selection:text-black transition-colors overflow-hidden">
       <Navbar />
 
       {/* Hero Section with Soft & Pastel Pink Glows */}
       <section className="relative pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden">
         {/* Soft pastel pink ambient glows */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-pink-200/60 via-rose-100/50 to-pink-100/40 blur-3xl rounded-full pointer-events-none -z-10 animate-pulse-glow" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-gradient-to-tr from-pink-200/70 via-rose-100/60 to-pink-100/50 blur-3xl rounded-full pointer-events-none -z-10 animate-pulse-glow" />
 
-        {/* Floating 3D Pastel Petal Accents */}
+        {/* Floating 3D Pastel Petal & Icon Accents */}
         <motion.div
-          animate={{ y: [0, -18, 0], rotate: [0, 12, -8, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-16 left-[12%] pointer-events-none opacity-60 text-pink-400 text-3xl drop-shadow-md"
+          animate={{ y: [0, -22, 0], rotate: [0, 15, -10, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-16 left-[10%] pointer-events-none opacity-70 text-pink-400 text-4xl drop-shadow-md"
         >
           🌸
         </motion.div>
         <motion.div
-          animate={{ y: [0, 22, 0], rotate: [0, -14, 10, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-36 right-[10%] pointer-events-none opacity-55 text-pink-300 text-4xl drop-shadow-md"
+          animate={{ y: [0, 25, 0], rotate: [0, -16, 12, 0] }}
+          transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-36 right-[8%] pointer-events-none opacity-65 text-pink-300 text-5xl drop-shadow-md"
         >
           🌸
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -15, 0], scale: [1, 1.15, 1] }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-28 left-[5%] pointer-events-none opacity-50 text-amber-300 text-3xl drop-shadow-sm"
+        >
+          ✨
         </motion.div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          {/* Badge */}
+          {/* Badge with Smooth Pulse & Spin */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-pink-200 shadow-sm mb-8"
           >
             <Sparkles className="w-4 h-4 text-pink-500 fill-pink-500 animate-spin" style={{ animationDuration: '8s' }} />
-            <span className="text-xs font-bold text-black">
+            <span className="text-xs font-extrabold text-black">
               Introducing DearDiary 2.0 • Soft & Pastel Sanctuary for Memories
             </span>
           </motion.div>
 
           {/* Main Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-black max-w-4xl mx-auto leading-[1.15]"
           >
             Your private space for{" "}
@@ -104,34 +111,34 @@ export default function LandingPage() {
 
           {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-lg sm:text-xl text-black max-w-2xl mx-auto font-medium leading-relaxed"
+            transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 text-lg sm:text-xl text-black max-w-2xl mx-auto font-semibold leading-relaxed"
           >
             A calm, aesthetic, end-to-end private sanctuary where you can write daily journals, record voice clips, track mood trends, preserve photo albums, and seal letters to your future self.
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
               <Link
                 href="/dashboard"
-                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-base shadow-xl shadow-pink-200 border border-pink-300 transition-all flex items-center justify-center gap-2 group"
+                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-pink-400 via-rose-300 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-base shadow-xl shadow-pink-200 border border-pink-300 transition-all flex items-center justify-center gap-2 group btn-shimmer"
               >
                 <span className="text-black">Start Writing Free</span>
-                <ArrowRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-black group-hover:translate-x-1.5 transition-transform" />
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
               <a
                 href="#interactive-demo"
-                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-pink-50 text-black font-bold text-base border border-pink-200 transition-all flex items-center justify-center gap-2 shadow-sm"
+                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-pink-50 text-black font-bold text-base border border-pink-200 transition-all flex items-center justify-center gap-2 shadow-sm btn-shimmer"
               >
                 <Sparkle className="w-4 h-4 text-pink-500" />
                 <span className="text-black">Explore Live Demo</span>
@@ -143,8 +150,8 @@ export default function LandingPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs font-bold text-black"
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs font-extrabold text-black"
           >
             <span className="flex items-center gap-1.5 text-black">
               <Lock className="w-4 h-4 text-pink-500" /> 256-Bit Encrypted Vault
@@ -159,12 +166,12 @@ export default function LandingPage() {
 
           {/* Floating Soft & Pastel UI Hero Showcase Card */}
           <motion.div
-            initial={{ opacity: 0, y: 50, rotateX: 5 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0 }}
-            transition={{ duration: 0.9, delay: 0.5, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="mt-16 relative max-w-5xl mx-auto"
           >
-            <div className="glass-card rounded-3xl p-4 sm:p-8 shadow-2xl border border-pink-200 relative bg-white/95 backdrop-blur-xl">
+            <div className="glass-card rounded-3xl p-4 sm:p-8 shadow-2xl border border-pink-200 relative bg-white/96 backdrop-blur-xl">
               {/* Fake Browser Top Bar */}
               <div className="flex items-center justify-between pb-4 border-b border-pink-100 mb-6">
                 <div className="flex items-center gap-2">
@@ -172,10 +179,10 @@ export default function LandingPage() {
                   <div className="w-3 h-3 rounded-full bg-amber-200" />
                   <div className="w-3 h-3 rounded-full bg-rose-200" />
                 </div>
-                <div className="px-4 py-1 rounded-full bg-pink-50 text-[11px] font-bold text-black flex items-center gap-1.5 border border-pink-200">
+                <div className="px-4 py-1 rounded-full bg-pink-50 text-[11px] font-extrabold text-black flex items-center gap-1.5 border border-pink-200">
                   <Lock className="w-3 h-3 text-pink-500" /> deardiary.app/dashboard/journal
                 </div>
-                <div className="text-xs font-bold text-pink-600 flex items-center gap-1">
+                <div className="text-xs font-extrabold text-pink-600 flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-pink-400 animate-ping" /> Auto-Saved
                 </div>
               </div>
@@ -188,7 +195,7 @@ export default function LandingPage() {
                     <span className="px-3 py-1 rounded-full bg-pink-100 text-black text-xs font-extrabold flex items-center gap-1 border border-pink-200">
                       <Smile className="w-3.5 h-3.5 text-pink-600" /> Mood: Calm & Grateful
                     </span>
-                    <span className="text-xs text-black font-bold">Thursday, August 6, 2026</span>
+                    <span className="text-xs text-black font-extrabold">Thursday, August 6, 2026</span>
                   </div>
 
                   <h3 className="font-serif text-2xl font-extrabold text-black">
@@ -200,13 +207,13 @@ export default function LandingPage() {
                   </p>
 
                   <div className="flex flex-wrap items-center gap-2 pt-2">
-                    <span className="px-2.5 py-1 rounded-lg bg-pink-50 text-black text-xs font-bold border border-pink-200">
+                    <span className="px-2.5 py-1 rounded-lg bg-pink-50 text-black text-xs font-extrabold border border-pink-200">
                       #Mindfulness
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-pink-50 text-black text-xs font-bold border border-pink-200">
+                    <span className="px-2.5 py-1 rounded-lg bg-pink-50 text-black text-xs font-extrabold border border-pink-200">
                       #SlowLiving
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg text-black bg-pink-100 text-xs font-bold flex items-center gap-1 border border-pink-200">
+                    <span className="px-2.5 py-1 rounded-lg text-black bg-pink-100 text-xs font-extrabold flex items-center gap-1 border border-pink-200">
                       <Volume2 className="w-3.5 h-3.5 text-pink-600" /> Voice Note attached (0:42)
                       <span className="flex items-center gap-0.5 ml-1">
                         <span className="w-1 bg-pink-500 rounded-full animate-wave-1" />
@@ -220,7 +227,7 @@ export default function LandingPage() {
                 {/* Right Card: Quick Stats Widget */}
                 <div className="glass-card rounded-2xl p-5 border border-pink-200 space-y-4 flex flex-col justify-between bg-white">
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between text-xs text-black font-bold">
+                    <div className="flex items-center justify-between text-xs text-black font-extrabold">
                       <span>Writing Streak</span>
                       <span className="font-extrabold text-pink-600">🔥 14 Days</span>
                     </div>
@@ -265,7 +272,7 @@ export default function LandingPage() {
             <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-black">
               Designed for tranquility and effortless expression.
             </h2>
-            <p className="mt-4 text-black text-base font-medium">
+            <p className="mt-4 text-black text-base font-semibold">
               Try out the core modules of DearDiary right here before creating your private account.
             </p>
 
@@ -331,13 +338,13 @@ export default function LandingPage() {
                       <h4 className="font-serif text-xl font-extrabold text-black">
                         Rich Text Journal Editor
                       </h4>
-                      <p className="text-xs text-black font-medium">Format text, attach voice clips, assign weather & location tags.</p>
+                      <p className="text-xs text-black font-semibold">Format text, attach voice clips, assign weather & location tags.</p>
                     </div>
                     <div className="flex gap-2">
-                      <button className="px-3 py-1.5 rounded-lg bg-pink-100 text-black text-xs font-bold flex items-center gap-1 border border-pink-200">
+                      <button className="px-3 py-1.5 rounded-lg bg-pink-100 text-black text-xs font-extrabold flex items-center gap-1 border border-pink-200 btn-shimmer">
                         <Mic className="w-3.5 h-3.5 text-pink-600" /> Record Audio
                       </button>
-                      <button className="px-3 py-1.5 rounded-lg bg-pink-50 text-black text-xs font-bold flex items-center gap-1 border border-pink-200">
+                      <button className="px-3 py-1.5 rounded-lg bg-pink-50 text-black text-xs font-extrabold flex items-center gap-1 border border-pink-200 btn-shimmer">
                         <Camera className="w-3.5 h-3.5 text-black" /> Add Photos
                       </button>
                     </div>
@@ -390,7 +397,7 @@ export default function LandingPage() {
                           <p className="text-xs text-black font-semibold">Loved • #Family • Sunset</p>
                         </div>
                       </div>
-                      <span className="text-xs text-black font-bold">1 Photo</span>
+                      <span className="text-xs text-black font-extrabold">1 Photo</span>
                     </div>
                   </div>
                 </motion.div>
@@ -452,12 +459,12 @@ export default function LandingPage() {
                       <span className="text-xs font-extrabold text-black uppercase tracking-wider">
                         🔒 Sealed Letter to Future Self
                       </span>
-                      <span className="text-xs text-black font-bold">Unlocks: Feb 20, 2027</span>
+                      <span className="text-xs text-black font-extrabold">Unlocks: Feb 20, 2027</span>
                     </div>
                     <p className="font-serif text-lg font-extrabold text-black">
                       &ldquo;To Me on My 30th Birthday: Are You Still Living Softly?&rdquo;
                     </p>
-                    <p className="text-xs text-black italic font-semibold">
+                    <p className="text-xs text-black italic font-bold">
                       Sealed with 256-bit encryption. Countdown active: 180 Days remaining.
                     </p>
                   </div>
@@ -481,7 +488,7 @@ export default function LandingPage() {
             <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-black">
               Everything you need to preserve your life&apos;s story.
             </h2>
-            <p className="mt-4 text-black text-lg font-medium">
+            <p className="mt-4 text-black text-lg font-semibold">
               Carefully engineered with gentle elegance, deep privacy, and joyful self-reflection.
             </p>
           </motion.div>
@@ -546,13 +553,13 @@ export default function LandingPage() {
       {/* Privacy Guarantee Section - Dreamy Soft & Pastel Pink Combo Banner */}
       <section id="privacy" className="py-20 bg-gradient-to-r from-pink-200 via-rose-100 to-pink-200 border-y border-pink-300 text-black relative overflow-hidden shadow-inner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="w-16 h-16 rounded-3xl bg-white/80 backdrop-blur-md flex items-center justify-center mx-auto mb-6 border border-pink-300 shadow-sm">
+          <div className="w-16 h-16 rounded-3xl bg-white/90 backdrop-blur-md flex items-center justify-center mx-auto mb-6 border border-pink-300 shadow-sm">
             <Lock className="w-8 h-8 text-pink-600" />
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl font-extrabold max-w-3xl mx-auto text-black">
             Your thoughts belong to you. Always.
           </h2>
-          <p className="mt-4 text-black text-lg max-w-2xl mx-auto font-semibold">
+          <p className="mt-4 text-black text-lg max-w-2xl mx-auto font-extrabold">
             We built DearDiary with zero tracking, database encryption, and complete export portability so your heart&apos;s memories stay strictly private.
           </p>
         </div>
@@ -565,12 +572,12 @@ export default function LandingPage() {
             <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-black">
               Simple, transparent pricing.
             </h2>
-            <p className="mt-4 text-black text-lg font-medium">
+            <p className="mt-4 text-black text-lg font-semibold">
               Start writing completely free today. Upgrade anytime for unlimited memories & AI reflection tools.
             </p>
 
             {/* Toggle Monthly / Yearly */}
-            <div className="mt-8 inline-flex items-center gap-3 p-1.5 rounded-full bg-pink-50 border border-pink-200 text-xs font-bold">
+            <div className="mt-8 inline-flex items-center gap-3 p-1.5 rounded-full bg-pink-50 border border-pink-200 text-xs font-extrabold">
               <button
                 onClick={() => setSelectedPlan("monthly")}
                 className={`px-4 py-2 rounded-full transition-all ${
@@ -598,9 +605,9 @@ export default function LandingPage() {
                   Free Forever
                 </span>
                 <h3 className="font-serif text-3xl font-extrabold text-black mt-4">$0</h3>
-                <p className="text-xs text-black font-bold">Perfect for casual daily journaling.</p>
+                <p className="text-xs text-black font-extrabold">Perfect for casual daily journaling.</p>
 
-                <ul className="mt-6 space-y-3 text-sm text-black font-bold">
+                <ul className="mt-6 space-y-3 text-sm text-black font-extrabold">
                   <li className="flex items-center gap-2 text-black">
                     <CheckCircle2 className="w-4 h-4 text-pink-500" /> Up to 50 Diary Entries
                   </li>
@@ -621,7 +628,7 @@ export default function LandingPage() {
 
               <Link
                 href="/dashboard"
-                className="w-full py-3.5 rounded-2xl glass-card hover:bg-pink-50 text-center text-black font-extrabold text-sm border border-pink-200 transition-colors"
+                className="w-full py-3.5 rounded-2xl glass-card hover:bg-pink-50 text-center text-black font-extrabold text-sm border border-pink-200 transition-colors btn-shimmer"
               >
                 Get Started Free
               </Link>
@@ -641,7 +648,7 @@ export default function LandingPage() {
                   <h3 className="font-serif text-4xl font-extrabold text-black">
                     {selectedPlan === "yearly" ? "$4.99" : "$6.99"}
                   </h3>
-                  <span className="text-xs text-black font-bold">/ month {selectedPlan === "yearly" && "(billed annually)"}</span>
+                  <span className="text-xs text-black font-extrabold">/ month {selectedPlan === "yearly" && "(billed annually)"}</span>
                 </div>
                 <p className="text-xs text-pink-600 font-extrabold">Includes 14-day free trial. Cancel anytime.</p>
 
@@ -666,7 +673,7 @@ export default function LandingPage() {
 
               <Link
                 href="/dashboard"
-                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black text-center font-extrabold text-sm shadow-md shadow-pink-200 border border-pink-300 transition-all"
+                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black text-center font-extrabold text-sm shadow-md shadow-pink-200 border border-pink-300 transition-all btn-shimmer"
               >
                 Start Free Trial
               </Link>
@@ -682,7 +689,7 @@ export default function LandingPage() {
             <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-black">
               Frequently Asked Questions
             </h2>
-            <p className="mt-2 text-black text-sm font-bold">
+            <p className="mt-2 text-black text-sm font-extrabold">
               Have questions? We&apos;re here to help you feel safe and confident.
             </p>
           </div>
@@ -705,7 +712,7 @@ export default function LandingPage() {
                   />
                 </button>
                 {openFaq === idx && (
-                  <div className="px-6 pb-5 text-sm text-black leading-relaxed font-normal border-t border-pink-100 pt-3">
+                  <div className="px-6 pb-5 text-sm text-black leading-relaxed font-semibold border-t border-pink-100 pt-3">
                     {faq.a}
                   </div>
                 )}
@@ -716,7 +723,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer - Solid Black Text */}
-      <footer className="py-12 border-t border-pink-200 text-xs text-black font-bold bg-[#FFF5F7]">
+      <footer className="py-12 border-t border-pink-200 text-xs text-black font-extrabold bg-[#FFF5F7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <Heart className="w-4 h-4 text-pink-500 fill-pink-500" />

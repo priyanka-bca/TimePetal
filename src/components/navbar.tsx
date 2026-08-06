@@ -20,18 +20,18 @@ export function Navbar() {
 
   return (
     <motion.header
-      initial={{ y: -20, opacity: 0 }}
+      initial={{ y: -25, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="sticky top-0 z-50 backdrop-blur-md bg-[#FFF5F7]/95 border-b border-pink-200 transition-colors duration-300 shadow-sm"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <motion.div
-            whileHover={{ scale: 1.08, rotate: 3 }}
-            whileTap={{ scale: 0.95 }}
-            className="w-10 h-10 rounded-2xl bg-gradient-to-br from-pink-300 to-pink-400 p-0.5 shadow-sm shadow-pink-200"
+            whileHover={{ scale: 1.1, rotate: 4 }}
+            whileTap={{ scale: 0.94 }}
+            className="w-10 h-10 rounded-2xl bg-gradient-to-br from-pink-300 via-rose-300 to-pink-400 p-0.5 shadow-sm shadow-pink-200"
           >
             <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center">
               <Heart className="w-4 h-4 text-pink-500 fill-pink-500/30 group-hover:fill-pink-500 transition-colors" />
@@ -50,19 +50,19 @@ export function Navbar() {
 
         {/* Desktop Nav Links - Solid Black Text */}
         <nav className="hidden md:flex items-center gap-8 font-bold text-sm text-black">
-          <Link href="#features" className="text-black hover:opacity-75 transition-opacity">
+          <Link href="#features" className="text-black hover:opacity-70 transition-opacity">
             Features
           </Link>
-          <Link href="#interactive-demo" className="text-black hover:opacity-75 transition-opacity">
+          <Link href="#interactive-demo" className="text-black hover:opacity-70 transition-opacity">
             Interactive Demo
           </Link>
-          <Link href="#privacy" className="text-black hover:opacity-75 transition-opacity flex items-center gap-1">
+          <Link href="#privacy" className="text-black hover:opacity-70 transition-opacity flex items-center gap-1">
             <ShieldCheck className="w-4 h-4 text-pink-500" /> Privacy First
           </Link>
-          <Link href="#pricing" className="text-black hover:opacity-75 transition-opacity">
+          <Link href="#pricing" className="text-black hover:opacity-70 transition-opacity">
             Pricing
           </Link>
-          <Link href="#faq" className="text-black hover:opacity-75 transition-opacity">
+          <Link href="#faq" className="text-black hover:opacity-70 transition-opacity">
             FAQ
           </Link>
         </nav>
@@ -73,7 +73,7 @@ export function Navbar() {
           <div className="relative">
             <button
               onClick={() => setThemeDropdownOpen(!themeDropdownOpen)}
-              className="p-2.5 rounded-xl bg-white text-black hover:bg-pink-50 transition-colors flex items-center gap-1.5 text-xs font-bold border border-pink-200 shadow-sm"
+              className="p-2.5 rounded-xl bg-white text-black hover:bg-pink-50 transition-colors flex items-center gap-1.5 text-xs font-bold border border-pink-200 shadow-sm btn-shimmer"
               title="Change Theme"
             >
               <Palette className="w-4 h-4 text-pink-500" />
@@ -86,6 +86,7 @@ export function Navbar() {
                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  transition={{ duration: 0.25 }}
                   className="absolute right-0 mt-2 w-44 rounded-2xl bg-white border border-pink-200 shadow-xl p-2 z-50"
                 >
                   <p className="text-[10px] font-extrabold text-black uppercase tracking-wider px-3 py-1.5">
@@ -116,17 +117,17 @@ export function Navbar() {
           {/* Dark Mode Switcher */}
           <button
             onClick={toggleDarkMode}
-            className="p-2.5 rounded-xl bg-white text-black hover:bg-pink-50 transition-colors border border-pink-200 shadow-sm"
+            className="p-2.5 rounded-xl bg-white text-black hover:bg-pink-50 transition-colors border border-pink-200 shadow-sm btn-shimmer"
             title="Toggle Theme Mode"
           >
             {isDarkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4 text-pink-500" />}
           </button>
 
           {/* Dashboard Entry CTA */}
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
             <Link
               href="/dashboard"
-              className="ml-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-sm shadow-md shadow-pink-200 flex items-center gap-2 group border border-pink-300"
+              className="ml-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 via-rose-300 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-sm shadow-md shadow-pink-200 flex items-center gap-2 group border border-pink-300 btn-shimmer"
             >
               <span className="text-black">Open Diary</span>
               <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
@@ -171,7 +172,7 @@ export function Navbar() {
               <Link
                 href="/dashboard"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-400 to-rose-400 text-black text-center font-extrabold text-sm shadow-md border border-pink-300"
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-400 to-rose-400 text-black text-center font-extrabold text-sm shadow-md border border-pink-300 btn-shimmer"
               >
                 Go to My Private Vault
               </Link>
