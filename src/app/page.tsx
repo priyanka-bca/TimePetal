@@ -9,30 +9,20 @@ import {
   Sparkles,
   ShieldCheck,
   Lock,
-  Calendar,
   Smile,
-  Mic,
-  Camera,
   Mail,
-  Search,
-  Sparkle,
   ArrowRight,
   CheckCircle2,
   ChevronDown,
   Star,
-  Zap,
-  BookOpen,
-  Cloud,
-  FileText,
-  Volume2,
   Clock,
-  Flower2,
-  Sprout,
-  Sun
+  Palette,
+  FileText,
+  Volume2
 } from "lucide-react";
 
 export default function LandingPage() {
-  const [activePreviewTab, setActivePreviewTab] = useState<"journal" | "timeline" | "mood" | "letters" | "garden">("garden");
+  const [activePreviewTab, setActivePreviewTab] = useState<"ai" | "timeline" | "mood" | "letters" | "themes">("ai");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [selectedPlan, setSelectedPlan] = useState<"monthly" | "yearly">("yearly");
 
@@ -42,16 +32,16 @@ export default function LandingPage() {
       a: "Yes. Your privacy is our sacred core principle. All entries, photo uploads, and future letters are encrypted at rest with industry-standard AES-256 and transmitted over TLS 1.3. We never sell your data or train public AI models on your private memories."
     },
     {
-      q: "How do Garden Letters & Time Capsules work?",
-      a: "Inspired by digital flower gardens, you can write letters to your future self or loved ones, decorate them with flower stamps (🌸 Cherry Blossom, 🌷 Tulip, 🌹 Rose), and set an unlock date or post them to your private garden."
+      q: "How do Future Letters work?",
+      a: "Future Letters act as digital time capsules. You write a letter to your future self, family, or friends, set an unlock date (e.g. 1 year from now), and DearDiary safely seals it with a countdown. On the deliver date, you receive a gentle email notification and your letter unlocks."
     },
     {
-      q: "Can I use DearDiary offline or export my entries?",
-      a: "Absolutely! You can export your entire diary, mood logs, photo albums, and flower letters into clean JSON or formatted PDF files at any time with a single click in your account settings."
+      q: "How does the AI Companion work?",
+      a: "The AI reflection assistant provides daily writing prompts, summarizes memory chapters, and offers gentle emotional companionship. It is 100% optional and only runs when you choose to interact with it."
     },
     {
-      q: "Is the AI Assistant optional?",
-      a: "Yes. The AI reflection assistant is 100% optional and only runs when you explicitly click for journaling prompts, memory summaries, or daily quotes."
+      q: "What are Premium Themes?",
+      a: "You can switch between 5 aesthetic color themes (Soft Blush Pink 🌸, Aesthetic Lavender 🪻, Sunset Peach 🌅, Rose Mist 🌹, and Cosmic Night Sky 🌙) instantly with a single click."
     }
   ];
 
@@ -64,7 +54,7 @@ export default function LandingPage() {
         {/* Soft pastel pink ambient glows */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-gradient-to-tr from-pink-200/70 via-rose-100/60 to-pink-100/50 blur-3xl rounded-full pointer-events-none -z-10 animate-pulse-glow" />
 
-        {/* Floating 3D Pastel Petal & Icon Accents */}
+        {/* Floating 3D Accents */}
         <motion.div
           animate={{ y: [0, -22, 0], rotate: [0, 15, -10, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -77,7 +67,7 @@ export default function LandingPage() {
           transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-36 right-[8%] pointer-events-none opacity-65 text-pink-300 text-5xl drop-shadow-md"
         >
-          🌷
+          🪻
         </motion.div>
         <motion.div
           animate={{ y: [0, -15, 0], scale: [1, 1.15, 1] }}
@@ -88,16 +78,16 @@ export default function LandingPage() {
         </motion.div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          {/* Badge with Smooth Pulse & Spin */}
+          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAF5F0] border border-[#EFE6D8] shadow-sm mb-8"
           >
-            <Flower2 className="w-4 h-4 text-pink-500 fill-pink-500/20 animate-spin" style={{ animationDuration: '10s' }} />
+            <Sparkles className="w-4 h-4 text-pink-500 fill-pink-500/20 animate-spin" style={{ animationDuration: '10s' }} />
             <span className="text-xs font-extrabold text-black">
-              Introducing GardenLetters • Flower-Decorated Private Sanctuary
+              DearDiary 2.0 • 5 Core Functional Sanctuary Features
             </span>
           </motion.div>
 
@@ -108,8 +98,8 @@ export default function LandingPage() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-black max-w-4xl mx-auto leading-[1.15]"
           >
-            Plant your private memories in a{" "}
-            <span className="gradient-text italic font-serif text-black">digital flower garden.</span>
+            Your private space for{" "}
+            <span className="gradient-text italic font-serif text-black">memories, thoughts,</span> and emotions.
           </motion.h1>
 
           {/* Subtitle */}
@@ -119,7 +109,7 @@ export default function LandingPage() {
             transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="mt-6 text-lg sm:text-xl text-black max-w-2xl mx-auto font-semibold leading-relaxed"
           >
-            Write heartfelt letters decorated with blooming flowers, seal time capsules for your future self, record voice clips, and tend to your private emotional garden.
+            An end-to-end private sanctuary powered by AI reflection, memory timelines, mood analytics, sealed time capsule letters, and premium aesthetic themes.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -134,7 +124,7 @@ export default function LandingPage() {
                 href="/dashboard"
                 className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-pink-400 via-rose-300 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-base shadow-xl shadow-pink-200 border border-pink-300 transition-all flex items-center justify-center gap-2 group btn-shimmer"
               >
-                <span className="text-black">Plant Your First Letter 🌸</span>
+                <span className="text-black">Open Private Vault</span>
                 <ArrowRight className="w-5 h-5 text-black group-hover:translate-x-1.5 transition-transform" />
               </Link>
             </motion.div>
@@ -143,8 +133,8 @@ export default function LandingPage() {
                 href="#interactive-demo"
                 className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#FAF5F0] hover:bg-pink-50 text-black font-bold text-base border border-[#EFE6D8] transition-all flex items-center justify-center gap-2 shadow-sm btn-shimmer"
               >
-                <Flower2 className="w-4 h-4 text-pink-500" />
-                <span className="text-black">Explore Garden Demo</span>
+                <Sparkles className="w-4 h-4 text-pink-500" />
+                <span className="text-black">Explore 5 Features</span>
               </a>
             </motion.div>
           </motion.div>
@@ -160,104 +150,16 @@ export default function LandingPage() {
               <Lock className="w-4 h-4 text-pink-500" /> 256-Bit Encrypted Vault
             </span>
             <span className="flex items-center gap-1.5 text-black">
-              <Sprout className="w-4 h-4 text-pink-500" /> Flower-Decorated Letters
+              <ShieldCheck className="w-4 h-4 text-pink-500" /> Zero Ad Trackers
             </span>
             <span className="flex items-center gap-1.5 text-black">
-              <Star className="w-4 h-4 text-amber-400 fill-amber-400" /> 4.9/5 Rating by 12,000+ Gardeners
+              <Star className="w-4 h-4 text-amber-400 fill-amber-400" /> 4.9/5 Rating by 12,000+ Journalers
             </span>
-          </motion.div>
-
-          {/* Floating Warm Beige UI Hero Showcase Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 60, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-16 relative max-w-5xl mx-auto"
-          >
-            <div className="glass-card rounded-3xl p-4 sm:p-8 shadow-2xl border border-[#EFE6D8] relative bg-[#FAF5F0] backdrop-blur-xl">
-              {/* Fake Browser Top Bar */}
-              <div className="flex items-center justify-between pb-4 border-b border-[#EFE6D8] mb-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-pink-300" />
-                  <div className="w-3 h-3 rounded-full bg-amber-200" />
-                  <div className="w-3 h-3 rounded-full bg-rose-200" />
-                </div>
-                <div className="px-4 py-1 rounded-full bg-[#F5EFE6] text-[11px] font-extrabold text-black flex items-center gap-1.5 border border-[#EFE6D8]">
-                  <Lock className="w-3 h-3 text-pink-500" /> deardiary.app/dashboard/letters
-                </div>
-                <div className="text-xs font-extrabold text-pink-600 flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-pink-400 animate-ping" /> Garden Blooming
-                </div>
-              </div>
-
-              {/* Mock Dashboard Body */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-                {/* Left Card: Entry Summary */}
-                <div className="md:col-span-2 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full bg-[#F5EFE6] text-black text-xs font-extrabold flex items-center gap-1 border border-[#EFE6D8]">
-                      🌸 Cherry Blossom Stamp • Sealed Time Capsule
-                    </span>
-                    <span className="text-xs text-black font-extrabold">Unlocks: August 6, 2027</span>
-                  </div>
-
-                  <h3 className="font-serif text-2xl font-extrabold text-black flex items-center gap-2">
-                    To Me on My 30th Birthday 🌹
-                  </h3>
-
-                  <p className="text-black text-sm leading-relaxed font-normal">
-                    &ldquo;Dear Future Self, I hope you are still living softly, drinking matcha under warm rain, and nurturing your heart&apos;s digital flower garden. Remember how proud I am of you right now...&rdquo;
-                  </p>
-
-                  <div className="flex flex-wrap items-center gap-2 pt-2">
-                    <span className="px-2.5 py-1 rounded-lg bg-[#F5EFE6] text-black text-xs font-extrabold border border-[#EFE6D8]">
-                      #GardenLetters
-                    </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-[#F5EFE6] text-black text-xs font-extrabold border border-[#EFE6D8]">
-                      #TimeCapsule
-                    </span>
-                    <span className="px-2.5 py-1 rounded-lg text-black bg-[#F5EFE6] text-xs font-extrabold flex items-center gap-1 border border-[#EFE6D8]">
-                      <Flower2 className="w-3.5 h-3.5 text-pink-500" /> Planted in Private Garden
-                    </span>
-                  </div>
-                </div>
-
-                {/* Right Card: Quick Stats Widget */}
-                <div className="glass-card rounded-2xl p-5 border border-[#EFE6D8] space-y-4 flex flex-col justify-between bg-[#FAF5F0]">
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between text-xs text-black font-extrabold">
-                      <span>Garden Letters</span>
-                      <span className="font-extrabold text-pink-600">🌸 24 Planted</span>
-                    </div>
-                    <div className="w-full bg-[#F5EFE6] h-2 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: "90%" }}
-                        transition={{ duration: 1.2, delay: 0.8 }}
-                        className="bg-gradient-to-r from-pink-400 to-rose-400 h-full rounded-full"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-[#F5EFE6] border border-[#EFE6D8] space-y-1">
-                    <p className="text-[10px] font-extrabold uppercase tracking-wider text-pink-600">Flower Wax Seal</p>
-                    <p className="text-xs text-black italic font-bold">
-                      &ldquo;Every letter is decorated with custom flower stamps and locked with 256-bit AES encryption.&rdquo;
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between text-xs pt-1">
-                    <span className="text-black font-bold">Garden Blooms</span>
-                    <span className="font-extrabold text-black">100% Protected</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Interactive Demo Section */}
+      {/* Interactive Demo Section featuring the 5 Core Features */}
       <section id="interactive-demo" className="py-20 bg-transparent border-y border-[#EFE6D8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -268,33 +170,23 @@ export default function LandingPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-black">
-              A whimsical digital garden for your heartfelt notes.
+              ⭐ 5 Fully Functional Sanctuary Features
             </h2>
             <p className="mt-4 text-black text-base font-semibold">
-              Try out the Garden Letters module and decorate your notes with blooming flowers right here.
+              Click any feature below to test out the live interactive preview.
             </p>
 
-            {/* Tab Selectors */}
+            {/* 5 Core Feature Selector Tabs */}
             <div className="mt-8 inline-flex p-1.5 rounded-2xl bg-[#FAF5F0] gap-1 border border-[#EFE6D8] flex-wrap justify-center">
               <button
-                onClick={() => setActivePreviewTab("garden")}
+                onClick={() => setActivePreviewTab("ai")}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
-                  activePreviewTab === "garden"
+                  activePreviewTab === "ai"
                     ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
                     : "text-black"
                 }`}
               >
-                <Flower2 className="w-4 h-4 text-black" /> Garden Letters 🌸
-              </button>
-              <button
-                onClick={() => setActivePreviewTab("journal")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
-                  activePreviewTab === "journal"
-                    ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
-                    : "text-black"
-                }`}
-              >
-                <FileText className="w-4 h-4 text-black" /> Daily Journal
+                <Sparkles className="w-4 h-4 text-black" /> ⭐ AI Companion
               </button>
               <button
                 onClick={() => setActivePreviewTab("timeline")}
@@ -304,7 +196,7 @@ export default function LandingPage() {
                     : "text-black"
                 }`}
               >
-                <Clock className="w-4 h-4 text-black" /> Memory Timeline
+                <Clock className="w-4 h-4 text-black" /> ⭐ Memory Timeline
               </button>
               <button
                 onClick={() => setActivePreviewTab("mood")}
@@ -314,7 +206,7 @@ export default function LandingPage() {
                     : "text-black"
                 }`}
               >
-                <Smile className="w-4 h-4 text-black" /> Mood Analytics
+                <Smile className="w-4 h-4 text-black" /> ⭐ Mood Analytics
               </button>
               <button
                 onClick={() => setActivePreviewTab("letters")}
@@ -324,7 +216,17 @@ export default function LandingPage() {
                     : "text-black"
                 }`}
               >
-                <Mail className="w-4 h-4 text-black" /> Time Capsules
+                <Mail className="w-4 h-4 text-black" /> ⭐ Future Letters
+              </button>
+              <button
+                onClick={() => setActivePreviewTab("themes")}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
+                  activePreviewTab === "themes"
+                    ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
+                    : "text-black"
+                }`}
+              >
+                <Palette className="w-4 h-4 text-black" /> ⭐ Premium Themes
               </button>
             </div>
           </motion.div>
@@ -332,9 +234,9 @@ export default function LandingPage() {
           {/* Active Tab Preview Display */}
           <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 sm:p-10 shadow-xl border border-[#EFE6D8] bg-[#FAF5F0]">
             <AnimatePresence mode="wait">
-              {activePreviewTab === "garden" && (
+              {activePreviewTab === "ai" && (
                 <motion.div
-                  key="garden"
+                  key="ai"
                   initial={{ opacity: 0, x: -15 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 15 }}
@@ -344,80 +246,15 @@ export default function LandingPage() {
                   <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-4">
                     <div>
                       <h4 className="font-serif text-xl font-extrabold text-black flex items-center gap-2">
-                        Digital Flower Garden Showcase 🌸
+                        ⭐ AI Diary Companion Showcase ✨
                       </h4>
-                      <p className="text-xs text-black font-semibold">Post public or private letters decorated with blooming flower seals.</p>
-                    </div>
-                    <span className="px-3 py-1 rounded-full bg-[#F5EFE6] text-xs font-extrabold text-pink-600 border border-[#EFE6D8]">
-                      Inspired by GardenLetters 🌷
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Flower Letter Card 1 */}
-                    <div className="p-5 rounded-2xl bg-[#F5EFE6] border border-[#EFE6D8] space-y-3 relative overflow-hidden">
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl">🌸</span>
-                        <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-[#FAF5F0] text-black border border-[#EFE6D8]">
-                          Cherry Blossom Seal
-                        </span>
-                      </div>
-                      <h5 className="font-serif text-lg font-extrabold text-black">
-                        May your days be soft like spring rain.
-                      </h5>
-                      <p className="text-xs text-black leading-relaxed font-normal">
-                        Planted in the quiet garden. &ldquo;Growth takes time. Be gentle with your heart as you bloom.&rdquo;
-                      </p>
-                    </div>
-
-                    {/* Flower Letter Card 2 */}
-                    <div className="p-5 rounded-2xl bg-[#F5EFE6] border border-[#EFE6D8] space-y-3 relative overflow-hidden">
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl">🌷</span>
-                        <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-[#FAF5F0] text-black border border-[#EFE6D8]">
-                          Tulip Wax Seal
-                        </span>
-                      </div>
-                      <h5 className="font-serif text-lg font-extrabold text-black">
-                        To the one reading this from afar 💌
-                      </h5>
-                      <p className="text-xs text-black leading-relaxed font-normal">
-                        &ldquo;You are worthy of rest, warmth, and quiet joy today. Sending love across the garden.&rdquo;
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              {activePreviewTab === "journal" && (
-                <motion.div
-                  key="journal"
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-6"
-                >
-                  <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-4">
-                    <div>
-                      <h4 className="font-serif text-xl font-extrabold text-black">
-                        Rich Text Journal Editor
-                      </h4>
-                      <p className="text-xs text-black font-semibold">Format text, attach voice clips, assign weather & location tags.</p>
-                    </div>
-                    <div className="flex gap-2">
-                      <button className="px-3 py-1.5 rounded-lg bg-[#F5EFE6] text-black text-xs font-extrabold flex items-center gap-1 border border-[#EFE6D8] btn-shimmer">
-                        <Mic className="w-3.5 h-3.5 text-pink-600" /> Record Audio
-                      </button>
-                      <button className="px-3 py-1.5 rounded-lg bg-[#F5EFE6] text-black text-xs font-extrabold flex items-center gap-1 border border-[#EFE6D8] btn-shimmer">
-                        <Camera className="w-3.5 h-3.5 text-black" /> Add Photos
-                      </button>
+                      <p className="text-xs text-black font-semibold">Get compassionate journaling prompts, memory chapter summaries, and daily quote reflections.</p>
                     </div>
                   </div>
                   <div className="p-4 rounded-2xl bg-[#F5EFE6] border border-[#EFE6D8] space-y-3 font-serif text-black">
-                    <p className="text-lg font-extrabold text-black">Title: Walking through the Kyoto bamboo forest</p>
+                    <p className="text-sm font-bold text-pink-600 uppercase">Daily Companion Reflection</p>
                     <p className="text-sm font-sans leading-relaxed text-black font-normal">
-                      The sunlight filtered through the tall emerald stems like glowing ribbons. I stood still for five minutes just listening to the rustle of leaves...
+                      &ldquo;You seem most calm on rainy mornings. What is one small thing that brought peace to your heart today? Write it down to seal the memory.&rdquo;
                     </p>
                   </div>
                 </motion.div>
@@ -434,7 +271,7 @@ export default function LandingPage() {
                 >
                   <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-3">
                     <h4 className="font-serif text-xl font-extrabold text-black">
-                      Memory Timeline & Filters
+                      ⭐ Memory Timeline & Filters
                     </h4>
                     <span className="text-xs font-extrabold text-black">Filter by Year • Mood • Tag</span>
                   </div>
@@ -466,7 +303,7 @@ export default function LandingPage() {
                 >
                   <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-3">
                     <h4 className="font-serif text-xl font-extrabold text-black">
-                      Emotional Trends & Mood Calendar
+                      ⭐ Emotional Trends & Mood Calendar
                     </h4>
                     <span className="text-xs text-black font-extrabold">88% Positive Emotions This Month</span>
                   </div>
@@ -502,14 +339,14 @@ export default function LandingPage() {
                 >
                   <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-3">
                     <h4 className="font-serif text-xl font-extrabold text-black">
-                      Sealed Future Time Capsule Letters
+                      ⭐ Sealed Future Time Capsule Letters
                     </h4>
                     <span className="text-xs text-black font-extrabold">Automatic Email Notification</span>
                   </div>
                   <div className="p-5 rounded-2xl bg-[#F5EFE6] border border-[#EFE6D8] space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-extrabold text-black uppercase tracking-wider">
-                        🔒 Sealed Letter to Future Self
+                        🔒 Sealed Letter to Future Self (🌸 Cherry Blossom Stamp)
                       </span>
                       <span className="text-xs text-black font-extrabold">Unlocks: Feb 20, 2027</span>
                     </div>
@@ -522,12 +359,36 @@ export default function LandingPage() {
                   </div>
                 </motion.div>
               )}
+
+              {activePreviewTab === "themes" && (
+                <motion.div
+                  key="themes"
+                  initial={{ opacity: 0, x: -15 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 15 }}
+                  transition={{ duration: 0.4 }}
+                  className="space-y-4"
+                >
+                  <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-3">
+                    <h4 className="font-serif text-xl font-extrabold text-black">
+                      ⭐ 5 Premium Themes & Atmosphere
+                    </h4>
+                    <span className="text-xs font-extrabold text-black">Instant 1-Click Theme Switch</span>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs font-extrabold text-black">
+                    <div className="p-3 rounded-xl bg-[#F5EFE6] border border-[#EFE6D8]">🌸 Soft Blush Pink</div>
+                    <div className="p-3 rounded-xl bg-[#F5EFE6] border border-[#EFE6D8]">🪻 Soft Lavender</div>
+                    <div className="p-3 rounded-xl bg-[#F5EFE6] border border-[#EFE6D8]">🌅 Sunset Peach</div>
+                    <div className="p-3 rounded-xl bg-[#F5EFE6] border border-[#EFE6D8]">🌙 Night Sky Stars</div>
+                  </div>
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
         </div>
       </section>
 
-      {/* Features Overview Section */}
+      {/* Features Grid Section - 5 Core Features Only */}
       <section id="features" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -538,44 +399,44 @@ export default function LandingPage() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-black">
-              Everything you need to preserve your life&apos;s story.
+              Focusing exclusively on the 5 core features that matter most.
             </h2>
             <p className="mt-4 text-black text-lg font-semibold">
-              Carefully engineered with gentle elegance, flower-decorated letters, deep privacy, and joyful self-reflection.
+              Every single feature is engineered to be 100% functional, private, and beautifully responsive.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: Flower2,
-                title: "Garden Letters & Stamps 🌸",
-                desc: "Post public or private letters decorated with flower stamps (Cherry Blossom, Tulip, Rose) in your digital garden."
-              },
-              {
-                icon: FileText,
-                title: "Daily Journal",
-                desc: "Rich text formatting, mood tags, location and weather markers, voice clips, and photo attachments in a minimal editor."
+                icon: Sparkles,
+                title: "⭐ AI Diary Companion",
+                desc: "Get daily writing prompts, summarize memory chapters, and receive gentle emotional reflections when you feel stuck.",
+                link: "/dashboard/ai"
               },
               {
                 icon: Clock,
-                title: "Memory Timeline",
-                desc: "Look back on your journey through a visual timeline filtered by years, months, emotional states, and custom tags."
+                title: "⭐ Memory Timeline",
+                desc: "Look back on your journey through a visual timeline filtered by years, months, emotional states, and custom tags.",
+                link: "/dashboard/timeline"
               },
               {
                 icon: Smile,
-                title: "Mood Tracking",
-                desc: "Log daily emotional intensity, discover patterns, view monthly calendars, and gain compassionate mood insights."
-              },
-              {
-                icon: Camera,
-                title: "Private Photo Albums",
-                desc: "Organize precious moments into curated albums, favorite special shots, and link photos directly to journal entries."
+                title: "⭐ Mood Analytics",
+                desc: "Log daily emotional intensity, discover patterns, view monthly calendars, and gain compassionate mood insights.",
+                link: "/dashboard/mood"
               },
               {
                 icon: Mail,
-                title: "Future Time Capsules",
-                desc: "Write letters to your future self or loved ones with scheduled unlock dates and automated email notifications."
+                title: "⭐ Future Letters",
+                desc: "Write letters to your future self or loved ones with flower stamps, scheduled unlock dates, and automated email notifications.",
+                link: "/dashboard/letters"
+              },
+              {
+                icon: Palette,
+                title: "⭐ Premium Themes",
+                desc: "Switch between 5 aesthetic color themes (Blush Pink, Lavender, Sunset Peach, Rose Mist, and Cosmic Night Sky) instantly.",
+                link: "/dashboard/themes"
               }
             ].map((feat, idx) => {
               const Icon = feat.icon;
@@ -595,6 +456,12 @@ export default function LandingPage() {
                   <p className="text-black text-sm leading-relaxed font-normal">
                     {feat.desc}
                   </p>
+                  <Link
+                    href={feat.link}
+                    className="inline-flex items-center gap-1 text-xs font-extrabold text-pink-600 hover:opacity-80 pt-2"
+                  >
+                    Try Feature Live <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </motion.div>
               );
             })}
@@ -602,7 +469,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Privacy Guarantee Section - Dreamy Soft & Pastel Pink Combo Banner */}
+      {/* Privacy Guarantee Section */}
       <section id="privacy" className="py-20 bg-gradient-to-r from-pink-200 via-rose-100 to-pink-200 border-y border-pink-300 text-black relative overflow-hidden shadow-inner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="w-16 h-16 rounded-3xl bg-[#FAF5F0] backdrop-blur-md flex items-center justify-center mx-auto mb-6 border border-pink-300 shadow-sm">
@@ -657,20 +524,17 @@ export default function LandingPage() {
                   Free Forever
                 </span>
                 <h3 className="font-serif text-3xl font-extrabold text-black mt-4">$0</h3>
-                <p className="text-xs text-black font-extrabold">Perfect for casual daily journaling & flower letters.</p>
+                <p className="text-xs text-black font-extrabold">Perfect for casual daily journaling.</p>
 
                 <ul className="mt-6 space-y-3 text-sm text-black font-extrabold">
                   <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Up to 50 Garden Letters & Entries
-                  </li>
-                  <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Flower Stamps & Wax Seals (🌸 🌷 🌹)
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> All 5 Core Functional Features Included
                   </li>
                   <li className="flex items-center gap-2 text-black">
                     <CheckCircle2 className="w-4 h-4 text-pink-500" /> Memory Timeline & Search
                   </li>
                   <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Basic Mood Tracking & Photo Album
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Basic Mood Tracking
                   </li>
                 </ul>
               </div>
@@ -703,16 +567,13 @@ export default function LandingPage() {
 
                 <ul className="mt-6 space-y-3 text-sm text-black font-extrabold">
                   <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Unlimited Garden Letters & Photo Vault
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Unlimited Memories & Future Time Capsules
                   </li>
                   <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> All Flower Stamps & Botanical Wax Seals
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Full AI Companion Reflection Chat
                   </li>
                   <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> AI Prompts, Summarization & Reflections
-                  </li>
-                  <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Voice Notes Recorder & Future Time Capsules
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> All 5 Premium Aesthetic Themes
                   </li>
                 </ul>
               </div>
@@ -728,7 +589,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* FAQ Accordion Section */}
+      {/* FAQ Section */}
       <section id="faq" className="py-20 bg-transparent border-t border-[#EFE6D8]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -768,7 +629,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Footer - Solid Black Text */}
+      {/* Footer */}
       <footer className="py-12 border-t border-[#EFE6D8] text-xs text-black font-extrabold bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">

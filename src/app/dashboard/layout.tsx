@@ -10,18 +10,14 @@ import {
   BookOpen,
   Clock,
   Smile,
-  Camera,
   Mail,
   Sparkles,
   Search,
-  Settings,
   PlusCircle,
-  LogOut,
   Moon,
   Sun,
   Palette,
   Flame,
-  ShieldAlert,
   ChevronRight,
   X
 } from "lucide-react";
@@ -29,7 +25,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { theme, setTheme, isDarkMode, toggleDarkMode } = useTheme();
+  const { isDarkMode, toggleDarkMode } = useTheme();
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [entries, setEntries] = useState<DiaryEntry[]>([]);
@@ -40,14 +36,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }, []);
 
   const navItems = [
-    { href: "/dashboard", label: "Dashboard", icon: BookOpen },
-    { href: "/dashboard/journal", label: "Daily Journal", icon: PlusCircle },
+    { href: "/dashboard", label: "Dashboard Home", icon: BookOpen },
+    { href: "/dashboard/journal", label: "Write Memory", icon: PlusCircle },
+    { href: "/dashboard/ai", label: "AI Companion", icon: Sparkles },
     { href: "/dashboard/timeline", label: "Memory Timeline", icon: Clock },
     { href: "/dashboard/mood", label: "Mood Analytics", icon: Smile },
-    { href: "/dashboard/albums", label: "Photo Vault", icon: Camera },
     { href: "/dashboard/letters", label: "Future Letters", icon: Mail },
-    { href: "/dashboard/ai", label: "AI Companion", icon: Sparkles },
-    { href: "/dashboard/settings", label: "Settings", icon: Settings },
+    { href: "/dashboard/themes", label: "Premium Themes", icon: Palette },
   ];
 
   const searchResults = searchQuery.trim()
@@ -60,14 +55,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     : [];
 
   return (
-    <div className="min-h-screen flex text-black dark:text-white bg-transparent transition-colors">
+    <div className="min-h-screen flex text-black bg-transparent transition-colors">
       {/* Sidebar Navigation */}
-      <aside className="w-64 hidden md:flex flex-col border-r border-pink-200 bg-white/95 backdrop-blur-xl p-5 justify-between sticky top-0 h-screen shadow-sm">
+      <aside className="w-64 hidden md:flex flex-col border-r border-[#EFE6D8] bg-[#FAF5F0]/95 backdrop-blur-xl p-5 justify-between sticky top-0 h-screen shadow-sm">
         <div className="space-y-6">
-          {/* Brand */}
+          {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 px-2 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-300 to-pink-400 p-0.5 shadow-sm shadow-pink-200">
-              <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
+              <div className="w-full h-full bg-[#FAF5F0] rounded-[10px] flex items-center justify-center border border-[#EFE6D8]">
                 <Heart className="w-5 h-5 text-pink-500 fill-pink-500/20" />
               </div>
             </div>
@@ -76,7 +71,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 DearDiary
               </h1>
               <p className="text-[10px] text-pink-600 font-extrabold uppercase tracking-wider">
-                Soft & Pastel Vault
+                5 Core Functional Sanctuary
               </p>
             </div>
           </Link>
@@ -84,17 +79,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {/* Quick Search Button */}
           <button
             onClick={() => setSearchOpen(true)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-pink-50 hover:bg-pink-100/80 text-black text-xs font-bold flex items-center justify-between transition-colors border border-pink-200"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-[#F5EFE6] hover:bg-pink-50 text-black text-xs font-bold flex items-center justify-between transition-colors border border-[#EFE6D8]"
           >
             <span className="flex items-center gap-2">
               <Search className="w-4 h-4 text-pink-500" /> Search memories...
             </span>
-            <kbd className="px-1.5 py-0.5 rounded bg-white border border-pink-200 text-[10px] font-mono text-black">
+            <kbd className="px-1.5 py-0.5 rounded bg-[#FAF5F0] border border-[#EFE6D8] text-[10px] font-mono text-black">
               ⌘K
             </kbd>
           </button>
 
-          {/* Navigation Links */}
+          {/* Streamlined 5 Core Features Navigation Links */}
           <nav className="space-y-1.5">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -106,7 +101,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   className={`w-full px-3.5 py-2.5 rounded-xl text-xs font-extrabold flex items-center justify-between transition-all ${
                     isActive
                       ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-md shadow-pink-200 border border-pink-300"
-                      : "text-black hover:bg-pink-50 hover:text-black"
+                      : "text-black hover:bg-pink-100 hover:text-black"
                   }`}
                 >
                   <span className="flex items-center gap-2.5">
@@ -120,10 +115,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </nav>
         </div>
 
-        {/* User Card & Streak */}
-        <div className="pt-4 border-t border-pink-200 space-y-3">
-          {/* Writing Streak Badge */}
-          <div className="p-3 rounded-xl bg-pink-50 text-black border border-pink-200 flex items-center justify-between">
+        {/* User Profile & Streak Footer */}
+        <div className="pt-4 border-t border-[#EFE6D8] space-y-3">
+          <div className="p-3 rounded-xl bg-[#F5EFE6] text-black border border-[#EFE6D8] flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Flame className="w-4 h-4 text-pink-500 fill-pink-500" />
               <span className="text-xs font-extrabold">14 Day Streak</span>
@@ -131,7 +125,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <span className="text-[10px] font-extrabold text-pink-600 uppercase">On Fire</span>
           </div>
 
-          {/* User Profile */}
           <div className="flex items-center justify-between px-2">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-pink-300 flex items-center justify-center font-serif font-extrabold text-black text-xs">
@@ -145,7 +138,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-lg bg-pink-50 text-black border border-pink-200"
+              className="p-2 rounded-lg bg-[#FAF5F0] text-black border border-[#EFE6D8]"
               title="Toggle Theme Mode"
             >
               {isDarkMode ? <Sun className="w-3.5 h-3.5 text-amber-500" /> : <Moon className="w-3.5 h-3.5 text-pink-500" />}
@@ -157,7 +150,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Main Content Viewport */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Mobile App Header Bar */}
-        <header className="md:hidden flex items-center justify-between px-4 py-3 border-b border-pink-200 bg-white/95 backdrop-blur-md sticky top-0 z-40">
+        <header className="md:hidden flex items-center justify-between px-4 py-3 border-b border-[#EFE6D8] bg-[#FAF5F0]/95 backdrop-blur-md sticky top-0 z-40">
           <Link href="/dashboard" className="flex items-center gap-2">
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500" />
             <span className="font-serif font-bold text-black text-lg">DearDiary</span>
@@ -165,13 +158,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="flex items-center gap-2">
             <button
               onClick={() => setSearchOpen(true)}
-              className="p-2 rounded-xl bg-pink-50 text-black border border-pink-200"
+              className="p-2 rounded-xl bg-[#FAF5F0] text-black border border-[#EFE6D8]"
             >
               <Search className="w-4 h-4 text-pink-500" />
             </button>
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-xl bg-pink-50 text-black border border-pink-200"
+              className="p-2 rounded-xl bg-[#FAF5F0] text-black border border-[#EFE6D8]"
             >
               {isDarkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4 text-pink-500" />}
             </button>
@@ -182,8 +175,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <main className="flex-1 p-4 sm:p-8 max-w-6xl w-full mx-auto">{children}</main>
 
         {/* Mobile Bottom Navigation Toolbar */}
-        <nav className="md:hidden sticky bottom-0 z-40 bg-white/95 backdrop-blur-lg border-t border-pink-200 px-2 py-2 flex items-center justify-around">
-          {navItems.slice(0, 5).map((item) => {
+        <nav className="md:hidden sticky bottom-0 z-40 bg-[#FAF5F0]/95 backdrop-blur-lg border-t border-[#EFE6D8] px-2 py-2 flex items-center justify-around">
+          {navItems.slice(1, 6).map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
             return (
@@ -210,9 +203,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full max-w-xl bg-white rounded-3xl shadow-2xl border border-pink-200 overflow-hidden"
+              className="w-full max-w-xl bg-[#FAF5F0] rounded-3xl shadow-2xl border border-[#EFE6D8] overflow-hidden"
             >
-              <div className="p-4 border-b border-pink-100 flex items-center gap-3">
+              <div className="p-4 border-b border-[#EFE6D8] flex items-center gap-3">
                 <Search className="w-5 h-5 text-pink-500" />
                 <input
                   type="text"
@@ -224,7 +217,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 />
                 <button
                   onClick={() => setSearchOpen(false)}
-                  className="p-1.5 rounded-lg bg-pink-50 text-black border border-pink-200"
+                  className="p-1.5 rounded-lg bg-[#F5EFE6] text-black border border-[#EFE6D8]"
                 >
                   <X className="w-4 h-4 text-black" />
                 </button>
@@ -241,7 +234,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                       key={entry.id}
                       href="/dashboard/timeline"
                       onClick={() => setSearchOpen(false)}
-                      className="p-3 rounded-xl hover:bg-pink-50 flex items-center justify-between transition-colors group block border border-pink-100"
+                      className="p-3 rounded-xl hover:bg-pink-100 flex items-center justify-between transition-colors group block border border-[#EFE6D8]"
                     >
                       <div>
                         <p className="font-extrabold text-sm text-black">

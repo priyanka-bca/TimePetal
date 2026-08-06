@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @layer base {
-  /* Day Mode (Soft Pink Aesthetic) */
-  :root {
+  /* Day Mode Theme 1: Blush Pink (Default) */
+  :root, [data-theme="blush"] {
     --bg-main: #FCE7F3;
     --card-bg: #FAF5F0;
     --card-border: #EFE6D8;
@@ -13,7 +13,43 @@
     --text-muted: #000000;
   }
 
-  /* Night Mode: Cosmic Starry Night Body Background + Warm Beige Cards */
+  /* Premium Theme 2: Soft Lavender */
+  [data-theme="lavender"] {
+    --bg-main: #F3E8FF;
+    --card-bg: #FAF5F0;
+    --card-border: #E9D5FF;
+    --primary: #C084FC;
+    --primary-hover: #A855F7;
+    --accent: #F5EFE6;
+    --text-main: #000000;
+    --text-muted: #000000;
+  }
+
+  /* Premium Theme 3: Sunset Peach */
+  [data-theme="sunset"] {
+    --bg-main: #FFEDD5;
+    --card-bg: #FAF5F0;
+    --card-border: #FED7AA;
+    --primary: #FB923C;
+    --primary-hover: #F97316;
+    --accent: #F5EFE6;
+    --text-main: #000000;
+    --text-muted: #000000;
+  }
+
+  /* Premium Theme 4: Rose Mist */
+  [data-theme="midnight"] {
+    --bg-main: #FFE4E6;
+    --card-bg: #FAF5F0;
+    --card-border: #FECDD3;
+    --primary: #FB7185;
+    --primary-hover: #F43F5E;
+    --accent: #F5EFE6;
+    --text-main: #000000;
+    --text-muted: #000000;
+  }
+
+  /* Night Mode: Starry Night Sky Background + Warm Beige Cards */
   .dark {
     --bg-main: #0A0714;
     --card-bg: #FAF5F0;
@@ -26,10 +62,10 @@
   }
 }
 
-/* Day Mode Body: Soft Pink Aesthetic Background */
+/* Day Mode Body */
 body {
   min-height: 100vh;
-  background-color: #FCE7F3;
+  background-color: var(--bg-main);
   background-image: 
     radial-gradient(circle at 10% 20%, rgba(253, 242, 248, 0.8) 0%, transparent 50%),
     radial-gradient(circle at 90% 80%, rgba(251, 207, 232, 0.8) 0%, transparent 50%),
@@ -42,7 +78,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Night Mode Body: Deep Cosmic Night Sky with Moving Twinkling Stars */
+/* Night Mode Body: Cosmic Starry Night Sky */
 .dark body {
   background-color: #090614;
   background-image: 
@@ -63,17 +99,17 @@ body {
   100% { background-position: 0 0, 250px 250px, 250px 250px, 250px 250px, 250px 250px, 250px 250px; }
 }
 
-/* Solid Black Text Everywhere for High Contrast against Beige Cards */
+/* Text Colors: Solid Black for Clean High-Contrast Readability */
 p, span, h1, h2, h3, h4, h5, h6, a, button, label, input, textarea, select, option, div, li, td, th {
   color: #000000 !important;
 }
 
-/* Warm Beige Cards with Glassmorphism */
+/* Warm Beige Cards */
 .glass-card {
-  background: #FAF5F0 !important;
+  background: var(--card-bg) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #EFE6D8 !important;
+  border: 1px solid var(--card-border) !important;
   box-shadow: 0 10px 30px -5px rgba(244, 114, 182, 0.08);
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -89,7 +125,7 @@ p, span, h1, h2, h3, h4, h5, h6, a, button, label, input, textarea, select, opti
 .glass-card-hover:hover {
   transform: translateY(-3px);
   box-shadow: 0 16px 32px -8px rgba(244, 114, 182, 0.18);
-  border-color: #F472B6 !important;
+  border-color: var(--primary) !important;
 }
 
 .gradient-text {
