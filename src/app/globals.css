@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @layer base {
+  /* Day Mode (Soft Pink Aesthetic) */
   :root {
     --bg-main: #FFF5F7;
     --card-bg: #FFFFFF;
@@ -12,7 +13,7 @@
     --text-muted: #000000;
   }
 
-  /* Night Mode: Starry Sky Background Only */
+  /* Night Mode (Cosmic Night Sky Background) */
   .dark {
     --bg-main: #0A0714;
     --card-bg: #1A1526;
@@ -25,6 +26,7 @@
   }
 }
 
+/* Base Body Styles */
 body {
   min-height: 100vh;
   background-color: var(--bg-main);
@@ -37,7 +39,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Night Mode: Starry Moving Background */
+/* Night Mode: Moving Starry Cosmic Background */
 .dark body {
   background-color: #0A0714;
   background-image: 
@@ -57,16 +59,17 @@ body {
   100% { background-position: 250px 250px; }
 }
 
-/* Light mode text is solid black; dark mode text is crisp white */
-p, span, h1, h2, h3, h4, h5, h6, a, button, label, input, textarea, div, li {
-  color: #000000;
+/* Day Mode Text Enforcement: Solid Black */
+p, span, h1, h2, h3, h4, h5, h6, a, button, label, input, textarea, select, option, div, li, td, th {
+  color: #000000 !important;
 }
 
-.dark p, .dark span, .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6, .dark a, .dark button, .dark label, .dark input, .dark textarea, .dark div, .dark li {
+/* Night Mode Text Enforcement: Crisp White */
+.dark p, .dark span, .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6, .dark a, .dark button, .dark label, .dark input, .dark textarea, .dark select, .dark option, .dark div, .dark li, .dark td, .dark th {
   color: #FFFFFF !important;
 }
 
-/* Glassmorphism & Minimal Aesthetic Cards */
+/* Glassmorphism Cards */
 .glass-card {
   background: var(--card-bg);
   backdrop-filter: blur(16px);
