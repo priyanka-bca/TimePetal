@@ -2,32 +2,32 @@
 
 @layer base {
   :root {
-    --bg-main: #FAF5F0;
+    --bg-main: #FFF5F7;
     --card-bg: #FFFFFF;
     --card-border: #FCE7F3;
     --primary: #F472B6;
     --primary-hover: #EC4899;
-    --accent: #FDF2F8;
+    --accent: #FBCFE8;
     --text-main: #000000;
     --text-muted: #000000;
   }
 
   .dark {
-    --bg-main: #18181B;
-    --card-bg: #27272A;
-    --card-border: #3F3F46;
+    --bg-main: #FFF0F5;
+    --card-bg: #FFFFFF;
+    --card-border: #FBCFE8;
     --primary: #F472B6;
-    --primary-hover: #F687B3;
-    --accent: #3F3F46;
-    --text-main: #FFFFFF;
-    --text-muted: #E4E4E7;
+    --primary-hover: #EC4899;
+    --accent: #FCE7F3;
+    --text-main: #000000;
+    --text-muted: #000000;
   }
 }
 
 body {
   min-height: 100vh;
   background-color: var(--bg-main);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='%23F472B6' opacity='0.1'%3E%3Ccircle cx='35' cy='35' r='5'/%3E%3Cpath d='M35,21 C39,28 43,32 35,35 C27,32 31,28 35,21 Z'/%3E%3Cpath d='M35,49 C39,42 43,38 35,35 C27,38 31,42 35,49 Z'/%3E%3Cpath d='M21,35 C28,39 32,43 35,35 C32,27 28,31 21,35 Z'/%3E%3Cpath d='M49,35 C42,39 38,43 35,35 C38,27 42,31 49,35 Z'/%3E%3C/g%3E%3Cpath d='M95,28 C99,22 107,24 104,31 C100,36 92,34 95,28 Z' fill='%23FBCFE8' opacity='0.22'/%3E%3Cpath d='M18,95 C22,89 30,91 27,98 C23,103 15,101 18,95 Z' fill='%23F472B6' opacity='0.12'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='%23F472B6' opacity='0.12'%3E%3Ccircle cx='35' cy='35' r='5'/%3E%3Cpath d='M35,21 C39,28 43,32 35,35 C27,32 31,28 35,21 Z'/%3E%3Cpath d='M35,49 C39,42 43,38 35,35 C27,38 31,42 35,49 Z'/%3E%3Cpath d='M21,35 C28,39 32,43 35,35 C32,27 28,31 21,35 Z'/%3E%3Cpath d='M49,35 C42,39 38,43 35,35 C38,27 42,31 49,35 Z'/%3E%3C/g%3E%3Cpath d='M95,28 C99,22 107,24 104,31 C100,36 92,34 95,28 Z' fill='%23FBCFE8' opacity='0.25'/%3E%3Cpath d='M18,95 C22,89 30,91 27,98 C23,103 15,101 18,95 Z' fill='%23F472B6' opacity='0.15'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-attachment: fixed;
   color: #000000;
@@ -38,26 +38,16 @@ body {
 
 /* Force all text elements to solid black without color shifts on hover */
 p, span, h1, h2, h3, h4, h5, h6, a, button, label, input, textarea, div, li, span {
-  color: #000000;
+  color: #000000 !important;
 }
 
-.dark p, .dark span, .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6, .dark a, .dark button, .dark label, .dark input, .dark textarea, .dark div, .dark li {
-  color: #FFFFFF;
-}
-
-/* Glassmorphism & Cinematic Cards */
+/* Glassmorphism & Minimal Pastel Cards */
 .glass-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid #FCE7F3;
-  box-shadow: 0 10px 30px -5px rgba(244, 114, 182, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-}
-
-.dark .glass-card {
-  background: rgba(39, 39, 42, 0.95);
-  border: 1px solid #3F3F46;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px -5px rgba(244, 114, 182, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 .glass-card-hover {
@@ -66,7 +56,7 @@ p, span, h1, h2, h3, h4, h5, h6, a, button, label, input, textarea, div, li, spa
 
 .glass-card-hover:hover {
   transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 20px 40px -10px rgba(244, 114, 182, 0.18);
+  box-shadow: 0 20px 40px -10px rgba(244, 114, 182, 0.22);
   border-color: #F472B6;
 }
 
@@ -76,15 +66,15 @@ p, span, h1, h2, h3, h4, h5, h6, a, button, label, input, textarea, div, li, spa
   text-shadow: 0 2px 10px rgba(244, 114, 182, 0.25);
 }
 
-/* Cinematic Keyframe Animations */
+/* Keyframe Animations */
 @keyframes float-slow {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-12px) rotate(4deg); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.05); }
 }
 
 @keyframes wave-audio {

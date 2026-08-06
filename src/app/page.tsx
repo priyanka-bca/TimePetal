@@ -53,35 +53,28 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen text-black dark:text-white selection:bg-pink-200 selection:text-black transition-colors">
+    <div className="min-h-screen text-black bg-[#FFF5F7] selection:bg-pink-200 selection:text-black transition-colors">
       <Navbar />
 
-      {/* Hero Section with Cinematic Background & Floating Particles */}
+      {/* Hero Section with Soft & Pastel Pink Glows */}
       <section className="relative pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden">
-        {/* Ambient aesthetic pink & cream cinematic glows */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-pink-200/50 via-rose-100/40 to-amber-100/40 blur-3xl rounded-full pointer-events-none -z-10 animate-pulse-glow" />
+        {/* Soft pastel pink ambient glows */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-pink-200/60 via-rose-100/50 to-pink-100/40 blur-3xl rounded-full pointer-events-none -z-10 animate-pulse-glow" />
 
-        {/* Cinematic Floating 3D Graphic Accents */}
+        {/* Floating 3D Pastel Petal Accents */}
         <motion.div
           animate={{ y: [0, -18, 0], rotate: [0, 12, -8, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-16 left-[12%] pointer-events-none opacity-50 text-pink-400 text-3xl drop-shadow-md"
+          className="absolute top-16 left-[12%] pointer-events-none opacity-60 text-pink-400 text-3xl drop-shadow-md"
         >
           🌸
         </motion.div>
         <motion.div
           animate={{ y: [0, 22, 0], rotate: [0, -14, 10, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-36 right-[10%] pointer-events-none opacity-45 text-pink-300 text-4xl drop-shadow-md"
+          className="absolute top-36 right-[10%] pointer-events-none opacity-55 text-pink-300 text-4xl drop-shadow-md"
         >
           🌸
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, -14, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-20 left-[6%] pointer-events-none opacity-40 text-amber-300 text-2xl drop-shadow-sm"
-        >
-          ✨
         </motion.div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -90,31 +83,31 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-zinc-800 border border-pink-200 shadow-sm mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-pink-200 shadow-sm mb-8"
           >
             <Sparkles className="w-4 h-4 text-pink-500 fill-pink-500 animate-spin" style={{ animationDuration: '8s' }} />
-            <span className="text-xs font-bold text-black dark:text-white">
-              Introducing DearDiary 2.0 • Your Minimal Sanctuary for Memories
+            <span className="text-xs font-bold text-black">
+              Introducing DearDiary 2.0 • Soft & Pastel Sanctuary for Memories
             </span>
           </motion.div>
 
-          {/* Main Headline - Solid Black Text */}
+          {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-black dark:text-white max-w-4xl mx-auto leading-[1.15]"
+            className="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-black max-w-4xl mx-auto leading-[1.15]"
           >
             Your private space for{" "}
             <span className="gradient-text italic font-serif text-black">memories, thoughts,</span> and emotions.
           </motion.h1>
 
-          {/* Subtitle - Solid Black Text */}
+          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-lg sm:text-xl text-black dark:text-white max-w-2xl mx-auto font-medium leading-relaxed"
+            className="mt-6 text-lg sm:text-xl text-black max-w-2xl mx-auto font-medium leading-relaxed"
           >
             A calm, aesthetic, end-to-end private sanctuary where you can write daily journals, record voice clips, track mood trends, preserve photo albums, and seal letters to your future self.
           </motion.p>
@@ -129,61 +122,61 @@ export default function LandingPage() {
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
               <Link
                 href="/dashboard"
-                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-pink-500 hover:bg-pink-600 text-white font-bold text-base shadow-xl shadow-pink-200 transition-all flex items-center justify-center gap-2 group"
+                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-base shadow-xl shadow-pink-200 border border-pink-300 transition-all flex items-center justify-center gap-2 group"
               >
-                <span className="text-white">Start Writing Free</span>
-                <ArrowRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" />
+                <span className="text-black">Start Writing Free</span>
+                <ArrowRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
               <a
                 href="#interactive-demo"
-                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white dark:bg-zinc-800 hover:bg-white text-black dark:text-white font-bold text-base border border-pink-200 transition-all flex items-center justify-center gap-2 shadow-sm"
+                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-pink-50 text-black font-bold text-base border border-pink-200 transition-all flex items-center justify-center gap-2 shadow-sm"
               >
                 <Sparkle className="w-4 h-4 text-pink-500" />
-                <span className="text-black dark:text-white">Explore Live Demo</span>
+                <span className="text-black">Explore Live Demo</span>
               </a>
             </motion.div>
           </motion.div>
 
-          {/* Trust Highlights - Pure Black Text Without Hover Shift */}
+          {/* Trust Highlights */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs font-bold text-black dark:text-white"
+            className="mt-12 flex flex-wrap items-center justify-center gap-6 text-xs font-bold text-black"
           >
-            <span className="flex items-center gap-1.5 text-black dark:text-white">
-              <Lock className="w-4 h-4 text-black dark:text-white" /> 256-Bit Encrypted Vault
+            <span className="flex items-center gap-1.5 text-black">
+              <Lock className="w-4 h-4 text-pink-500" /> 256-Bit Encrypted Vault
             </span>
-            <span className="flex items-center gap-1.5 text-black dark:text-white">
+            <span className="flex items-center gap-1.5 text-black">
               <ShieldCheck className="w-4 h-4 text-pink-500" /> Zero Ad Trackers
             </span>
-            <span className="flex items-center gap-1.5 text-black dark:text-white">
+            <span className="flex items-center gap-1.5 text-black">
               <Star className="w-4 h-4 text-amber-400 fill-amber-400" /> 4.9/5 Rating by 12,000+ Journalers
             </span>
           </motion.div>
 
-          {/* Floating Cinematic UI Hero Showcase Card */}
+          {/* Floating Soft & Pastel UI Hero Showcase Card */}
           <motion.div
             initial={{ opacity: 0, y: 50, rotateX: 5 }}
             animate={{ opacity: 1, y: 0, rotateX: 0 }}
             transition={{ duration: 0.9, delay: 0.5, ease: "easeOut" }}
-            className="mt-16 relative max-w-5xl mx-auto perspective-1000"
+            className="mt-16 relative max-w-5xl mx-auto"
           >
-            <div className="glass-card rounded-3xl p-4 sm:p-8 shadow-2xl border border-pink-200 relative bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl">
+            <div className="glass-card rounded-3xl p-4 sm:p-8 shadow-2xl border border-pink-200 relative bg-white/95 backdrop-blur-xl">
               {/* Fake Browser Top Bar */}
-              <div className="flex items-center justify-between pb-4 border-b border-pink-100 dark:border-zinc-800 mb-6">
+              <div className="flex items-center justify-between pb-4 border-b border-pink-100 mb-6">
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-pink-400" />
-                  <div className="w-3 h-3 rounded-full bg-amber-300" />
-                  <div className="w-3 h-3 rounded-full bg-emerald-400" />
+                  <div className="w-3 h-3 rounded-full bg-pink-300" />
+                  <div className="w-3 h-3 rounded-full bg-amber-200" />
+                  <div className="w-3 h-3 rounded-full bg-rose-200" />
                 </div>
-                <div className="px-4 py-1 rounded-full bg-pink-50 dark:bg-zinc-800 text-[11px] font-bold text-black dark:text-white flex items-center gap-1.5 border border-pink-100">
+                <div className="px-4 py-1 rounded-full bg-pink-50 text-[11px] font-bold text-black flex items-center gap-1.5 border border-pink-200">
                   <Lock className="w-3 h-3 text-pink-500" /> deardiary.app/dashboard/journal
                 </div>
-                <div className="text-xs font-bold text-pink-500 flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-pink-500 animate-ping" /> Auto-Saved
+                <div className="text-xs font-bold text-pink-600 flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-pink-400 animate-ping" /> Auto-Saved
                 </div>
               </div>
 
@@ -192,65 +185,65 @@ export default function LandingPage() {
                 {/* Left Card: Entry Summary */}
                 <div className="md:col-span-2 space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full bg-pink-100 text-black text-xs font-extrabold flex items-center gap-1">
+                    <span className="px-3 py-1 rounded-full bg-pink-100 text-black text-xs font-extrabold flex items-center gap-1 border border-pink-200">
                       <Smile className="w-3.5 h-3.5 text-pink-600" /> Mood: Calm & Grateful
                     </span>
-                    <span className="text-xs text-black dark:text-white font-bold">Thursday, August 6, 2026</span>
+                    <span className="text-xs text-black font-bold">Thursday, August 6, 2026</span>
                   </div>
 
-                  <h3 className="font-serif text-2xl font-extrabold text-black dark:text-white">
+                  <h3 className="font-serif text-2xl font-extrabold text-black">
                     A Quiet Sunday Morning with Matcha & Warm Rain
                   </h3>
 
-                  <p className="text-black dark:text-white text-sm leading-relaxed font-normal">
+                  <p className="text-black text-sm leading-relaxed font-normal">
                     Woke up to the gentle patter of raindrops against the bedroom window. Brewed a fresh cup of ceremonial matcha, wrapped myself in cashmere, and listened to classical piano while watching the fog settle...
                   </p>
 
                   <div className="flex flex-wrap items-center gap-2 pt-2">
-                    <span className="px-2.5 py-1 rounded-lg bg-pink-50 dark:bg-zinc-800 text-black dark:text-white text-xs font-bold border border-pink-200">
+                    <span className="px-2.5 py-1 rounded-lg bg-pink-50 text-black text-xs font-bold border border-pink-200">
                       #Mindfulness
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-pink-50 dark:bg-zinc-800 text-black dark:text-white text-xs font-bold border border-pink-200">
+                    <span className="px-2.5 py-1 rounded-lg bg-pink-50 text-black text-xs font-bold border border-pink-200">
                       #SlowLiving
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg text-black bg-emerald-100 text-xs font-bold flex items-center gap-1">
-                      <Volume2 className="w-3.5 h-3.5 text-emerald-600" /> Voice Note attached (0:42)
+                    <span className="px-2.5 py-1 rounded-lg text-black bg-pink-100 text-xs font-bold flex items-center gap-1 border border-pink-200">
+                      <Volume2 className="w-3.5 h-3.5 text-pink-600" /> Voice Note attached (0:42)
                       <span className="flex items-center gap-0.5 ml-1">
-                        <span className="w-1 bg-emerald-600 rounded-full animate-wave-1" />
-                        <span className="w-1 bg-emerald-600 rounded-full animate-wave-2" />
-                        <span className="w-1 bg-emerald-600 rounded-full animate-wave-3" />
+                        <span className="w-1 bg-pink-500 rounded-full animate-wave-1" />
+                        <span className="w-1 bg-pink-500 rounded-full animate-wave-2" />
+                        <span className="w-1 bg-pink-500 rounded-full animate-wave-3" />
                       </span>
                     </span>
                   </div>
                 </div>
 
                 {/* Right Card: Quick Stats Widget */}
-                <div className="glass-card rounded-2xl p-5 border border-pink-200 space-y-4 flex flex-col justify-between bg-white dark:bg-zinc-800">
+                <div className="glass-card rounded-2xl p-5 border border-pink-200 space-y-4 flex flex-col justify-between bg-white">
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between text-xs text-black dark:text-white font-bold">
+                    <div className="flex items-center justify-between text-xs text-black font-bold">
                       <span>Writing Streak</span>
-                      <span className="font-extrabold text-pink-500">🔥 14 Days</span>
+                      <span className="font-extrabold text-pink-600">🔥 14 Days</span>
                     </div>
-                    <div className="w-full bg-pink-100 dark:bg-zinc-700 h-2 rounded-full overflow-hidden">
+                    <div className="w-full bg-pink-100 h-2 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: "85%" }}
                         transition={{ duration: 1.2, delay: 0.8 }}
-                        className="bg-pink-500 h-full rounded-full"
+                        className="bg-gradient-to-r from-pink-400 to-rose-400 h-full rounded-full"
                       />
                     </div>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-pink-50 dark:bg-zinc-900 border border-pink-200 space-y-1">
+                  <div className="p-3 rounded-xl bg-pink-50 border border-pink-200 space-y-1">
                     <p className="text-[10px] font-extrabold uppercase tracking-wider text-pink-600">AI Daily Reflection</p>
-                    <p className="text-xs text-black dark:text-white italic font-bold">
+                    <p className="text-xs text-black italic font-bold">
                       &ldquo;You seem most calm on rainy mornings. Remember to breathe deeply today.&rdquo;
                     </p>
                   </div>
 
                   <div className="flex items-center justify-between text-xs pt-1">
-                    <span className="text-black dark:text-white font-bold">Photos Vault</span>
-                    <span className="font-extrabold text-black dark:text-white">128 Memories</span>
+                    <span className="text-black font-bold">Photos Vault</span>
+                    <span className="font-extrabold text-black">128 Memories</span>
                   </div>
                 </div>
               </div>
@@ -259,8 +252,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Interactive Demo Section with Scroll Reveal */}
-      <section id="interactive-demo" className="py-20 bg-white/90 dark:bg-zinc-900/90 border-y border-pink-100 dark:border-zinc-800">
+      {/* Interactive Demo Section */}
+      <section id="interactive-demo" className="py-20 bg-white/90 border-y border-pink-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -269,60 +262,60 @@ export default function LandingPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-black dark:text-white">
+            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-black">
               Designed for tranquility and effortless expression.
             </h2>
-            <p className="mt-4 text-black dark:text-white text-base font-medium">
+            <p className="mt-4 text-black text-base font-medium">
               Try out the core modules of DearDiary right here before creating your private account.
             </p>
 
             {/* Tab Selectors */}
-            <div className="mt-8 inline-flex p-1.5 rounded-2xl bg-pink-50 dark:bg-zinc-800 gap-1 border border-pink-200">
+            <div className="mt-8 inline-flex p-1.5 rounded-2xl bg-pink-50 gap-1 border border-pink-200">
               <button
                 onClick={() => setActivePreviewTab("journal")}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
                   activePreviewTab === "journal"
-                    ? "bg-pink-500 text-white shadow-sm"
-                    : "text-black dark:text-white hover:text-black"
+                    ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
+                    : "text-black hover:text-black"
                 }`}
               >
-                <FileText className="w-4 h-4 text-black dark:text-white" /> Daily Journal
+                <FileText className="w-4 h-4 text-black" /> Daily Journal
               </button>
               <button
                 onClick={() => setActivePreviewTab("timeline")}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
                   activePreviewTab === "timeline"
-                    ? "bg-pink-500 text-white shadow-sm"
-                    : "text-black dark:text-white hover:text-black"
+                    ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
+                    : "text-black hover:text-black"
                 }`}
               >
-                <Clock className="w-4 h-4 text-black dark:text-white" /> Memory Timeline
+                <Clock className="w-4 h-4 text-black" /> Memory Timeline
               </button>
               <button
                 onClick={() => setActivePreviewTab("mood")}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
                   activePreviewTab === "mood"
-                    ? "bg-pink-500 text-white shadow-sm"
-                    : "text-black dark:text-white hover:text-black"
+                    ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
+                    : "text-black hover:text-black"
                 }`}
               >
-                <Smile className="w-4 h-4 text-black dark:text-white" /> Mood Analytics
+                <Smile className="w-4 h-4 text-black" /> Mood Analytics
               </button>
               <button
                 onClick={() => setActivePreviewTab("letters")}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
                   activePreviewTab === "letters"
-                    ? "bg-pink-500 text-white shadow-sm"
-                    : "text-black dark:text-white hover:text-black"
+                    ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
+                    : "text-black hover:text-black"
                 }`}
               >
-                <Mail className="w-4 h-4 text-black dark:text-white" /> Future Letters
+                <Mail className="w-4 h-4 text-black" /> Future Letters
               </button>
             </div>
           </motion.div>
 
           {/* Active Tab Preview Display */}
-          <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 sm:p-10 shadow-xl border border-pink-200 bg-white dark:bg-zinc-900">
+          <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 sm:p-10 shadow-xl border border-pink-200 bg-white">
             <AnimatePresence mode="wait">
               {activePreviewTab === "journal" && (
                 <motion.div
@@ -335,13 +328,13 @@ export default function LandingPage() {
                 >
                   <div className="flex items-center justify-between border-b border-pink-100 pb-4">
                     <div>
-                      <h4 className="font-serif text-xl font-extrabold text-black dark:text-white">
+                      <h4 className="font-serif text-xl font-extrabold text-black">
                         Rich Text Journal Editor
                       </h4>
-                      <p className="text-xs text-black dark:text-white font-medium">Format text, attach voice clips, assign weather & location tags.</p>
+                      <p className="text-xs text-black font-medium">Format text, attach voice clips, assign weather & location tags.</p>
                     </div>
                     <div className="flex gap-2">
-                      <button className="px-3 py-1.5 rounded-lg bg-pink-100 text-black text-xs font-bold flex items-center gap-1">
+                      <button className="px-3 py-1.5 rounded-lg bg-pink-100 text-black text-xs font-bold flex items-center gap-1 border border-pink-200">
                         <Mic className="w-3.5 h-3.5 text-pink-600" /> Record Audio
                       </button>
                       <button className="px-3 py-1.5 rounded-lg bg-pink-50 text-black text-xs font-bold flex items-center gap-1 border border-pink-200">
@@ -349,9 +342,9 @@ export default function LandingPage() {
                       </button>
                     </div>
                   </div>
-                  <div className="p-4 rounded-2xl bg-[#FAF5F0] dark:bg-zinc-800 border border-pink-200 space-y-3 font-serif text-black dark:text-white">
-                    <p className="text-lg font-extrabold text-black dark:text-white">Title: Walking through the Kyoto bamboo forest</p>
-                    <p className="text-sm font-sans leading-relaxed text-black dark:text-white font-normal">
+                  <div className="p-4 rounded-2xl bg-[#FFF5F7] border border-pink-200 space-y-3 font-serif text-black">
+                    <p className="text-lg font-extrabold text-black">Title: Walking through the Kyoto bamboo forest</p>
+                    <p className="text-sm font-sans leading-relaxed text-black font-normal">
                       The sunlight filtered through the tall emerald stems like glowing ribbons. I stood still for five minutes just listening to the rustle of leaves...
                     </p>
                   </div>
@@ -368,36 +361,36 @@ export default function LandingPage() {
                   className="space-y-4"
                 >
                   <div className="flex items-center justify-between border-b border-pink-100 pb-3">
-                    <h4 className="font-serif text-xl font-extrabold text-black dark:text-white">
+                    <h4 className="font-serif text-xl font-extrabold text-black">
                       Memory Timeline & Filters
                     </h4>
-                    <span className="text-xs font-extrabold text-black dark:text-white">Filter by Year • Mood • Tag</span>
+                    <span className="text-xs font-extrabold text-black">Filter by Year • Mood • Tag</span>
                   </div>
                   <div className="space-y-3">
-                    <div className="p-4 rounded-xl bg-[#FAF5F0] dark:bg-zinc-800 border border-pink-200 flex items-center justify-between">
+                    <div className="p-4 rounded-xl bg-[#FFF5F7] border border-pink-200 flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl bg-pink-200 text-black flex items-center justify-center font-extrabold text-xs">
                           AUG 06
                         </div>
                         <div>
-                          <p className="font-extrabold text-sm text-black dark:text-white">Matcha Morning & Warm Rain</p>
-                          <p className="text-xs text-black dark:text-white font-semibold">Calm • #Mindfulness • Kyoto</p>
+                          <p className="font-extrabold text-sm text-black">Matcha Morning & Warm Rain</p>
+                          <p className="text-xs text-black font-semibold">Calm • #Mindfulness • Kyoto</p>
                         </div>
                       </div>
                       <span className="text-xs text-amber-500 font-extrabold">★ Favorite</span>
                     </div>
 
-                    <div className="p-4 rounded-xl bg-[#FAF5F0] dark:bg-zinc-800 border border-pink-200 flex items-center justify-between">
+                    <div className="p-4 rounded-xl bg-[#FFF5F7] border border-pink-200 flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl bg-pink-100 text-black flex items-center justify-center font-extrabold text-xs">
                           AUG 03
                         </div>
                         <div>
-                          <p className="font-extrabold text-sm text-black dark:text-white">Sunset Stroll Along Botanical Coast</p>
-                          <p className="text-xs text-black dark:text-white font-semibold">Loved • #Family • Sunset</p>
+                          <p className="font-extrabold text-sm text-black">Sunset Stroll Along Botanical Coast</p>
+                          <p className="text-xs text-black font-semibold">Loved • #Family • Sunset</p>
                         </div>
                       </div>
-                      <span className="text-xs text-black dark:text-white font-bold">1 Photo</span>
+                      <span className="text-xs text-black font-bold">1 Photo</span>
                     </div>
                   </div>
                 </motion.div>
@@ -413,14 +406,14 @@ export default function LandingPage() {
                   className="space-y-4"
                 >
                   <div className="flex items-center justify-between border-b border-pink-100 pb-3">
-                    <h4 className="font-serif text-xl font-extrabold text-black dark:text-white">
+                    <h4 className="font-serif text-xl font-extrabold text-black">
                       Emotional Trends & Mood Calendar
                     </h4>
-                    <span className="text-xs text-black dark:text-white font-extrabold">88% Positive Emotions This Month</span>
+                    <span className="text-xs text-black font-extrabold">88% Positive Emotions This Month</span>
                   </div>
                   <div className="grid grid-cols-7 gap-2 text-center text-xs font-extrabold text-black py-2">
                     {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
-                      <div key={day} className="text-black dark:text-white">{day}</div>
+                      <div key={day} className="text-black">{day}</div>
                     ))}
                     {[
                       { emoji: "😌", bg: "bg-pink-100 text-black" },
@@ -449,22 +442,22 @@ export default function LandingPage() {
                   className="space-y-4"
                 >
                   <div className="flex items-center justify-between border-b border-pink-100 pb-3">
-                    <h4 className="font-serif text-xl font-extrabold text-black dark:text-white">
+                    <h4 className="font-serif text-xl font-extrabold text-black">
                       Sealed Future Time Capsule Letters
                     </h4>
-                    <span className="text-xs text-black dark:text-white font-extrabold">Automatic Email Notification</span>
+                    <span className="text-xs text-black font-extrabold">Automatic Email Notification</span>
                   </div>
-                  <div className="p-5 rounded-2xl bg-pink-50 dark:bg-zinc-800 border border-pink-200 space-y-2">
+                  <div className="p-5 rounded-2xl bg-pink-50 border border-pink-200 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-extrabold text-black dark:text-white uppercase tracking-wider">
+                      <span className="text-xs font-extrabold text-black uppercase tracking-wider">
                         🔒 Sealed Letter to Future Self
                       </span>
-                      <span className="text-xs text-black dark:text-white font-bold">Unlocks: Feb 20, 2027</span>
+                      <span className="text-xs text-black font-bold">Unlocks: Feb 20, 2027</span>
                     </div>
-                    <p className="font-serif text-lg font-extrabold text-black dark:text-white">
+                    <p className="font-serif text-lg font-extrabold text-black">
                       &ldquo;To Me on My 30th Birthday: Are You Still Living Softly?&rdquo;
                     </p>
-                    <p className="text-xs text-black dark:text-white italic font-semibold">
+                    <p className="text-xs text-black italic font-semibold">
                       Sealed with 256-bit encryption. Countdown active: 180 Days remaining.
                     </p>
                   </div>
@@ -475,7 +468,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Features Overview Section with Cinematic Staggered Cards */}
+      {/* Features Overview Section */}
       <section id="features" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -485,10 +478,10 @@ export default function LandingPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-black dark:text-white">
+            <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-black">
               Everything you need to preserve your life&apos;s story.
             </h2>
-            <p className="mt-4 text-black dark:text-white text-lg font-medium">
+            <p className="mt-4 text-black text-lg font-medium">
               Carefully engineered with gentle elegance, deep privacy, and joyful self-reflection.
             </p>
           </motion.div>
@@ -534,13 +527,13 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="glass-card glass-card-hover rounded-3xl p-8 border border-pink-200 space-y-4 bg-white dark:bg-zinc-900"
+                  className="glass-card glass-card-hover rounded-3xl p-8 border border-pink-200 space-y-4 bg-white"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-pink-100 text-black flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-2xl bg-pink-100 text-black flex items-center justify-center border border-pink-200">
                     <Icon className="w-6 h-6 text-black" />
                   </div>
-                  <h3 className="font-serif text-2xl font-extrabold text-black dark:text-white">{feat.title}</h3>
-                  <p className="text-black dark:text-white text-sm leading-relaxed font-normal">
+                  <h3 className="font-serif text-2xl font-extrabold text-black">{feat.title}</h3>
+                  <p className="text-black text-sm leading-relaxed font-normal">
                     {feat.desc}
                   </p>
                 </motion.div>
@@ -550,16 +543,16 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Privacy Guarantee Section */}
-      <section id="privacy" className="py-20 bg-pink-500 text-white relative overflow-hidden">
+      {/* Privacy Guarantee Section - Dreamy Soft & Pastel Pink Combo Banner */}
+      <section id="privacy" className="py-20 bg-gradient-to-r from-pink-200 via-rose-100 to-pink-200 border-y border-pink-300 text-black relative overflow-hidden shadow-inner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="w-16 h-16 rounded-3xl bg-white/20 backdrop-blur-md flex items-center justify-center mx-auto mb-6 border border-white/30">
-            <Lock className="w-8 h-8 text-white" />
+          <div className="w-16 h-16 rounded-3xl bg-white/80 backdrop-blur-md flex items-center justify-center mx-auto mb-6 border border-pink-300 shadow-sm">
+            <Lock className="w-8 h-8 text-pink-600" />
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl font-extrabold max-w-3xl mx-auto text-white">
+          <h2 className="font-serif text-3xl sm:text-5xl font-extrabold max-w-3xl mx-auto text-black">
             Your thoughts belong to you. Always.
           </h2>
-          <p className="mt-4 text-white text-lg max-w-2xl mx-auto font-medium">
+          <p className="mt-4 text-black text-lg max-w-2xl mx-auto font-semibold">
             We built DearDiary with zero tracking, database encryption, and complete export portability so your heart&apos;s memories stay strictly private.
           </p>
         </div>
@@ -569,19 +562,19 @@ export default function LandingPage() {
       <section id="pricing" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-black dark:text-white">
+            <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-black">
               Simple, transparent pricing.
             </h2>
-            <p className="mt-4 text-black dark:text-white text-lg font-medium">
+            <p className="mt-4 text-black text-lg font-medium">
               Start writing completely free today. Upgrade anytime for unlimited memories & AI reflection tools.
             </p>
 
             {/* Toggle Monthly / Yearly */}
-            <div className="mt-8 inline-flex items-center gap-3 p-1.5 rounded-full bg-pink-50 dark:bg-zinc-800 border border-pink-200 text-xs font-bold">
+            <div className="mt-8 inline-flex items-center gap-3 p-1.5 rounded-full bg-pink-50 border border-pink-200 text-xs font-bold">
               <button
                 onClick={() => setSelectedPlan("monthly")}
                 className={`px-4 py-2 rounded-full transition-all ${
-                  selectedPlan === "monthly" ? "bg-pink-500 text-white shadow-sm" : "text-black dark:text-white"
+                  selectedPlan === "monthly" ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm font-extrabold" : "text-black"
                 }`}
               >
                 Monthly Billing
@@ -589,91 +582,91 @@ export default function LandingPage() {
               <button
                 onClick={() => setSelectedPlan("yearly")}
                 className={`px-4 py-2 rounded-full transition-all flex items-center gap-1.5 ${
-                  selectedPlan === "yearly" ? "bg-pink-500 text-white shadow-sm" : "text-black dark:text-white"
+                  selectedPlan === "yearly" ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm font-extrabold" : "text-black"
                 }`}
               >
-                Yearly Billing <span className="px-2 py-0.5 rounded-full bg-pink-100 text-black text-[10px] font-extrabold">SAVE 30%</span>
+                Yearly Billing <span className="px-2 py-0.5 rounded-full bg-pink-100 text-black text-[10px] font-extrabold border border-pink-200">SAVE 30%</span>
               </button>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Free Tier */}
-            <div className="glass-card rounded-3xl p-8 border border-pink-200 space-y-6 flex flex-col justify-between bg-white dark:bg-zinc-900">
+            <div className="glass-card rounded-3xl p-8 border border-pink-200 space-y-6 flex flex-col justify-between bg-white">
               <div>
-                <span className="px-3 py-1 rounded-full bg-pink-50 dark:bg-zinc-800 text-black dark:text-white text-xs font-extrabold uppercase border border-pink-200">
+                <span className="px-3 py-1 rounded-full bg-pink-50 text-black text-xs font-extrabold uppercase border border-pink-200">
                   Free Forever
                 </span>
-                <h3 className="font-serif text-3xl font-extrabold text-black dark:text-white mt-4">$0</h3>
-                <p className="text-xs text-black dark:text-white font-bold">Perfect for casual daily journaling.</p>
+                <h3 className="font-serif text-3xl font-extrabold text-black mt-4">$0</h3>
+                <p className="text-xs text-black font-bold">Perfect for casual daily journaling.</p>
 
-                <ul className="mt-6 space-y-3 text-sm text-black dark:text-white font-bold">
-                  <li className="flex items-center gap-2 text-black dark:text-white">
+                <ul className="mt-6 space-y-3 text-sm text-black font-bold">
+                  <li className="flex items-center gap-2 text-black">
                     <CheckCircle2 className="w-4 h-4 text-pink-500" /> Up to 50 Diary Entries
                   </li>
-                  <li className="flex items-center gap-2 text-black dark:text-white">
+                  <li className="flex items-center gap-2 text-black">
                     <CheckCircle2 className="w-4 h-4 text-pink-500" /> Memory Timeline & Search
                   </li>
-                  <li className="flex items-center gap-2 text-black dark:text-white">
+                  <li className="flex items-center gap-2 text-black">
                     <CheckCircle2 className="w-4 h-4 text-pink-500" /> Basic Mood Tracking
                   </li>
-                  <li className="flex items-center gap-2 text-black dark:text-white">
+                  <li className="flex items-center gap-2 text-black">
                     <CheckCircle2 className="w-4 h-4 text-pink-500" /> 1 Photo Album
                   </li>
-                  <li className="flex items-center gap-2 text-black dark:text-white">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Aesthetic Pink Theme
+                  <li className="flex items-center gap-2 text-black">
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Soft & Pastel Pink Theme
                   </li>
                 </ul>
               </div>
 
               <Link
                 href="/dashboard"
-                className="w-full py-3.5 rounded-2xl glass-card hover:bg-pink-50 text-center text-black dark:text-white font-extrabold text-sm border border-pink-200 transition-colors"
+                className="w-full py-3.5 rounded-2xl glass-card hover:bg-pink-50 text-center text-black font-extrabold text-sm border border-pink-200 transition-colors"
               >
                 Get Started Free
               </Link>
             </div>
 
             {/* Premium Tier */}
-            <div className="glass-card rounded-3xl p-8 border-2 border-pink-500 space-y-6 flex flex-col justify-between relative shadow-xl shadow-pink-100 bg-white dark:bg-zinc-900">
-              <div className="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-pink-500 text-white text-[11px] font-extrabold uppercase tracking-wider shadow-md">
+            <div className="glass-card rounded-3xl p-8 border-2 border-pink-400 space-y-6 flex flex-col justify-between relative shadow-xl shadow-pink-100 bg-white">
+              <div className="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-gradient-to-r from-pink-400 to-rose-400 text-black text-[11px] font-extrabold uppercase tracking-wider shadow-md border border-pink-300">
                 Most Popular
               </div>
 
               <div>
-                <span className="px-3 py-1 rounded-full bg-pink-100 text-black text-xs font-extrabold uppercase">
+                <span className="px-3 py-1 rounded-full bg-pink-100 text-black text-xs font-extrabold uppercase border border-pink-200">
                   Premium Sanctuary
                 </span>
                 <div className="flex items-baseline gap-1 mt-4">
-                  <h3 className="font-serif text-4xl font-extrabold text-black dark:text-white">
+                  <h3 className="font-serif text-4xl font-extrabold text-black">
                     {selectedPlan === "yearly" ? "$4.99" : "$6.99"}
                   </h3>
-                  <span className="text-xs text-black dark:text-white font-bold">/ month {selectedPlan === "yearly" && "(billed annually)"}</span>
+                  <span className="text-xs text-black font-bold">/ month {selectedPlan === "yearly" && "(billed annually)"}</span>
                 </div>
-                <p className="text-xs text-black dark:text-white font-extrabold">Includes 14-day free trial. Cancel anytime.</p>
+                <p className="text-xs text-pink-600 font-extrabold">Includes 14-day free trial. Cancel anytime.</p>
 
-                <ul className="mt-6 space-y-3 text-sm text-black dark:text-white font-extrabold">
-                  <li className="flex items-center gap-2 text-black dark:text-white">
+                <ul className="mt-6 space-y-3 text-sm text-black font-extrabold">
+                  <li className="flex items-center gap-2 text-black">
                     <CheckCircle2 className="w-4 h-4 text-pink-500" /> Unlimited Diary Entries & Photos
                   </li>
-                  <li className="flex items-center gap-2 text-black dark:text-white">
+                  <li className="flex items-center gap-2 text-black">
                     <CheckCircle2 className="w-4 h-4 text-pink-500" /> AI Prompts, Summarization & Reflections
                   </li>
-                  <li className="flex items-center gap-2 text-black dark:text-white">
+                  <li className="flex items-center gap-2 text-black">
                     <CheckCircle2 className="w-4 h-4 text-pink-500" /> Voice Notes Recorder & Audio Storage
                   </li>
-                  <li className="flex items-center gap-2 text-black dark:text-white">
+                  <li className="flex items-center gap-2 text-black">
                     <CheckCircle2 className="w-4 h-4 text-pink-500" /> Future Time Capsule Letters & Reminders
                   </li>
-                  <li className="flex items-center gap-2 text-black dark:text-white">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> All Aesthetic Color Themes
+                  <li className="flex items-center gap-2 text-black">
+                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> All Aesthetic Pastel Color Themes
                   </li>
                 </ul>
               </div>
 
               <Link
                 href="/dashboard"
-                className="w-full py-3.5 rounded-2xl bg-pink-500 hover:bg-pink-600 text-white text-center font-extrabold text-sm shadow-md shadow-pink-200 transition-all"
+                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black text-center font-extrabold text-sm shadow-md shadow-pink-200 border border-pink-300 transition-all"
               >
                 Start Free Trial
               </Link>
@@ -683,13 +676,13 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ Accordion Section */}
-      <section id="faq" className="py-20 bg-white/90 dark:bg-zinc-900/90 border-t border-pink-100 dark:border-zinc-800">
+      <section id="faq" className="py-20 bg-white/90 border-t border-pink-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-black dark:text-white">
+            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-black">
               Frequently Asked Questions
             </h2>
-            <p className="mt-2 text-black dark:text-white text-sm font-bold">
+            <p className="mt-2 text-black text-sm font-bold">
               Have questions? We&apos;re here to help you feel safe and confident.
             </p>
           </div>
@@ -698,13 +691,13 @@ export default function LandingPage() {
             {faqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="glass-card rounded-2xl border border-pink-200 overflow-hidden bg-white dark:bg-zinc-900"
+                className="glass-card rounded-2xl border border-pink-200 overflow-hidden bg-white"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full px-6 py-4 text-left font-extrabold text-black dark:text-white flex items-center justify-between gap-4"
+                  className="w-full px-6 py-4 text-left font-extrabold text-black flex items-center justify-between gap-4"
                 >
-                  <span className="text-base text-black dark:text-white">{faq.q}</span>
+                  <span className="text-base text-black">{faq.q}</span>
                   <ChevronDown
                     className={`w-5 h-5 text-pink-500 transition-transform duration-200 ${
                       openFaq === idx ? "rotate-180" : ""
@@ -712,7 +705,7 @@ export default function LandingPage() {
                   />
                 </button>
                 {openFaq === idx && (
-                  <div className="px-6 pb-5 text-sm text-black dark:text-white leading-relaxed font-normal border-t border-pink-100 pt-3">
+                  <div className="px-6 pb-5 text-sm text-black leading-relaxed font-normal border-t border-pink-100 pt-3">
                     {faq.a}
                   </div>
                 )}
@@ -722,23 +715,23 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Footer - Solid Black Text Without Hover Color Shift */}
-      <footer className="py-12 border-t border-pink-200 dark:border-zinc-800 text-xs text-black dark:text-white font-bold">
+      {/* Footer - Solid Black Text */}
+      <footer className="py-12 border-t border-pink-200 text-xs text-black font-bold bg-[#FFF5F7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <Heart className="w-4 h-4 text-pink-500 fill-pink-500" />
-            <span className="font-serif font-extrabold text-black dark:text-white text-sm">DearDiary</span>
-            <span className="text-black dark:text-white">© 2026 DearDiary Inc. All rights reserved.</span>
+            <span className="font-serif font-extrabold text-black text-sm">DearDiary</span>
+            <span className="text-black">© 2026 DearDiary Inc. All rights reserved.</span>
           </div>
 
           <div className="flex items-center gap-6 font-extrabold">
-            <Link href="#privacy" className="text-black dark:text-white hover:text-black dark:hover:text-white hover:opacity-75 transition-opacity">
+            <Link href="#privacy" className="text-black hover:opacity-75 transition-opacity">
               Privacy Policy
             </Link>
-            <Link href="#terms" className="text-black dark:text-white hover:text-black dark:hover:text-white hover:opacity-75 transition-opacity">
+            <Link href="#terms" className="text-black hover:opacity-75 transition-opacity">
               Terms of Service
             </Link>
-            <Link href="/admin" className="text-black dark:text-white hover:text-black dark:hover:text-white hover:opacity-75 transition-opacity">
+            <Link href="/admin" className="text-black hover:opacity-75 transition-opacity">
               Admin Portal
             </Link>
           </div>
