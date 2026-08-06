@@ -27,7 +27,8 @@ import {
   Heading1,
   Sparkles,
   Trash2,
-  CheckCircle2
+  CheckCircle2,
+  Plus
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -47,20 +48,18 @@ export default function JournalEditorPage() {
   ]);
   const [photoUrlInput, setPhotoUrlInput] = useState("");
 
-  // Voice recorder simulator state
   const [isRecording, setIsRecording] = useState(false);
   const [recordedAudio, setRecordedAudio] = useState<string | null>(null);
-
   const [savedSuccess, setSavedSuccess] = useState(false);
 
   const moodOptions: { id: DiaryEntry["mood"]; emoji: string; label: string; bg: string }[] = [
-    { id: "Happy", emoji: "😊", label: "Happy", bg: "hover:bg-amber-100" },
-    { id: "Calm", emoji: "😌", label: "Calm", bg: "hover:bg-emerald-100" },
-    { id: "Loved", emoji: "🥰", label: "Loved", bg: "hover:bg-rose-100" },
+    { id: "Happy", emoji: "😊", label: "Happy", bg: "hover:bg-pink-100" },
+    { id: "Calm", emoji: "😌", label: "Calm", bg: "hover:bg-pink-100" },
+    { id: "Loved", emoji: "🥰", label: "Loved", bg: "hover:bg-pink-100" },
     { id: "Excited", emoji: "🤩", label: "Excited", bg: "hover:bg-pink-100" },
-    { id: "Sad", emoji: "😔", label: "Sad", bg: "hover:bg-blue-100" },
-    { id: "Anxious", emoji: "😰", label: "Anxious", bg: "hover:bg-purple-100" },
-    { id: "Angry", emoji: "😡", label: "Angry", bg: "hover:bg-red-100" }
+    { id: "Sad", emoji: "😔", label: "Sad", bg: "hover:bg-pink-100" },
+    { id: "Anxious", emoji: "😰", label: "Anxious", bg: "hover:bg-pink-100" },
+    { id: "Angry", emoji: "😡", label: "Angry", bg: "hover:bg-pink-100" }
   ];
 
   const weatherOptions = ["Sunny ☀️", "Rainy 🌧️", "Cloudy ⛅", "Snowy ❄️", "Windy 🌬️"];
@@ -125,8 +124,7 @@ export default function JournalEditorPage() {
     }, 1200);
   };
 
-  // Rich Text helper format insert
-  const formatText = (command: string, value?: string) => {
+  const formatText = (command: string) => {
     if (command === "bold") setContent((prev) => prev + "<b>bold text</b>");
     if (command === "italic") setContent((prev) => prev + "<i>italic text</i>");
     if (command === "h1") setContent((prev) => prev + "<h3>Section Heading</h3>");
@@ -134,49 +132,49 @@ export default function JournalEditorPage() {
   };
 
   return (
-    <div className="space-y-8 max-w-4xl mx-auto">
+    <div className="space-y-8 max-w-4xl mx-auto text-black">
       {/* Editor Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-rose-100 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-pink-200">
         <div>
-          <span className="text-xs font-semibold text-rose-500 uppercase tracking-wider">
+          <span className="text-xs font-extrabold text-black uppercase tracking-wider">
             Daily Journal • {new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}
           </span>
-          <h1 className="font-serif text-3xl font-bold text-slate-900 dark:text-white mt-1">
+          <h1 className="font-serif text-3xl font-extrabold text-black mt-1">
             Write New Memory
           </h1>
         </div>
 
         <button
           onClick={handleSaveEntry}
-          className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-sm shadow-md shadow-rose-200 dark:shadow-none flex items-center justify-center gap-2 transition-all hover:scale-105"
+          className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-sm shadow-md shadow-pink-200 border border-pink-300 flex items-center justify-center gap-2 transition-all hover:scale-105 btn-shimmer"
         >
           {savedSuccess ? (
             <>
-              <CheckCircle2 className="w-4 h-4 text-emerald-300" /> Memory Saved!
+              <CheckCircle2 className="w-4 h-4 text-black" /> Memory Saved!
             </>
           ) : (
             <>
-              <Save className="w-4 h-4" /> Save Memory
+              <Save className="w-4 h-4 text-black" /> Save Memory
             </>
           )}
         </button>
       </div>
 
       {/* Main Form Fields */}
-      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-100 dark:border-slate-800 space-y-6">
+      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-pink-200 space-y-6 bg-white">
         {/* Title Input */}
         <input
           type="text"
           placeholder="Give this moment a title..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full text-2xl sm:text-3xl font-serif font-bold bg-transparent border-b border-slate-200 dark:border-slate-800 pb-3 focus:outline-none focus:border-rose-400 placeholder-slate-300 dark:placeholder-slate-600 text-slate-900 dark:text-white"
+          className="w-full text-2xl sm:text-3xl font-serif font-extrabold bg-transparent border-b border-pink-200 pb-3 focus:outline-none focus:border-pink-400 placeholder-zinc-400 text-black"
         />
 
         {/* Mood Selector Grid */}
         <div className="space-y-3">
-          <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-            <Smile className="w-4 h-4 text-rose-500" /> How are you feeling right now?
+          <label className="text-xs font-extrabold text-black uppercase tracking-wider flex items-center gap-1.5">
+            <Smile className="w-4 h-4 text-pink-500" /> How are you feeling right now?
           </label>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
@@ -187,54 +185,54 @@ export default function JournalEditorPage() {
                 onClick={() => setMood(m.id)}
                 className={`p-3 rounded-2xl border text-center transition-all flex flex-col items-center gap-1 ${
                   mood === m.id
-                    ? "border-rose-400 bg-rose-50 dark:bg-rose-950/60 font-bold shadow-sm"
-                    : "border-slate-200/80 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 hover:bg-slate-100"
+                    ? "border-pink-400 bg-pink-100 font-extrabold shadow-sm"
+                    : "border-pink-200 bg-white hover:bg-pink-50"
                 }`}
               >
                 <span className="text-2xl">{m.emoji}</span>
-                <span className="text-xs text-slate-700 dark:text-slate-300">{m.label}</span>
+                <span className="text-xs text-black font-extrabold">{m.label}</span>
               </button>
             ))}
           </div>
 
           {/* Intensity Slider */}
           <div className="pt-2 flex items-center gap-4">
-            <span className="text-xs text-slate-500">Emotion Intensity:</span>
+            <span className="text-xs text-black font-bold">Emotion Intensity:</span>
             <input
               type="range"
               min="1"
               max="10"
               value={moodRating}
               onChange={(e) => setMoodRating(Number(e.target.value))}
-              className="flex-1 accent-rose-500 cursor-pointer"
+              className="flex-1 accent-pink-500 cursor-pointer"
             />
-            <span className="text-xs font-bold text-rose-500">{moodRating}/10</span>
+            <span className="text-xs font-extrabold text-black">{moodRating}/10</span>
           </div>
         </div>
 
         {/* Location & Weather Taggers */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-rose-400" /> Location
+            <label className="text-xs font-extrabold text-black uppercase tracking-wider flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-pink-500" /> Location
             </label>
             <input
               type="text"
               placeholder="e.g. Kyoto Home Sanctuary"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none focus:border-rose-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-pink-50 border border-pink-200 text-xs focus:outline-none focus:border-pink-400 font-bold text-black"
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-              <Sun className="w-3.5 h-3.5 text-amber-400" /> Weather
+            <label className="text-xs font-extrabold text-black uppercase tracking-wider flex items-center gap-1.5">
+              <Sun className="w-3.5 h-3.5 text-amber-500" /> Weather
             </label>
             <select
               value={weather}
               onChange={(e) => setWeather(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none focus:border-rose-400"
+              className="w-full px-4 py-2.5 rounded-xl bg-pink-50 border border-pink-200 text-xs focus:outline-none focus:border-pink-400 font-bold text-black"
             >
               {weatherOptions.map((w) => (
                 <option key={w} value={w}>
@@ -247,170 +245,113 @@ export default function JournalEditorPage() {
 
         {/* Rich Text Editor Toolbar */}
         <div className="space-y-2">
-          <div className="flex items-center gap-1.5 p-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex-wrap">
-            <button
-              type="button"
-              onClick={() => formatText("bold")}
-              className="p-1.5 rounded-lg hover:bg-white dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300"
-              title="Bold"
-            >
-              <Bold className="w-4 h-4" />
+          <div className="flex items-center gap-1.5 p-2 rounded-xl bg-pink-50 border border-pink-200 flex-wrap">
+            <button type="button" onClick={() => formatText("bold")} className="p-2 rounded-lg hover:bg-pink-100 font-bold text-black">
+              <Bold className="w-4 h-4 text-black" />
             </button>
-            <button
-              type="button"
-              onClick={() => formatText("italic")}
-              className="p-1.5 rounded-lg hover:bg-white dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300"
-              title="Italic"
-            >
-              <Italic className="w-4 h-4" />
+            <button type="button" onClick={() => formatText("italic")} className="p-2 rounded-lg hover:bg-pink-100 font-bold text-black">
+              <Italic className="w-4 h-4 text-black" />
             </button>
-            <button
-              type="button"
-              onClick={() => formatText("h1")}
-              className="p-1.5 rounded-lg hover:bg-white dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300"
-              title="Heading"
-            >
-              <Heading1 className="w-4 h-4" />
+            <button type="button" onClick={() => formatText("h1")} className="p-2 rounded-lg hover:bg-pink-100 font-bold text-black">
+              <Heading1 className="w-4 h-4 text-black" />
             </button>
-            <button
-              type="button"
-              onClick={() => formatText("quote")}
-              className="p-1.5 rounded-lg hover:bg-white dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300"
-              title="Quote"
-            >
-              <Quote className="w-4 h-4" />
+            <button type="button" onClick={() => formatText("quote")} className="p-2 rounded-lg hover:bg-pink-100 font-bold text-black">
+              <Quote className="w-4 h-4 text-black" />
             </button>
 
-            <span className="h-4 w-px bg-slate-300 dark:bg-slate-700 mx-1" />
+            <div className="w-px h-5 bg-pink-200 mx-1" />
 
-            <div className="flex items-center gap-1 text-xs">
-              {["✨ Grateful", "🌸 Soft Living", "🌿 Peace"].map((emoji) => (
-                <button
-                  key={emoji}
-                  type="button"
-                  onClick={() => setContent((prev) => prev + ` ${emoji} `)}
-                  className="px-2 py-1 rounded hover:bg-white dark:hover:bg-slate-900 text-slate-600 dark:text-slate-300"
+            <button
+              type="button"
+              onClick={handleToggleRecord}
+              className={`px-3 py-1.5 rounded-lg text-xs font-extrabold flex items-center gap-1.5 transition-colors ${
+                isRecording ? "bg-red-200 text-black animate-pulse" : "bg-pink-200 text-black hover:bg-pink-300"
+              }`}
+            >
+              <Mic className="w-3.5 h-3.5 text-black" />
+              {isRecording ? "Recording (0:03)..." : recordedAudio ? "Audio Attached ✓" : "Record Voice Clip"}
+            </button>
+          </div>
+
+          {/* Textarea */}
+          <textarea
+            rows={8}
+            placeholder="Write your heart out... Describe thoughts, feelings, sights, and sounds."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            className="w-full p-4 rounded-2xl bg-[#FFF5F7] border border-pink-200 focus:outline-none focus:border-pink-400 font-sans text-sm text-black placeholder-zinc-400 font-normal leading-relaxed"
+          />
+        </div>
+
+        {/* Tags & Photos Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-pink-200">
+          {/* Tags */}
+          <div className="space-y-3">
+            <label className="text-xs font-extrabold text-black uppercase tracking-wider flex items-center gap-1.5">
+              <Tag className="w-3.5 h-3.5 text-pink-500" /> Custom Tags
+            </label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="Add tag (e.g. Mindfulness)..."
+                value={tagInput}
+                onChange={(e) => setTagInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), handleAddTag())}
+                className="flex-1 px-3.5 py-2 rounded-xl bg-pink-50 border border-pink-200 text-xs focus:outline-none font-bold text-black"
+              />
+              <button
+                type="button"
+                onClick={handleAddTag}
+                className="px-3.5 py-2 rounded-xl bg-pink-200 hover:bg-pink-300 text-black font-extrabold text-xs"
+              >
+                Add
+              </button>
+            </div>
+
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {tags.map((t) => (
+                <span
+                  key={t}
+                  className="px-2.5 py-1 rounded-lg bg-pink-100 text-black text-xs font-extrabold flex items-center gap-1.5 border border-pink-200"
                 >
-                  {emoji}
-                </button>
+                  #{t}
+                  <button type="button" onClick={() => handleRemoveTag(t)} className="hover:text-red-600">
+                    ×
+                  </button>
+                </span>
               ))}
             </div>
           </div>
 
-          <textarea
-            rows={10}
-            placeholder="Express your thoughts freely here... What brought you joy today?"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className="w-full p-4 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-rose-400 text-sm leading-relaxed text-slate-800 dark:text-slate-100 font-light resize-none"
-          />
-        </div>
-
-        {/* Voice Note Recorder Simulator */}
-        <div className="p-4 rounded-2xl bg-rose-50/60 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/30 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={handleToggleRecord}
-              className={`p-3 rounded-xl transition-all ${
-                isRecording
-                  ? "bg-red-500 text-white animate-pulse"
-                  : "bg-rose-500 text-white hover:bg-rose-600"
-              }`}
-            >
-              {isRecording ? <Square className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
-            </button>
-            <div>
-              <p className="text-xs font-bold text-slate-800 dark:text-slate-200">
-                {isRecording ? "Recording voice note..." : recordedAudio ? "Voice Note Attached (0:42)" : "Voice Reflection Clip"}
-              </p>
-              <p className="text-[10px] text-slate-500">
-                {isRecording ? "Listening to your voice..." : "Click to record an audio memory"}
-              </p>
-            </div>
-          </div>
-
-          {recordedAudio && (
-            <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1 rounded-full flex items-center gap-1">
-              <Volume2 className="w-3.5 h-3.5" /> Audio Ready
-            </span>
-          )}
-        </div>
-
-        {/* Photo Attachment Section */}
-        <div className="space-y-3">
-          <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-            <ImageIcon className="w-4 h-4 text-pink-400" /> Photo Attachments
-          </label>
-
-          <div className="flex gap-2">
-            <input
-              type="text"
-              placeholder="Paste Image URL..."
-              value={photoUrlInput}
-              onChange={(e) => setPhotoUrlInput(e.target.value)}
-              className="flex-1 px-4 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none"
-            />
-            <button
-              type="button"
-              onClick={handleAddPhoto}
-              className="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold hover:bg-slate-300"
-            >
-              Add Photo
-            </button>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-            {photos.map((url, idx) => (
-              <div key={idx} className="relative aspect-square rounded-xl overflow-hidden group">
-                <img src={url} alt="Attached" className="w-full h-full object-cover" />
-                <button
-                  type="button"
-                  onClick={() => setPhotos(photos.filter((_, i) => i !== idx))}
-                  className="absolute top-2 right-2 p-1.5 rounded-full bg-slate-900/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
-                >
-                  <Trash2 className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Tag Management */}
-        <div className="space-y-2">
-          <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-            <Tag className="w-4 h-4 text-indigo-400" /> Memory Tags
-          </label>
-          <div className="flex gap-2">
-            <input
-              type="text"
-              placeholder="e.g. Travel, Family, Milestone..."
-              value={tagInput}
-              onChange={(e) => setTagInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), handleAddTag())}
-              className="flex-1 px-4 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none"
-            />
-            <button
-              type="button"
-              onClick={handleAddTag}
-              className="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold"
-            >
-              + Tag
-            </button>
-          </div>
-
-          <div className="flex flex-wrap gap-2 pt-1">
-            {tags.map((t) => (
-              <span
-                key={t}
-                className="px-3 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-xs font-medium flex items-center gap-1.5"
+          {/* Photo Attachments */}
+          <div className="space-y-3">
+            <label className="text-xs font-extrabold text-black uppercase tracking-wider flex items-center gap-1.5">
+              <ImageIcon className="w-3.5 h-3.5 text-pink-500" /> Photo Attachments
+            </label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="Image URL (e.g. https://...)..."
+                value={photoUrlInput}
+                onChange={(e) => setPhotoUrlInput(e.target.value)}
+                className="flex-1 px-3.5 py-2 rounded-xl bg-pink-50 border border-pink-200 text-xs focus:outline-none font-bold text-black"
+              />
+              <button
+                type="button"
+                onClick={handleAddPhoto}
+                className="px-3.5 py-2 rounded-xl bg-pink-200 hover:bg-pink-300 text-black font-extrabold text-xs"
               >
-                #{t}
-                <button type="button" onClick={() => handleRemoveTag(t)} className="hover:text-rose-800">
-                  ×
-                </button>
-              </span>
-            ))}
+                Attach
+              </button>
+            </div>
+
+            <div className="flex gap-2 overflow-x-auto pt-1">
+              {photos.map((p, idx) => (
+                <div key={idx} className="relative w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 border border-pink-200">
+                  <img src={p} alt="attached" className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

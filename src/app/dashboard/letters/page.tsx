@@ -2,50 +2,33 @@
 
 import { useEffect, useState } from "react";
 import { getStoredData, setStoredData, FutureLetter } from "@/lib/store";
-import {
-  Mail,
-  Lock,
-  Unlock,
-  Clock,
-  Send,
-  Plus,
-  Sparkles,
-  Calendar,
-  User,
-  Heart,
-  CheckCircle2
-} from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Lock, Plus, Calendar, CheckCircle2 } from "lucide-react";
 
-export default function FutureLettersPage() {
+export default function LettersPage() {
   const [letters, setLetters] = useState<FutureLetter[]>([]);
-  const [showCreateModal, setShowCreateModal] = useState(false);
-
-  // Form State
-  const [recipient, setRecipient] = useState<FutureLetter["recipient"]>("Self");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [deliverDate, setDeliverDate] = useState(
-    new Date(Date.now() + 86400000 * 180).toISOString().split("T")[0]
-  );
-  const [notifyEmail, setNotifyEmail] = useState("sophia@deardiary.app");
-  const [createdSuccess, setCreatedSuccess] = useState(false);
+  const [unlockDate, setUnlockDate] = useState("2027-08-06");
+  const [recipientEmail, setRecipientEmail] = useState("sophia@deardiary.app");
+  const [successMsg, setSuccessMsg] = useState(false);
 
   useEffect(() => {
     setLetters(getStoredData("deardiary_letters", []));
   }, []);
 
   const handleCreateLetter = () => {
-    if (!title.trim() || !content.trim()) return;
+    if (!title.trim() || !content.trim()) {
+      alert("Please write a title and content for your letter.");
+      return;
+    }
 
     const newLetter: FutureLetter = {
       id: `letter-${Date.now()}`,
-      recipient,
       title: title.trim(),
       content: content.trim(),
-      deliverDate: new Date(deliverDate).toISOString(),
-      isOpened: false,
-      notifyEmail: notifyEmail.trim() || undefined,
+      deliverDate: unlockDate,
+      isSealed: true,
+      recipientEmail,
       createdAt: new Date().toISOString()
     };
 
@@ -53,183 +36,112 @@ export default function FutureLettersPage() {
     setLetters(updated);
     setStoredData("deardiary_letters", updated);
 
-    setCreatedSuccess(true);
-    setTimeout(() => {
-      setCreatedSuccess(false);
-      setShowCreateModal(false);
-      setTitle("");
-      setContent("");
-    }, 1200);
+    setTitle("");
+    setContent("");
+    setSuccessMsg(true);
+    setTimeout(() => setSuccessMsg(false), 2500);
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-black">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-rose-100 dark:border-slate-800">
+      <div className="flex items-center justify-between pb-4 border-b border-pink-200">
         <div>
-          <span className="text-xs font-semibold text-indigo-500 uppercase tracking-wider flex items-center gap-1.5">
-            <Mail className="w-3.5 h-3.5" /> Digital Time Capsules
+          <span className="text-xs font-extrabold text-black uppercase tracking-wider flex items-center gap-1.5">
+            <Mail className="w-3.5 h-3.5 text-pink-500" /> Digital Time Capsules
           </span>
-          <h1 className="font-serif text-3xl font-bold text-slate-900 dark:text-white mt-1">
-            Letters to Future Self & Family
+          <h1 className="font-serif text-3xl font-extrabold text-black mt-1">
+            Sealed Future Letters
           </h1>
         </div>
-
-        <button
-          onClick={() => setShowCreateModal(true)}
-          className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-rose-500 hover:opacity-90 text-white font-bold text-xs shadow-md flex items-center justify-center gap-2 transition-all hover:scale-105"
-        >
-          <Plus className="w-4 h-4" /> Seal New Future Letter
-        </button>
       </div>
 
-      {/* Info Card Banner */}
-      <div className="glass-card rounded-3xl p-6 border border-indigo-100 dark:border-slate-800 bg-gradient-to-r from-indigo-50/50 via-purple-50/30 to-pink-50/40 dark:from-slate-900 dark:to-slate-800 flex items-center justify-between gap-4">
-        <div className="space-y-1">
-          <h3 className="font-serif text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <Lock className="w-4 h-4 text-indigo-500" /> Time Capsule Vault Active
-          </h3>
-          <p className="text-xs text-slate-600 dark:text-slate-300 font-light">
-            Your letters are sealed with 256-bit encryption. When the unlock date arrives, we will notify you by email.
-          </p>
-        </div>
-        <div className="px-4 py-2 rounded-2xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-xs font-bold whitespace-nowrap hidden sm:block">
-          {letters.length} Sealed Letters
-        </div>
-      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Write Letter Form */}
+        <div className="lg:col-span-2 glass-card rounded-3xl p-6 sm:p-8 border border-pink-200 space-y-5 bg-white">
+          <h2 className="font-serif text-2xl font-extrabold text-black flex items-center gap-2">
+            <Lock className="w-5 h-5 text-pink-500" /> Seal a Letter to Future Self
+          </h2>
 
-      {/* Sealed Letters Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {letters.map((letter) => {
-          const isUnlockable = new Date(letter.deliverDate).getTime() <= Date.now();
-          const daysRemaining = Math.max(
-            0,
-            Math.ceil((new Date(letter.deliverDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
-          );
+          <div className="space-y-4">
+            <input
+              type="text"
+              placeholder="Letter Title (e.g. To Me on My 30th Birthday)..."
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full px-4 py-3 rounded-2xl bg-pink-50 border border-pink-200 text-sm font-extrabold text-black focus:outline-none focus:border-pink-400 placeholder-zinc-400"
+            />
 
-          return (
-            <motion.div
-              key={letter.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 space-y-4 relative overflow-hidden"
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="text-xs font-extrabold text-black uppercase tracking-wider block mb-1">
+                  Unlock Date
+                </label>
+                <input
+                  type="date"
+                  value={unlockDate}
+                  onChange={(e) => setUnlockDate(e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-xl bg-pink-50 border border-pink-200 text-xs font-extrabold text-black focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="text-xs font-extrabold text-black uppercase tracking-wider block mb-1">
+                  Notification Email
+                </label>
+                <input
+                  type="email"
+                  value={recipientEmail}
+                  onChange={(e) => setRecipientEmail(e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-xl bg-pink-50 border border-pink-200 text-xs font-extrabold text-black focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <textarea
+              rows={6}
+              placeholder="Dear Future Me..."
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              className="w-full p-4 rounded-2xl bg-[#FFF5F7] border border-pink-200 text-sm text-black focus:outline-none font-normal placeholder-zinc-400 leading-relaxed"
+            />
+
+            <button
+              onClick={handleCreateLetter}
+              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-sm shadow-md border border-pink-300 flex items-center justify-center gap-2 btn-shimmer"
             >
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
-                  <User className="w-3 h-3" /> To: {letter.recipient}
-                </span>
-
-                <span className={`text-xs font-bold flex items-center gap-1 ${isUnlockable ? "text-emerald-500" : "text-amber-500"}`}>
-                  {isUnlockable ? <Unlock className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5" />}
-                  {isUnlockable ? "Ready to Open" : `Sealed (${daysRemaining} Days Left)`}
-                </span>
-              </div>
-
-              <h3 className="font-serif text-xl font-bold text-slate-800 dark:text-slate-100">
-                {letter.title}
-              </h3>
-
-              <div className="p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-900/80 border border-slate-100 dark:border-slate-800">
-                {isUnlockable ? (
-                  <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-light">{letter.content}</p>
-                ) : (
-                  <p className="text-xs text-slate-400 italic blur-[2px] select-none">
-                    {letter.content.slice(0, 120)}...
-                  </p>
-                )}
-              </div>
-
-              <div className="pt-2 flex items-center justify-between text-xs text-slate-400 border-t border-slate-100 dark:border-slate-800">
-                <span>Created: {new Date(letter.createdAt).toLocaleDateString()}</span>
-                <span>Unlocks: {new Date(letter.deliverDate).toLocaleDateString()}</span>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      {/* Create Future Letter Modal */}
-      <AnimatePresence>
-        {showCreateModal && (
-          <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="max-w-xl w-full bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-5"
-            >
-              <div className="flex justify-between items-center pb-3 border-b border-slate-100 dark:border-slate-800">
-                <h3 className="font-serif text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Mail className="w-5 h-5 text-indigo-500" /> Seal Future Time Capsule
-                </h3>
-                <button onClick={() => setShowCreateModal(false)} className="text-slate-400 hover:text-slate-600">×</button>
-              </div>
-
-              <div className="grid grid-cols-3 gap-2">
-                {(["Self", "Family", "Friend"] as const).map((r) => (
-                  <button
-                    key={r}
-                    type="button"
-                    onClick={() => setRecipient(r)}
-                    className={`py-2 rounded-xl text-xs font-bold border transition-colors ${
-                      recipient === r
-                        ? "bg-indigo-50 dark:bg-indigo-950/60 border-indigo-400 text-indigo-600 dark:text-indigo-300"
-                        : "border-slate-200 dark:border-slate-800 text-slate-500"
-                    }`}
-                  >
-                    To {r}
-                  </button>
-                ))}
-              </div>
-
-              <input
-                type="text"
-                placeholder="Letter Title (e.g. To Me on My 30th Birthday)..."
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs font-bold focus:outline-none border border-slate-200 dark:border-slate-700"
-              />
-
-              <textarea
-                rows={5}
-                placeholder="Write your heart out to the future..."
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs focus:outline-none border border-slate-200 dark:border-slate-700 leading-relaxed"
-              />
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="text-[10px] font-bold uppercase text-slate-400">Unlock Date</label>
-                  <input
-                    type="date"
-                    value={deliverDate}
-                    onChange={(e) => setDeliverDate(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs border border-slate-200 dark:border-slate-700"
-                  />
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase text-slate-400">Notification Email</label>
-                  <input
-                    type="email"
-                    value={notifyEmail}
-                    onChange={(e) => setNotifyEmail(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs border border-slate-200 dark:border-slate-700"
-                  />
-                </div>
-              </div>
-
-              <button
-                onClick={handleCreateLetter}
-                className="w-full py-3.5 rounded-2xl bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2"
-              >
-                {createdSuccess ? <CheckCircle2 className="w-4 h-4 text-emerald-300" /> : <Lock className="w-4 h-4" />}
-                {createdSuccess ? "Letter Sealed in Vault!" : "Seal & Encrypt Letter"}
-              </button>
-            </motion.div>
+              {successMsg ? (
+                <>
+                  <CheckCircle2 className="w-4 h-4 text-black" /> Time Capsule Sealed Safely!
+                </>
+              ) : (
+                <>
+                  <Lock className="w-4 h-4 text-black" /> Encrypt & Seal Time Capsule
+                </>
+              )}
+            </button>
           </div>
-        )}
-      </AnimatePresence>
+        </div>
+
+        {/* Existing Sealed Capsules */}
+        <div className="space-y-4">
+          <h3 className="font-serif text-xl font-extrabold text-black">Active Sealed Time Capsules</h3>
+
+          {letters.map((letter) => (
+            <div key={letter.id} className="glass-card rounded-2xl p-5 border border-pink-200 space-y-2 bg-white">
+              <div className="flex items-center justify-between text-xs font-extrabold text-black">
+                <span className="flex items-center gap-1 text-pink-600">
+                  <Lock className="w-3.5 h-3.5" /> Sealed AES-256
+                </span>
+                <span>Unlocks: {letter.deliverDate}</span>
+              </div>
+              <h4 className="font-serif text-lg font-extrabold text-black">{letter.title}</h4>
+              <p className="text-xs text-black italic font-semibold">
+                To: {letter.recipientEmail}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

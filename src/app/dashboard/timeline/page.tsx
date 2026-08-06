@@ -37,10 +37,8 @@ export default function TimelinePage() {
     setStoredData("deardiary_entries", updated);
   };
 
-  // Collect unique tags
   const allTags = Array.from(new Set(entries.flatMap((e) => e.tags)));
 
-  // Filter entries logic
   const filteredEntries = entries.filter((e) => {
     if (onlyFavorites && !e.isFavorite) return false;
     if (selectedMood !== "ALL" && e.mood !== selectedMood) return false;
@@ -56,43 +54,43 @@ export default function TimelinePage() {
   });
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-black">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-rose-100 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-pink-200">
         <div>
-          <span className="text-xs font-semibold text-rose-500 uppercase tracking-wider flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5" /> Chronological Memory Vault
+          <span className="text-xs font-extrabold text-black uppercase tracking-wider flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-pink-500" /> Chronological Memory Vault
           </span>
-          <h1 className="font-serif text-3xl font-bold text-slate-900 dark:text-white mt-1">
+          <h1 className="font-serif text-3xl font-extrabold text-black mt-1">
             Memory Timeline
           </h1>
         </div>
 
         {/* Quick Search */}
         <div className="relative w-full sm:w-64">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-black absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Search timeline..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none focus:border-rose-400"
+            className="w-full pl-9 pr-4 py-2 rounded-xl bg-white border border-pink-200 text-xs focus:outline-none focus:border-pink-400 font-bold text-black"
           />
         </div>
       </div>
 
       {/* Filter Controls Bar */}
-      <div className="glass-card rounded-2xl p-4 border border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="glass-card rounded-2xl p-4 border border-pink-200 flex flex-wrap items-center justify-between gap-3 text-xs bg-white">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
-            <Filter className="w-3.5 h-3.5 text-rose-500" /> Filter By:
+          <span className="font-extrabold text-black uppercase tracking-wider flex items-center gap-1">
+            <Filter className="w-3.5 h-3.5 text-pink-500" /> Filter By:
           </span>
 
           {/* Mood Filter */}
           <select
             value={selectedMood}
             onChange={(e) => setSelectedMood(e.target.value)}
-            className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-medium text-slate-700 dark:text-slate-300 focus:outline-none"
+            className="px-3 py-1.5 rounded-lg bg-pink-50 border border-pink-200 font-extrabold text-black focus:outline-none"
           >
             <option value="ALL">All Moods</option>
             <option value="Happy">😊 Happy</option>
@@ -100,13 +98,15 @@ export default function TimelinePage() {
             <option value="Loved">🥰 Loved</option>
             <option value="Excited">🤩 Excited</option>
             <option value="Sad">😔 Sad</option>
+            <option value="Anxious">😰 Anxious</option>
+            <option value="Angry">😡 Angry</option>
           </select>
 
           {/* Tag Filter */}
           <select
             value={selectedTag}
             onChange={(e) => setSelectedTag(e.target.value)}
-            className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-medium text-slate-700 dark:text-slate-300 focus:outline-none"
+            className="px-3 py-1.5 rounded-lg bg-pink-50 border border-pink-200 font-extrabold text-black focus:outline-none"
           >
             <option value="ALL">All Tags</option>
             {allTags.map((t) => (
@@ -117,62 +117,62 @@ export default function TimelinePage() {
           </select>
         </div>
 
-        {/* Favorites Only Toggle */}
+        {/* Favorite Toggle */}
         <button
           onClick={() => setOnlyFavorites(!onlyFavorites)}
-          className={`px-3.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition-colors ${
+          className={`px-3 py-1.5 rounded-lg font-extrabold flex items-center gap-1.5 border transition-all ${
             onlyFavorites
-              ? "bg-amber-100 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-300"
-              : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
+              ? "bg-amber-100 border-amber-300 text-black"
+              : "bg-pink-50 border-pink-200 text-black hover:bg-pink-100"
           }`}
         >
-          <Star className={`w-3.5 h-3.5 ${onlyFavorites ? "fill-amber-500 text-amber-500" : ""}`} />
-          Favorites Only
+          <Star className={`w-3.5 h-3.5 ${onlyFavorites ? "text-amber-500 fill-amber-500" : "text-black"}`} />
+          Favorites Only ({entries.filter((e) => e.isFavorite).length})
         </button>
       </div>
 
       {/* Timeline Stream */}
       {filteredEntries.length === 0 ? (
-        <div className="glass-card rounded-3xl p-12 text-center space-y-3">
-          <Sparkles className="w-10 h-10 text-rose-300 mx-auto" />
-          <h3 className="font-serif text-xl font-bold text-slate-800 dark:text-slate-100">
-            No memories match your filter
-          </h3>
-          <p className="text-xs text-slate-500">Try clearing filters or search terms.</p>
+        <div className="glass-card rounded-3xl p-12 text-center space-y-3 border border-pink-200 bg-white">
+          <Sparkles className="w-8 h-8 text-pink-500 mx-auto" />
+          <h3 className="font-serif text-xl font-extrabold text-black">No matching memories found</h3>
+          <p className="text-xs text-black font-semibold">Try adjusting your filters or write a new journal entry!</p>
         </div>
       ) : (
-        <div className="relative border-l-2 border-rose-200 dark:border-slate-800 ml-4 sm:ml-8 pl-6 sm:pl-8 space-y-8">
+        <div className="relative pl-6 border-l-2 border-pink-200 space-y-8">
           {filteredEntries.map((entry, idx) => (
             <motion.div
               key={entry.id}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ duration: 0.4, delay: idx * 0.05 }}
               className="relative"
             >
-              {/* Timeline Bullet Point */}
-              <div className="absolute -left-[31px] sm:-left-[39px] top-6 w-5 h-5 rounded-full bg-white dark:bg-slate-900 border-4 border-rose-400 shadow-md" />
+              {/* Timeline Connector Dot */}
+              <div className="absolute -left-[31px] top-6 w-4 h-4 rounded-full bg-pink-400 border-2 border-white shadow-sm" />
 
-              {/* Memory Card */}
-              <div className="glass-card glass-card-hover rounded-3xl p-6 sm:p-8 border border-slate-100 dark:border-slate-800 space-y-4">
-                {/* Top Info Bar */}
-                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
-                  <div className="flex items-center gap-2 text-xs">
-                    <span className="px-3 py-1 rounded-full bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-300 font-bold">
+              {/* Entry Card */}
+              <div className="glass-card glass-card-hover rounded-3xl p-6 border border-pink-200 space-y-4 bg-white">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-pink-100">
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 rounded-full bg-pink-100 text-black text-xs font-extrabold border border-pink-200">
                       {entry.mood} ({entry.moodRating}/10)
                     </span>
                     {entry.weather && (
-                      <span className="text-slate-500 font-medium">{entry.weather}</span>
+                      <span className="text-xs text-black font-extrabold flex items-center gap-1">
+                        {entry.weather}
+                      </span>
                     )}
                     {entry.location && (
-                      <span className="text-slate-400 flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-rose-400" /> {entry.location}
+                      <span className="text-xs text-black font-extrabold flex items-center gap-1">
+                        <MapPin className="w-3 h-3 text-pink-500" /> {entry.location}
                       </span>
                     )}
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <span className="text-xs text-slate-400 font-medium">
+                    <span className="text-xs text-black font-extrabold flex items-center gap-1">
+                      <Calendar className="w-3.5 h-3.5 text-pink-500" />
                       {new Date(entry.date).toLocaleDateString("en-US", {
                         weekday: "short",
                         month: "short",
@@ -180,67 +180,55 @@ export default function TimelinePage() {
                         year: "numeric"
                       })}
                     </span>
+
                     <button
                       onClick={() => toggleFavorite(entry.id)}
-                      className="p-1.5 rounded-full hover:bg-rose-50 dark:hover:bg-slate-800 text-slate-400 hover:text-amber-500 transition-colors"
-                      title="Favorite memory"
+                      className="p-1.5 rounded-lg hover:bg-pink-50 text-black transition-colors"
                     >
                       <Star
                         className={`w-4 h-4 ${
-                          entry.isFavorite ? "fill-amber-400 text-amber-400" : ""
+                          entry.isFavorite ? "text-amber-500 fill-amber-500" : "text-black"
                         }`}
                       />
                     </button>
                   </div>
                 </div>
 
-                {/* Entry Title & Body */}
-                <h2 className="font-serif text-2xl font-bold text-slate-900 dark:text-white">
+                <h3 className="font-serif text-2xl font-extrabold text-black">
                   {entry.title}
-                </h2>
+                </h3>
 
                 <div
-                  className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed font-light space-y-2"
+                  className="text-black text-sm leading-relaxed font-normal"
                   dangerouslySetInnerHTML={{ __html: entry.content }}
                 />
 
-                {/* Voice Note Attachment */}
-                {entry.voiceNoteUrl && (
-                  <div className="p-3 rounded-xl bg-rose-50/60 dark:bg-rose-950/30 border border-rose-100 dark:border-rose-900/30 flex items-center gap-3 text-xs text-rose-600 dark:text-rose-300">
-                    <Volume2 className="w-4 h-4 text-rose-500" />
-                    <span className="font-semibold">Attached Voice Clip</span>
-                    <span className="text-slate-400">(0:42)</span>
-                  </div>
-                )}
-
-                {/* Photo Gallery Grid */}
+                {/* Photos Preview */}
                 {entry.photos.length > 0 && (
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-                    {entry.photos.map((img, pIdx) => (
-                      <div
-                        key={pIdx}
-                        className="relative aspect-video rounded-2xl overflow-hidden group shadow-sm"
-                      >
-                        <img
-                          src={img}
-                          alt="Memory Photo"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
+                  <div className="flex gap-2 pt-2 overflow-x-auto">
+                    {entry.photos.map((url, pIdx) => (
+                      <div key={pIdx} className="w-20 h-20 rounded-xl overflow-hidden border border-pink-200 flex-shrink-0">
+                        <img src={url} alt="memory" className="w-full h-full object-cover" />
                       </div>
                     ))}
                   </div>
                 )}
 
-                {/* Tags Footer */}
-                <div className="pt-2 flex items-center gap-2 text-xs">
-                  {entry.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium"
-                    >
-                      #{t}
+                {/* Footer Tags & Attachments */}
+                <div className="pt-3 flex items-center justify-between border-t border-pink-100 text-xs text-black">
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    {entry.tags.map((t) => (
+                      <span key={t} className="px-2.5 py-0.5 rounded bg-pink-50 text-black text-[11px] font-extrabold border border-pink-200">
+                        #{t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {entry.voiceNoteUrl && (
+                    <span className="text-black font-extrabold flex items-center gap-1">
+                      <Volume2 className="w-3.5 h-3.5 text-pink-500" /> Voice Note attached
                     </span>
-                  ))}
+                  )}
                 </div>
               </div>
             </motion.div>

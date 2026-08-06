@@ -1,115 +1,76 @@
 "use client";
 
 import { useState } from "react";
-import { useTheme } from "@/components/theme-provider";
-import {
-  Settings,
-  Palette,
-  Moon,
-  Sun,
-  ShieldCheck,
-  Download,
-  CreditCard,
-  Check,
-  Sparkles,
-  Lock
-} from "lucide-react";
+import { Settings, ShieldCheck, Download, Lock, User, CheckCircle2 } from "lucide-react";
 
 export default function SettingsPage() {
-  const { theme, setTheme, isDarkMode, toggleDarkMode } = useTheme();
-  const [exportSuccess, setExportSuccess] = useState(false);
-
-  const themeOptions: { id: "blush" | "lavender" | "sunset" | "midnight"; name: string; color: string; desc: string }[] = [
-    { id: "blush", name: "Blush Rose", color: "bg-rose-400", desc: "Soft rose & warm cream pastel" },
-    { id: "lavender", name: "Lavender Mist", color: "bg-purple-400", desc: "Serene violet & lilac breeze" },
-    { id: "sunset", name: "Sunset Glow", color: "bg-amber-400", desc: "Warm gold & peach horizon" },
-    { id: "midnight", name: "Midnight Calm", color: "bg-slate-700", desc: "Velvet dark & rose gold" },
-  ];
+  const [downloadSuccess, setDownloadSuccess] = useState(false);
 
   const handleExportData = () => {
-    setExportSuccess(true);
-    setTimeout(() => setExportSuccess(false), 2000);
+    setDownloadSuccess(true);
+    setTimeout(() => setDownloadSuccess(false), 3000);
   };
 
   return (
-    <div className="space-y-8 max-w-4xl mx-auto">
-      {/* Header */}
-      <div className="pb-4 border-b border-rose-100 dark:border-slate-800">
-        <span className="text-xs font-semibold text-rose-500 uppercase tracking-wider flex items-center gap-1.5">
-          <Settings className="w-3.5 h-3.5" /> Account & Theme Customization
-        </span>
-        <h1 className="font-serif text-3xl font-bold text-slate-900 dark:text-white mt-1">
-          Settings & Preferences
-        </h1>
+    <div className="space-y-8 max-w-4xl mx-auto text-black">
+      <div className="flex items-center justify-between pb-4 border-b border-pink-200">
+        <div>
+          <span className="text-xs font-extrabold text-black uppercase tracking-wider flex items-center gap-1.5">
+            <Settings className="w-3.5 h-3.5 text-pink-500" /> Security & Account
+          </span>
+          <h1 className="font-serif text-3xl font-extrabold text-black mt-1">
+            Vault Settings
+          </h1>
+        </div>
       </div>
 
-      {/* Theme Customization Card */}
-      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-100 dark:border-slate-800 space-y-6">
-        <div className="flex items-center justify-between">
-          <h2 className="font-serif text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-            <Palette className="w-5 h-5 text-rose-500" /> Aesthetic Theme Palette
+      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-pink-200 space-y-6 bg-white">
+        <div className="space-y-4">
+          <h2 className="font-serif text-xl font-extrabold text-black flex items-center gap-2">
+            <User className="w-5 h-5 text-pink-500" /> Account Profile
           </h2>
-          <button
-            onClick={toggleDarkMode}
-            className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold flex items-center gap-2"
-          >
-            {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-500" />}
-            {isDarkMode ? "Light Mode" : "Dark Mode"}
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {themeOptions.map((t) => (
-            <button
-              key={t.id}
-              onClick={() => setTheme(t.id)}
-              className={`p-4 rounded-2xl border text-left flex items-start gap-3 transition-all ${
-                theme === t.id
-                  ? "bg-rose-50 dark:bg-rose-950/50 border-rose-400 font-bold shadow-sm"
-                  : "bg-white/40 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 hover:bg-slate-100"
-              }`}
-            >
-              <div className={`w-8 h-8 rounded-full ${t.color} flex-shrink-0 mt-0.5`} />
-              <div>
-                <p className="font-serif text-sm font-bold text-slate-800 dark:text-slate-100">{t.name}</p>
-                <p className="text-xs text-slate-500 font-light">{t.desc}</p>
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Security & Privacy Card */}
-      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-100 dark:border-slate-800 space-y-4">
-        <h2 className="font-serif text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-          <ShieldCheck className="w-5 h-5 text-emerald-500" /> Data Security & Vault Backup
-        </h2>
-        <p className="text-xs text-slate-600 dark:text-slate-300 font-light leading-relaxed">
-          Your diary vault is encrypted with AES-256 standards. You can download a complete backup of all your entries, mood logs, and photo metadata anytime.
-        </p>
-
-        <button
-          onClick={handleExportData}
-          className="px-6 py-3 rounded-2xl glass-card hover:bg-white dark:hover:bg-slate-800 text-xs font-bold text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 flex items-center gap-2 transition-colors"
-        >
-          {exportSuccess ? <Check className="w-4 h-4 text-emerald-500" /> : <Download className="w-4 h-4 text-rose-500" />}
-          {exportSuccess ? "Export Generated (JSON format)" : "Export Complete Memory Vault (JSON)"}
-        </button>
-      </div>
-
-      {/* Subscription Status Card */}
-      <div className="glass-card rounded-3xl p-6 sm:p-8 border border-rose-200 dark:border-slate-800 space-y-4 bg-gradient-to-r from-rose-50/40 to-pink-50/30 dark:from-slate-900 dark:to-slate-800">
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="px-3 py-1 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-600 text-xs font-bold uppercase">
-              Current Plan
-            </span>
-            <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white mt-2">
-              Premium Sanctuary ($4.99/mo)
-            </h3>
-            <p className="text-xs text-slate-500">Active • Renews on September 6, 2026</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-extrabold">
+            <div>
+              <label className="text-black uppercase block mb-1">Display Name</label>
+              <input
+                type="text"
+                defaultValue="Sophia Rose"
+                className="w-full px-4 py-2.5 rounded-xl bg-pink-50 border border-pink-200 text-black font-extrabold"
+              />
+            </div>
+            <div>
+              <label className="text-black uppercase block mb-1">Email Address</label>
+              <input
+                type="email"
+                defaultValue="sophia@deardiary.app"
+                className="w-full px-4 py-2.5 rounded-xl bg-pink-50 border border-pink-200 text-black font-extrabold"
+              />
+            </div>
           </div>
-          <CreditCard className="w-8 h-8 text-rose-400" />
+        </div>
+
+        <div className="pt-6 border-t border-pink-100 space-y-4">
+          <h2 className="font-serif text-xl font-extrabold text-black flex items-center gap-2">
+            <ShieldCheck className="w-5 h-5 text-pink-500" /> Data Portability & Export
+          </h2>
+          <p className="text-xs text-black font-semibold">
+            Download your complete diary vault (all entries, photo links, and sealed time capsules) into a single JSON file.
+          </p>
+
+          <button
+            onClick={handleExportData}
+            className="px-6 py-3 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-xs shadow-md border border-pink-300 flex items-center gap-2 btn-shimmer"
+          >
+            {downloadSuccess ? (
+              <>
+                <CheckCircle2 className="w-4 h-4 text-black" /> Vault Backup Exported!
+              </>
+            ) : (
+              <>
+                <Download className="w-4 h-4 text-black" /> Export Complete Diary Vault (JSON)
+              </>
+            )}
+          </button>
         </div>
       </div>
     </div>
