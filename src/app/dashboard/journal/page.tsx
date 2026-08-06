@@ -30,9 +30,7 @@ export default function JournalEditorPage() {
   const [weather, setWeather] = useState("Sunny ☀️");
   const [tagInput, setTagInput] = useState("");
   const [tags, setTags] = useState<string[]>(["Mindfulness", "Gratitude"]);
-  const [photos, setPhotos] = useState<string[]>([
-    "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
-  ]);
+  const [photos, setPhotos] = useState<string[]>([]); // Starts clean with no default demo image
   const [photoUrlInput, setPhotoUrlInput] = useState("");
   const [savedSuccess, setSavedSuccess] = useState(false);
 
@@ -295,21 +293,23 @@ export default function JournalEditorPage() {
           </div>
 
           {/* Attached Photo Thumbnails */}
-          <div className="flex flex-wrap gap-3 pt-2">
-            {photos.map((p, idx) => (
-              <div key={idx} className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-[#EFE6D8] group">
-                <img src={p} alt="attached" className="w-full h-full object-cover" />
-                <button
-                  type="button"
-                  onClick={() => handleRemovePhoto(idx)}
-                  className="absolute top-1 right-1 p-1 rounded-full bg-black/70 text-white hover:bg-red-600 transition-colors"
-                  title="Remove Photo"
-                >
-                  <X className="w-3 h-3 text-white" />
-                </button>
-              </div>
-            ))}
-          </div>
+          {photos.length > 0 && (
+            <div className="flex flex-wrap gap-3 pt-2">
+              {photos.map((p, idx) => (
+                <div key={idx} className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-[#EFE6D8] group">
+                  <img src={p} alt="attached" className="w-full h-full object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => handleRemovePhoto(idx)}
+                    className="absolute top-1 right-1 p-1 rounded-full bg-black/70 text-white hover:bg-red-600 transition-colors"
+                    title="Remove Photo"
+                  >
+                    <X className="w-3 h-3 text-white" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Custom Tags Section */}
