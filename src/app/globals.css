@@ -4,8 +4,8 @@
   /* Day Mode (Soft Pink Aesthetic) */
   :root {
     --bg-main: #FCE7F3;
-    --card-bg: rgba(255, 255, 255, 0.92);
-    --card-border: #FBCFE8;
+    --card-bg: #FAF5F0;
+    --card-border: #EFE6D8;
     --primary: #F472B6;
     --primary-hover: #EC4899;
     --accent: #FDF2F8;
@@ -13,20 +13,20 @@
     --text-muted: #000000;
   }
 
-  /* Night Mode (Cosmic Night Sky Background) */
+  /* Night Mode: Cosmic Starry Night Body Background + Warm Beige Cards */
   .dark {
     --bg-main: #0A0714;
-    --card-bg: rgba(22, 17, 33, 0.88);
-    --card-border: #3B2E52;
+    --card-bg: #FAF5F0;
+    --card-border: #EFE6D8;
     --primary: #F472B6;
     --primary-hover: #EC4899;
-    --accent: #2A213A;
-    --text-main: #FFFFFF;
-    --text-muted: #E4E4E7;
+    --accent: #F5EFE6;
+    --text-main: #000000;
+    --text-muted: #000000;
   }
 }
 
-/* Day Mode Body: Distinct Rich Soft Pink Aesthetic Background */
+/* Day Mode Body: Soft Pink Aesthetic Background */
 body {
   min-height: 100vh;
   background-color: #FCE7F3;
@@ -55,7 +55,7 @@ body {
   background-repeat: repeat;
   background-size: 100% 100%, 250px 250px, 250px 250px, 250px 250px, 250px 250px, 250px 250px;
   animation: starry-twinkle 25s linear infinite;
-  color: #FFFFFF;
+  color: #000000;
 }
 
 @keyframes starry-twinkle {
@@ -63,22 +63,17 @@ body {
   100% { background-position: 0 0, 250px 250px, 250px 250px, 250px 250px, 250px 250px, 250px 250px; }
 }
 
-/* Day Mode Text Enforcement: Solid Pure Black */
+/* Solid Black Text Everywhere for High Contrast against Beige Cards */
 p, span, h1, h2, h3, h4, h5, h6, a, button, label, input, textarea, select, option, div, li, td, th {
-  color: #000000;
+  color: #000000 !important;
 }
 
-/* Night Mode Text Enforcement: Crisp White */
-.dark p, .dark span, .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6, .dark a, .dark button, .dark label, .dark input, .dark textarea, .dark select, .dark option, .dark div, .dark li, .dark td, .dark th {
-  color: #FFFFFF !important;
-}
-
-/* Glassmorphism Cards */
+/* Warm Beige Cards with Glassmorphism */
 .glass-card {
-  background: var(--card-bg);
+  background: #FAF5F0 !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--card-border);
+  border: 1px solid #EFE6D8 !important;
   box-shadow: 0 10px 30px -5px rgba(244, 114, 182, 0.08);
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -94,11 +89,12 @@ p, span, h1, h2, h3, h4, h5, h6, a, button, label, input, textarea, select, opti
 .glass-card-hover:hover {
   transform: translateY(-3px);
   box-shadow: 0 16px 32px -8px rgba(244, 114, 182, 0.18);
-  border-color: #F472B6;
+  border-color: #F472B6 !important;
 }
 
 .gradient-text {
   font-weight: 800;
+  color: #000000 !important;
   text-shadow: 0 2px 10px rgba(244, 114, 182, 0.25);
 }
 
