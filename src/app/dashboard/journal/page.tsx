@@ -1,70 +1,23 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { getStoredData, setStoredData, DiaryEntry } from "@/lib/store";
 import {
   Heart,
   Save,
-  Smile,
   Sun,
   MapPin,
   Tag,
-  Mic,
-  Square,
-  Volume2,
   Image as ImageIcon,
   Bold,
   Italic,
   Quote,
   Heading1,
-  Sparkles,
   CheckCircle2,
   Upload,
-  X,
-  Trash2
+  X
 } from "lucide-react";
-import { motion } from "framer-motion";
-
-// Helper to generate a valid, audible 3-second PCM WAV synth chime note (C5 - E5 - G5)
-function createSynthAudioWavUrl(): string {
-  const sampleRate = 44100;
-  const duration = 3;
-  const numSamples = sampleRate * duration;
-  const buffer = new ArrayBuffer(44 + numSamples * 2);
-  const view = new DataView(buffer);
-
-  const writeString = (offset: number, str: string) => {
-    for (let i = 0; i < str.length; i++) {
-      view.setUint8(offset + i, str.charCodeAt(i));
-    }
-  };
-
-  writeString(0, 'RIFF');
-  view.setUint32(4, 36 + numSamples * 2, true);
-  writeString(8, 'WAVE');
-  writeString(12, 'fmt ');
-  view.setUint32(16, 16, true);
-  view.setUint16(20, 1, true); // PCM
-  view.setUint16(22, 1, true); // Mono
-  view.setUint32(24, sampleRate, true);
-  view.setUint32(28, sampleRate * 2, true);
-  view.setUint16(32, 2, true);
-  view.setUint16(34, 16, true);
-  writeString(36, 'data');
-  view.setUint32(40, numSamples * 2, true);
-
-  for (let i = 0; i < numSamples; i++) {
-    const t = i / sampleRate;
-    const freq = t < 1.0 ? 523.25 : t < 2.0 ? 659.25 : 783.99; // C5, E5, G5 melody
-    const sample = Math.sin(2 * Math.PI * freq * t) * 0.3 * Math.exp(-(t % 1.0) * 1.5);
-    const intSample = Math.max(-32768, Math.min(32767, Math.floor(sample * 32767)));
-    view.setInt16(44 + i * 2, intSample, true);
-  }
-
-  const blob = new Blob([buffer], { type: 'audio/wav' });
-  return URL.createObjectURL(blob);
-}
 
 export default function JournalEditorPage() {
   const router = useRouter();
@@ -81,15 +34,6 @@ export default function JournalEditorPage() {
     "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
   ]);
   const [photoUrlInput, setPhotoUrlInput] = useState("");
-
-  // Audio Recording State
-  const [isRecording, setIsRecording] = useState(false);
-  const [recordingTime, setRecordingTime] = useState(0);
-  const [recordedAudio, setRecordedAudio] = useState<string | null>(null);
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const audioChunksRef = useRef<Blob[]>([]);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-
   const [savedSuccess, setSavedSuccess] = useState(false);
 
   const moodOptions: { id: DiaryEntry["mood"]; emoji: string; label: string }[] = [
@@ -103,73 +47,6 @@ export default function JournalEditorPage() {
   ];
 
   const weatherOptions = ["Sunny ☀️", "Rainy 🌧️", "Cloudy ⛅", "Snowy ❄️", "Windy 🌬️"];
-
-  // Real Browser Microphone Audio Recording API + Synth Fallback
-  const startAudioRecording = async () => {
-    setIsRecording(true);
-    setRecordingTime(0);
-
-    timerRef.current = setInterval(() => {
-      setRecordingTime((prev) => prev + 1);
-    }, 1000);
-
-    try {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        const mediaRecorder = new MediaRecorder(stream);
-        mediaRecorderRef.current = mediaRecorder;
-        audioChunksRef.current = [];
-
-        mediaRecorder.ondataavailable = (event) => {
-          if (event.data.size > 0) {
-            audioChunksRef.current.push(event.data);
-          }
-        };
-
-        mediaRecorder.onstop = () => {
-          const audioBlob = new Blob(audioChunksRef.current, { type: "audio/webm" });
-          const audioUrl = URL.createObjectURL(audioBlob);
-          setRecordedAudio(audioUrl);
-          stream.getTracks().forEach((track) => track.stop());
-        };
-
-        mediaRecorder.start();
-      } else {
-        throw new Error("getUserMedia not supported");
-      }
-    } catch (err) {
-      console.warn("Microphone access unavailable or denied, generating 3s audible synth voice note:", err);
-      setTimeout(() => {
-        const synthWavUrl = createSynthAudioWavUrl();
-        setRecordedAudio(synthWavUrl);
-        setIsRecording(false);
-        if (timerRef.current) clearInterval(timerRef.current);
-      }, 3000);
-    }
-  };
-
-  const stopAudioRecording = () => {
-    if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
-      mediaRecorderRef.current.stop();
-    } else {
-      const synthWavUrl = createSynthAudioWavUrl();
-      setRecordedAudio(synthWavUrl);
-    }
-    setIsRecording(false);
-    if (timerRef.current) clearInterval(timerRef.current);
-  };
-
-  // Local Audio File Upload Handler
-  const handleAudioFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setRecordedAudio(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   // Local Photo File Upload Handler
   const handlePhotoFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -232,7 +109,6 @@ export default function JournalEditorPage() {
       weather,
       tags,
       photos,
-      voiceNoteUrl: recordedAudio || undefined,
       isFavorite: false,
       createdAt: new Date().toISOString()
     };
@@ -384,63 +260,6 @@ export default function JournalEditorPage() {
             onChange={(e) => setContent(e.target.value)}
             className="w-full p-4 rounded-2xl bg-[#FAF5F0] border border-[#EFE6D8] focus:outline-none focus:border-pink-400 font-sans text-sm text-black placeholder-zinc-400 font-normal leading-relaxed"
           />
-        </div>
-
-        {/* AUDIO ATTACHMENT SECTION (100% Playable Audio Note Generator & Recorder) */}
-        <div className="p-4 rounded-2xl bg-[#F5EFE6] border border-[#EFE6D8] space-y-3">
-          <div className="flex items-center justify-between">
-            <label className="text-xs font-extrabold text-black uppercase tracking-wider flex items-center gap-1.5">
-              <Volume2 className="w-4 h-4 text-pink-500" /> Voice Note Audio Attachment
-            </label>
-
-            {/* Local Audio File Upload Input */}
-            <label className="px-3 py-1.5 rounded-xl bg-[#FAF5F0] border border-[#EFE6D8] text-xs font-extrabold text-black cursor-pointer hover:bg-pink-50 flex items-center gap-1">
-              <Upload className="w-3.5 h-3.5 text-pink-500" /> Upload Audio File
-              <input type="file" accept="audio/*" onChange={handleAudioFileUpload} className="hidden" />
-            </label>
-          </div>
-
-          {/* Record Voice Button */}
-          <div className="flex items-center gap-3">
-            {!isRecording ? (
-              <button
-                type="button"
-                onClick={startAudioRecording}
-                className="px-4 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-rose-400 text-black font-extrabold text-xs shadow-sm flex items-center gap-2 border border-pink-300 btn-shimmer"
-              >
-                <Mic className="w-4 h-4 text-black" /> Record Voice Clip
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={stopAudioRecording}
-                className="px-4 py-2 rounded-xl bg-red-400 text-black font-extrabold text-xs shadow-sm flex items-center gap-2 border border-red-500 animate-pulse"
-              >
-                <Square className="w-4 h-4 text-black" /> Stop Recording ({recordingTime}s)
-              </button>
-            )}
-
-            {recordedAudio && (
-              <span className="text-xs font-extrabold text-pink-600 flex items-center gap-1">
-                <CheckCircle2 className="w-4 h-4 text-pink-500" /> Audio Voice Note Attached!
-              </span>
-            )}
-          </div>
-
-          {/* Audio Player Preview */}
-          {recordedAudio && (
-            <div className="pt-2 flex items-center gap-3">
-              <audio controls src={recordedAudio} className="w-full max-w-md h-10 rounded-xl" />
-              <button
-                type="button"
-                onClick={() => setRecordedAudio(null)}
-                className="p-2 rounded-xl bg-red-100 hover:bg-red-200 text-red-600 border border-red-200"
-                title="Remove Audio Attachment"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
-            </div>
-          )}
         </div>
 
         {/* PHOTO ATTACHMENT SECTION */}

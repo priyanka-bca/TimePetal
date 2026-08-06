@@ -223,12 +223,6 @@ export default function TimelinePage() {
                       </span>
                     ))}
                   </div>
-
-                  {entry.voiceNoteUrl && (
-                    <span className="text-black font-extrabold flex items-center gap-1">
-                      <Volume2 className="w-3.5 h-3.5 text-pink-500" /> Voice Note attached
-                    </span>
-                  )}
                 </div>
               </div>
             </motion.div>
