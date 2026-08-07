@@ -89,7 +89,7 @@ function VerifyEmailContent() {
               <BookOpen className="w-5 h-5 text-amber-500" />
             </div>
           </div>
-          DearDiary
+          TimePetal
         </Link>
         <h1 className="text-xl font-medium tracking-tight text-foreground/90">Email Verification</h1>
       </div>

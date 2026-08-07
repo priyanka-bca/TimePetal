@@ -87,7 +87,7 @@ export default function SignupPage() {
                 <BookOpen className="w-5 h-5 text-amber-500" />
               </div>
             </div>
-            DearDiary
+            TimePetal
           </Link>
           <h1 className="text-xl font-medium tracking-tight text-foreground/90">Begin your journal journey</h1>
           <p className="text-sm text-muted-foreground">Create a private account in seconds</p>

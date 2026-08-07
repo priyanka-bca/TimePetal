@@ -1,6 +1,6 @@
-# DearDiary 🌸 — Private Memory Vault & Digital Diary SaaS
+# TimePetal 🌸 — Private Memory Vault & Digital Diary SaaS
 
-**DearDiary** is a private, aesthetic, production-ready digital diary web application designed for personal reflection, memory preservation, mood tracking, photo vault management, future time-capsule letters, and AI reflection companion.
+**TimePetal** is a private, aesthetic, production-ready digital diary web application designed for personal reflection, memory preservation, mood tracking, photo vault management, future time-capsule letters, and AI reflection companion.
 
 ---
 

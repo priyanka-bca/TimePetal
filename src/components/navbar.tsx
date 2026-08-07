@@ -34,7 +34,7 @@ export function Navbar() {
           </motion.div>
           <div className="flex flex-col">
             <span className="font-serif text-2xl font-bold tracking-tight text-black flex items-center gap-1.5">
-              DearDiary
+              TimePetal
               <span className="inline-block w-2 h-2 rounded-full bg-pink-400 animate-pulse" />
             </span>
             <span className="text-[10px] font-bold text-pink-600 uppercase tracking-widest -mt-1">

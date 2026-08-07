@@ -71,7 +71,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </div>
             <div>
               <h1 className="font-serif text-xl font-bold tracking-tight text-black">
-                DearDiary
+                TimePetal
               </h1>
               <p className="text-[10px] text-pink-600 font-extrabold uppercase tracking-wider">
                 Private Vault
@@ -176,7 +176,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <header className="md:hidden flex items-center justify-between px-4 py-3 border-b border-[#EFE6D8] bg-[#FAF5F0]/95 backdrop-blur-md sticky top-0 z-40">
           <Link href="/dashboard" className="flex items-center gap-2">
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500" />
-            <span className="font-serif font-bold text-black text-lg">DearDiary</span>
+            <span className="font-serif font-bold text-black text-lg">TimePetal</span>
           </Link>
           <div className="flex items-center gap-2">
             <button

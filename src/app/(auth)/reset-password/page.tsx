@@ -74,7 +74,7 @@ function ResetPasswordFormContent() {
               <BookOpen className="w-5 h-5 text-amber-500" />
             </div>
           </div>
-          DearDiary
+          TimePetal
         </Link>
         <h1 className="text-xl font-medium tracking-tight text-foreground/90">Create New Password</h1>
         <p className="text-sm text-muted-foreground">Choose a strong, secure new password for your account</p>

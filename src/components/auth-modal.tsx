@@ -80,7 +80,7 @@ export function AuthModal() {
                 </div>
               </div>
               <h2 className="font-serif text-2xl font-extrabold text-black">
-                {authMode === "login" ? "Welcome Back to DearDiary" : "Create Your Sanctuary Account"}
+                {authMode === "login" ? "Welcome Back to TimePetal" : "Create Your Sanctuary Account"}
               </h2>
               <p className="text-xs text-black font-semibold">
                 Your private memories are encrypted with 256-bit AES protection.

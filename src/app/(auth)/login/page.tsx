@@ -66,7 +66,7 @@ function LoginFormContent() {
               <BookOpen className="w-5 h-5 text-amber-500" />
             </div>
           </div>
-          DearDiary
+          TimePetal
         </Link>
         <h1 className="text-xl font-medium tracking-tight text-foreground/90">Welcome back</h1>
         <p className="text-sm text-muted-foreground">Sign in to your private sanctuary</p>

@@ -49,7 +49,7 @@ export default function ForgotPasswordPage() {
                 <BookOpen className="w-5 h-5 text-amber-500" />
               </div>
             </div>
-            DearDiary
+            TimePetal
           </Link>
           <h1 className="text-xl font-medium tracking-tight text-foreground/90">Reset Your Password</h1>
           <p className="text-sm text-muted-foreground">Enter your email and we&apos;ll send you a recovery link</p>

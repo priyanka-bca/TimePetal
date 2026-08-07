@@ -10,7 +10,7 @@ export default function AiPage() {
   const [messages, setMessages] = useState([
     {
       sender: "ai",
-      text: `Hello ${user?.name || "Friend"}. I am your DearDiary Reflection Companion. What thought or feeling would you like to reflect on today?`
+      text: `Hello ${user?.name || "Friend"}. I am your TimePetal Reflection Companion. What thought or feeling would you like to reflect on today?`
     }
   ]);
   const [input, setInput] = useState("");

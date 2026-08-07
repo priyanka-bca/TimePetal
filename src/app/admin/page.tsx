@@ -29,7 +29,7 @@ export default function AdminDashboardPage() {
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Dashboard
           </Link>
           <h1 className="font-serif text-3xl font-extrabold text-black">
-            DearDiary Admin Portal
+            TimePetal Admin Portal
           </h1>
         </div>
         <span className="px-3 py-1 rounded-full bg-pink-100 border border-pink-200 text-black text-xs font-extrabold flex items-center gap-1.5">

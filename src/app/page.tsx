@@ -33,7 +33,7 @@ export default function LandingPage() {
     },
     {
       q: "How do Future Letters work?",
-      a: "Future Letters act as digital time capsules. You write a letter to your future self, family, or friends, set an unlock date (e.g. 1 year from now), and DearDiary safely seals it with a countdown. On the deliver date, you receive a gentle email notification and your letter unlocks."
+      a: "Future Letters act as digital time capsules. You write a letter to your future self, family, or friends, set an unlock date (e.g. 1 year from now), and TimePetal safely seals it with a countdown. On the deliver date, you receive a gentle email notification and your letter unlocks."
     },
     {
       q: "How does the AI Companion work?",
@@ -83,7 +83,7 @@ export default function LandingPage() {
           >
             <Sparkles className="w-4 h-4 text-pink-500 fill-pink-500/20 animate-spin" style={{ animationDuration: '10s' }} />
             <span className="text-xs font-extrabold text-black">
-              DearDiary 2.0 • 4 Core Functional Sanctuary Features
+              TimePetal 2.0 • 4 Core Functional Sanctuary Features
             </span>
           </motion.div>
 
@@ -187,7 +187,7 @@ export default function LandingPage() {
             Your thoughts belong to you. Always.
           </h2>
           <p className="mt-4 text-black text-lg max-w-2xl mx-auto font-extrabold">
-            We built DearDiary with zero tracking, database encryption, and complete export portability so your heart&apos;s memories stay strictly private.
+            We built TimePetal with zero tracking, database encryption, and complete export portability so your heart&apos;s memories stay strictly private.
           </p>
         </div>
       </section>
@@ -204,7 +204,7 @@ export default function LandingPage() {
                 Support & Donate to the Developer
               </h2>
               <p className="text-black text-base sm:text-lg font-semibold leading-relaxed">
-                DearDiary is completely free with no paywalls or mandatory subscriptions. If this private sanctuary brings calm to your day, consider supporting the solo developer with a small coffee donation to help cover server hosting & maintenance!
+                TimePetal is completely free with no paywalls or mandatory subscriptions. If this private sanctuary brings calm to your day, consider supporting the solo developer with a small coffee donation to help cover server hosting & maintenance!
               </p>
             </div>
 
@@ -285,8 +285,8 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <Heart className="w-4 h-4 text-pink-500 fill-pink-500" />
-            <span className="font-serif font-extrabold text-black text-sm">DearDiary</span>
-            <span className="text-black">© 2026 DearDiary Inc. All rights reserved.</span>
+            <span className="font-serif font-extrabold text-black text-sm">TimePetal</span>
+            <span className="text-black">© 2026 TimePetal Inc. All rights reserved.</span>
           </div>
 
           <div className="flex items-center gap-6 font-extrabold">
