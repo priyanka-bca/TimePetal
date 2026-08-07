@@ -31,6 +31,8 @@ export const metadata: Metadata = {
   }
 };
 
+import { Providers } from "@/components/providers";
+
 export default function RootLayout({
   children,
 }: {
@@ -59,12 +61,14 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col antialiased">
-        <ThemeProvider>
-          <AuthProvider>
-            {children}
-            <AuthModal />
-          </AuthProvider>
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider>
+            <AuthProvider>
+              {children}
+              <AuthModal />
+            </AuthProvider>
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

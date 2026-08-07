@@ -5,12 +5,15 @@ import { getStoredData, DiaryEntry } from "@/lib/store";
 import { Smile, TrendingUp, Calendar, Heart, Sparkles, Filter } from "lucide-react";
 import { motion } from "framer-motion";
 
+import { useAuth } from "@/lib/auth";
+
 export default function MoodPage() {
+  const { user } = useAuth();
   const [entries, setEntries] = useState<DiaryEntry[]>([]);
 
   useEffect(() => {
-    setEntries(getStoredData("deardiary_entries", []));
-  }, []);
+    setEntries(getStoredData("deardiary_entries", [], user?.id));
+  }, [user]);
 
   const moodCounts = entries.reduce((acc, curr) => {
     acc[curr.mood] = (acc[curr.mood] || 0) + 1;

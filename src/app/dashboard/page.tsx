@@ -27,10 +27,10 @@ export default function DashboardPage() {
   const [letters, setLetters] = useState<FutureLetter[]>([]);
 
   useEffect(() => {
-    setEntries(getStoredData("deardiary_entries", []));
-    setMoods(getStoredData("deardiary_moods", []));
-    setLetters(getStoredData("deardiary_letters", []));
-  }, []);
+    setEntries(getStoredData("deardiary_entries", [], user?.id));
+    setMoods(getStoredData("deardiary_moods", [], user?.id));
+    setLetters(getStoredData("deardiary_letters", [], user?.id));
+  }, [user]);
 
   const recentEntries = entries.slice(0, 3);
   const todaysEntry = entries.find(
@@ -74,8 +74,8 @@ export default function DashboardPage() {
         <Heart className="absolute right-4 bottom-4 w-48 h-48 text-pink-200/50 pointer-events-none -rotate-12" />
       </div>
 
-      {/* 5 Core Feature Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      {/* 4 Core Feature Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Core 1: AI Companion */}
         <Link
           href="/dashboard/ai"
@@ -129,20 +129,6 @@ export default function DashboardPage() {
           <div>
             <p className="font-serif text-base font-extrabold text-black">Future Letters</p>
             <p className="text-[10px] text-black font-semibold mt-0.5">{letters.length} Sealed capsules</p>
-          </div>
-        </Link>
-
-        {/* Core 5: Premium Themes */}
-        <Link
-          href="/dashboard/themes"
-          className="glass-card glass-card-hover rounded-2xl p-4 border border-[#EFE6D8] flex flex-col justify-between bg-[#FAF5F0] space-y-3"
-        >
-          <div className="w-9 h-9 rounded-xl bg-[#F5EFE6] text-pink-500 flex items-center justify-center border border-[#EFE6D8]">
-            <Palette className="w-4 h-4 text-pink-500" />
-          </div>
-          <div>
-            <p className="font-serif text-base font-extrabold text-black">Premium Themes</p>
-            <p className="text-[10px] text-black font-semibold mt-0.5">5 Aesthetics active</p>
           </div>
         </Link>
       </div>

@@ -11,8 +11,8 @@ export function AuthModal() {
     closeAuthModal,
     authMode,
     setAuthMode,
-    login,
-    signup,
+    loginWithCredentials,
+    signupWithCredentials,
     loginWithGoogle
   } = useAuth();
 
@@ -22,7 +22,7 @@ export function AuthModal() {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg("");
     setSuccessMsg("");
@@ -38,11 +38,19 @@ export function AuthModal() {
     }
 
     if (authMode === "login") {
-      login(email, password);
-      setSuccessMsg("Welcome back to your private vault!");
+      const res = await loginWithCredentials(email, password);
+      if (!res.success) {
+        setErrorMsg(res.error || "Invalid email or password.");
+      } else {
+        setSuccessMsg("Welcome back to your private vault!");
+      }
     } else {
-      signup(name, email, password);
-      setSuccessMsg("Account created successfully! Opening your vault...");
+      const res = await signupWithCredentials(name, email, password, password);
+      if (!res.success) {
+        setErrorMsg(res.error || "Failed to create account.");
+      } else {
+        setSuccessMsg(res.message || "Account created! Please check your email to verify.");
+      }
     }
   };
 

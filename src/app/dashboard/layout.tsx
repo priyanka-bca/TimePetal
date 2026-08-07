@@ -35,9 +35,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [entries, setEntries] = useState<DiaryEntry[]>([]);
 
   useEffect(() => {
-    const saved = getStoredData<DiaryEntry[]>("deardiary_entries", []);
+    const saved = getStoredData<DiaryEntry[]>("deardiary_entries", [], user?.id);
     setEntries(saved);
-  }, []);
+  }, [user]);
 
   const navItems = [
     { href: "/dashboard", label: "Dashboard Home", icon: BookOpen },
@@ -46,7 +46,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { href: "/dashboard/timeline", label: "Memory Timeline", icon: Clock },
     { href: "/dashboard/mood", label: "Mood Analytics", icon: Smile },
     { href: "/dashboard/letters", label: "Future Letters", icon: Mail },
-    { href: "/dashboard/themes", label: "Premium Themes", icon: Palette },
   ];
 
   const searchResults = searchQuery.trim()

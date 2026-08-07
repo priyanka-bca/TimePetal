@@ -201,22 +201,25 @@ const INITIAL_LETTERS: FutureLetter[] = [
   }
 ];
 
-// Local Storage Helper / Store Mock
-export const getStoredData = <T>(key: string, fallback: T): T => {
+// Local Storage Helper / Store Mock (User Isolated)
+export const getStoredData = <T>(key: string, fallback: T, userId?: string | null): T => {
   if (typeof window === "undefined") return fallback;
   try {
-    const item = localStorage.getItem(key);
+    const storageKey = userId ? `${key}_${userId}` : key;
+    const item = localStorage.getItem(storageKey);
     return item ? JSON.parse(item) : fallback;
   } catch (e) {
     return fallback;
   }
 };
 
-export const setStoredData = <T>(key: string, value: T): void => {
+export const setStoredData = <T>(key: string, value: T, userId?: string | null): void => {
   if (typeof window === "undefined") return;
   try {
-    localStorage.setItem(key, JSON.stringify(value));
+    const storageKey = userId ? `${key}_${userId}` : key;
+    localStorage.setItem(storageKey, JSON.stringify(value));
   } catch (e) {
     console.error("Storage save failed", e);
   }
 };
+

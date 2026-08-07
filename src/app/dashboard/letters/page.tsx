@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import { getStoredData, setStoredData, FutureLetter } from "@/lib/store";
 import { Mail, Lock, Plus, Calendar, CheckCircle2, Flower2, Sprout } from "lucide-react";
 
+import { useAuth } from "@/lib/auth";
+
 export default function LettersPage() {
+  const { user } = useAuth();
   const [letters, setLetters] = useState<FutureLetter[]>([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [unlockDate, setUnlockDate] = useState("2027-08-06");
-  const [recipientEmail, setRecipientEmail] = useState("sophia@deardiary.app");
+  const [unlockDate, setUnlockDate] = useState(() => new Date().toISOString().split("T")[0]);
+  const [recipientEmail, setRecipientEmail] = useState(user?.email || "");
   const [selectedFlower, setSelectedFlower] = useState("🌸 Cherry Blossom");
   const [successMsg, setSuccessMsg] = useState(false);
 
@@ -22,8 +25,12 @@ export default function LettersPage() {
   ];
 
   useEffect(() => {
-    setLetters(getStoredData("deardiary_letters", []));
-  }, []);
+    setLetters(getStoredData("deardiary_letters", [], user?.id));
+    if (user?.email) {
+      setRecipientEmail(user.email);
+    }
+    setUnlockDate(new Date().toISOString().split("T")[0]);
+  }, [user]);
 
   const handleCreateLetter = () => {
     if (!title.trim() || !content.trim()) {
@@ -44,10 +51,11 @@ export default function LettersPage() {
 
     const updated = [newLetter, ...letters];
     setLetters(updated);
-    setStoredData("deardiary_letters", updated);
+    setStoredData("deardiary_letters", updated, user?.id);
 
     setTitle("");
     setContent("");
+    setUnlockDate(new Date().toISOString().split("T")[0]);
     setSuccessMsg(true);
     setTimeout(() => setSuccessMsg(false), 2500);
   };
@@ -85,11 +93,10 @@ export default function LettersPage() {
                     key={f.name}
                     type="button"
                     onClick={() => setSelectedFlower(f.name)}
-                    className={`px-3 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 border transition-all ${
-                      selectedFlower === f.name
-                        ? "bg-pink-200 dark:bg-purple-900 border-pink-400 dark:border-purple-600 text-black dark:text-white shadow-sm"
-                        : "bg-pink-50 dark:bg-purple-950/40 border-pink-200 dark:border-purple-900 text-black dark:text-white hover:bg-pink-100"
-                    }`}
+                    className={`px-3 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 border transition-all ${selectedFlower === f.name
+                      ? "bg-pink-200 dark:bg-purple-900 border-pink-400 dark:border-purple-600 text-black dark:text-white shadow-sm"
+                      : "bg-pink-50 dark:bg-purple-950/40 border-pink-200 dark:border-purple-900 text-black dark:text-white hover:bg-pink-100"
+                      }`}
                   >
                     <span className="text-base">{f.emoji}</span>
                     <span>{f.name.split(" ")[1]}</span>
@@ -103,7 +110,7 @@ export default function LettersPage() {
               placeholder="Letter Title (e.g. To Me on My 30th Birthday)..."
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-3 rounded-2xl bg-pink-50 dark:bg-purple-950/40 border border-pink-200 dark:border-purple-800 text-sm font-extrabold text-black dark:text-white focus:outline-none focus:border-pink-400 placeholder-zinc-400"
+              className="w-full px-4 py-3 rounded-2xl bg-pink-50 dark:bg-purple-950/60 border border-pink-300 dark:border-purple-700 text-sm font-bold text-slate-900 dark:text-slate-100 focus:outline-none focus:border-pink-500 dark:focus:border-purple-500 placeholder-zinc-500 dark:placeholder-purple-300/80 shadow-sm"
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -115,7 +122,7 @@ export default function LettersPage() {
                   type="date"
                   value={unlockDate}
                   onChange={(e) => setUnlockDate(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl bg-pink-50 dark:bg-purple-950/40 border border-pink-200 dark:border-purple-800 text-xs font-extrabold text-black dark:text-white focus:outline-none"
+                  className="w-full px-4 py-2.5 rounded-xl bg-pink-50 dark:bg-purple-950/60 border border-pink-300 dark:border-purple-700 text-xs font-extrabold text-slate-900 dark:text-slate-100 focus:outline-none focus:border-pink-500 dark:focus:border-purple-500 shadow-sm"
                 />
               </div>
               <div>
@@ -126,7 +133,8 @@ export default function LettersPage() {
                   type="email"
                   value={recipientEmail}
                   onChange={(e) => setRecipientEmail(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl bg-pink-50 dark:bg-purple-950/40 border border-pink-200 dark:border-purple-800 text-xs font-extrabold text-black dark:text-white focus:outline-none"
+                  placeholder="your.email@example.com"
+                  className="w-full px-4 py-2.5 rounded-xl bg-pink-50 dark:bg-purple-950/60 border border-pink-300 dark:border-purple-700 text-xs font-extrabold text-slate-900 dark:text-slate-100 focus:outline-none focus:border-pink-500 dark:focus:border-purple-500 placeholder-zinc-500 dark:placeholder-purple-300/80 shadow-sm"
                 />
               </div>
             </div>
@@ -136,7 +144,7 @@ export default function LettersPage() {
               placeholder="Write your heartfelt note... Plant it with love."
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              className="w-full p-4 rounded-2xl bg-[#FFF5F7] dark:bg-purple-950/30 border border-pink-200 dark:border-purple-800 text-sm text-black dark:text-white focus:outline-none font-normal placeholder-zinc-400 leading-relaxed"
+              className="w-full p-4 rounded-2xl bg-pink-50/70 dark:bg-purple-950/60 border border-pink-300 dark:border-purple-700 text-sm text-slate-900 dark:text-slate-100 focus:outline-none font-medium placeholder-zinc-500 dark:placeholder-purple-300/80 leading-relaxed shadow-sm"
             />
 
             <button

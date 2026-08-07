@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { getStoredData, setStoredData, PhotoItem } from "@/lib/store";
 import { Camera, Plus, Star, Heart, Upload, X, CheckCircle2, Trash2, Image as ImageIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "@/lib/auth";
 
 export default function AlbumsPage() {
+  const { user } = useAuth();
   const [photos, setPhotos] = useState<PhotoItem[]>([]);
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [caption, setCaption] = useState("");
@@ -15,8 +17,8 @@ export default function AlbumsPage() {
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
   useEffect(() => {
-    setPhotos(getStoredData("deardiary_photos", []));
-  }, []);
+    setPhotos(getStoredData("deardiary_photos", [], user?.id));
+  }, [user]);
 
   // Handle local file selection via FileReader (base64)
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +56,7 @@ export default function AlbumsPage() {
 
     const updated = [newPhoto, ...photos];
     setPhotos(updated);
-    setStoredData("deardiary_photos", updated);
+    setStoredData("deardiary_photos", updated, user?.id);
 
     setUploadSuccess(true);
     setTimeout(() => {
@@ -72,14 +74,14 @@ export default function AlbumsPage() {
       p.id === id ? { ...p, isFavorite: !p.isFavorite } : p
     );
     setPhotos(updated);
-    setStoredData("deardiary_photos", updated);
+    setStoredData("deardiary_photos", updated, user?.id);
   };
 
   // Delete photo
   const handleDeletePhoto = (id: string) => {
     const updated = photos.filter((p) => p.id !== id);
     setPhotos(updated);
-    setStoredData("deardiary_photos", updated);
+    setStoredData("deardiary_photos", updated, user?.id);
   };
 
   return (

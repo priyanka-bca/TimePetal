@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Navbar } from "@/components/navbar";
+import { FeatureCardsGrid } from "@/components/feature-cards";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Heart,
@@ -22,9 +23,8 @@ import {
 } from "lucide-react";
 
 export default function LandingPage() {
-  const [activePreviewTab, setActivePreviewTab] = useState<"ai" | "timeline" | "mood" | "letters" | "themes">("ai");
+  const [activePreviewTab, setActivePreviewTab] = useState<"ai" | "timeline" | "mood" | "letters">("ai");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [selectedPlan, setSelectedPlan] = useState<"monthly" | "yearly">("yearly");
 
   const faqs = [
     {
@@ -38,10 +38,6 @@ export default function LandingPage() {
     {
       q: "How does the AI Companion work?",
       a: "The AI reflection assistant provides daily writing prompts, summarizes memory chapters, and offers gentle emotional companionship. It is 100% optional and only runs when you choose to interact with it."
-    },
-    {
-      q: "What are Premium Themes?",
-      a: "You can switch between 5 aesthetic color themes (Soft Blush Pink 🌸, Aesthetic Lavender 🪻, Sunset Peach 🌅, Rose Mist 🌹, and Cosmic Night Sky 🌙) instantly with a single click."
     }
   ];
 
@@ -87,7 +83,7 @@ export default function LandingPage() {
           >
             <Sparkles className="w-4 h-4 text-pink-500 fill-pink-500/20 animate-spin" style={{ animationDuration: '10s' }} />
             <span className="text-xs font-extrabold text-black">
-              DearDiary 2.0 • 5 Core Functional Sanctuary Features
+              DearDiary 2.0 • 4 Core Functional Sanctuary Features
             </span>
           </motion.div>
 
@@ -130,11 +126,11 @@ export default function LandingPage() {
             </motion.div>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
               <a
-                href="#interactive-demo"
+                href="#features"
                 className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#FAF5F0] hover:bg-pink-50 text-black font-bold text-base border border-[#EFE6D8] transition-all flex items-center justify-center gap-2 shadow-sm btn-shimmer"
               >
                 <Sparkles className="w-4 h-4 text-pink-500" />
-                <span className="text-black">Explore 5 Features</span>
+                <span className="text-black">Explore 4 Features</span>
               </a>
             </motion.div>
           </motion.div>
@@ -159,237 +155,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Interactive Demo Section featuring the 5 Core Features */}
-      <section id="interactive-demo" className="py-20 bg-transparent border-y border-[#EFE6D8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-12"
-          >
-            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-black">
-              ⭐ 5 Fully Functional Sanctuary Features
-            </h2>
-            <p className="mt-4 text-black text-base font-semibold">
-              Click any feature below to test out the live interactive preview.
-            </p>
-
-            {/* 5 Core Feature Selector Tabs */}
-            <div className="mt-8 inline-flex p-1.5 rounded-2xl bg-[#FAF5F0] gap-1 border border-[#EFE6D8] flex-wrap justify-center">
-              <button
-                onClick={() => setActivePreviewTab("ai")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
-                  activePreviewTab === "ai"
-                    ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
-                    : "text-black"
-                }`}
-              >
-                <Sparkles className="w-4 h-4 text-black" /> ⭐ AI Companion
-              </button>
-              <button
-                onClick={() => setActivePreviewTab("timeline")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
-                  activePreviewTab === "timeline"
-                    ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
-                    : "text-black"
-                }`}
-              >
-                <Clock className="w-4 h-4 text-black" /> ⭐ Memory Timeline
-              </button>
-              <button
-                onClick={() => setActivePreviewTab("mood")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
-                  activePreviewTab === "mood"
-                    ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
-                    : "text-black"
-                }`}
-              >
-                <Smile className="w-4 h-4 text-black" /> ⭐ Mood Analytics
-              </button>
-              <button
-                onClick={() => setActivePreviewTab("letters")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
-                  activePreviewTab === "letters"
-                    ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
-                    : "text-black"
-                }`}
-              >
-                <Mail className="w-4 h-4 text-black" /> ⭐ Future Letters
-              </button>
-              <button
-                onClick={() => setActivePreviewTab("themes")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all flex items-center gap-1.5 ${
-                  activePreviewTab === "themes"
-                    ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm"
-                    : "text-black"
-                }`}
-              >
-                <Palette className="w-4 h-4 text-black" /> ⭐ Premium Themes
-              </button>
-            </div>
-          </motion.div>
-
-          {/* Active Tab Preview Display */}
-          <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 sm:p-10 shadow-xl border border-[#EFE6D8] bg-[#FAF5F0]">
-            <AnimatePresence mode="wait">
-              {activePreviewTab === "ai" && (
-                <motion.div
-                  key="ai"
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-6"
-                >
-                  <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-4">
-                    <div>
-                      <h4 className="font-serif text-xl font-extrabold text-black flex items-center gap-2">
-                        ⭐ AI Diary Companion Showcase ✨
-                      </h4>
-                      <p className="text-xs text-black font-semibold">Get compassionate journaling prompts, memory chapter summaries, and daily quote reflections.</p>
-                    </div>
-                  </div>
-                  <div className="p-4 rounded-2xl bg-[#F5EFE6] border border-[#EFE6D8] space-y-3 font-serif text-black">
-                    <p className="text-sm font-bold text-pink-600 uppercase">Daily Companion Reflection</p>
-                    <p className="text-sm font-sans leading-relaxed text-black font-normal">
-                      &ldquo;You seem most calm on rainy mornings. What is one small thing that brought peace to your heart today? Write it down to seal the memory.&rdquo;
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-
-              {activePreviewTab === "timeline" && (
-                <motion.div
-                  key="timeline"
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-4"
-                >
-                  <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-3">
-                    <h4 className="font-serif text-xl font-extrabold text-black">
-                      ⭐ Memory Timeline & Filters
-                    </h4>
-                    <span className="text-xs font-extrabold text-black">Filter by Year • Mood • Tag</span>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="p-4 rounded-xl bg-[#F5EFE6] border border-[#EFE6D8] flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-[#FAF5F0] text-black flex items-center justify-center font-extrabold text-xs border border-[#EFE6D8]">
-                          AUG 06
-                        </div>
-                        <div>
-                          <p className="font-extrabold text-sm text-black">Matcha Morning & Warm Rain</p>
-                          <p className="text-xs text-black font-semibold">Calm • #Mindfulness • Kyoto</p>
-                        </div>
-                      </div>
-                      <span className="text-xs text-amber-500 font-extrabold">★ Favorite</span>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              {activePreviewTab === "mood" && (
-                <motion.div
-                  key="mood"
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-4"
-                >
-                  <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-3">
-                    <h4 className="font-serif text-xl font-extrabold text-black">
-                      ⭐ Emotional Trends & Mood Calendar
-                    </h4>
-                    <span className="text-xs text-black font-extrabold">88% Positive Emotions This Month</span>
-                  </div>
-                  <div className="grid grid-cols-7 gap-2 text-center text-xs font-extrabold text-black py-2">
-                    {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
-                      <div key={day} className="text-black">{day}</div>
-                    ))}
-                    {[
-                      { emoji: "😌", bg: "bg-[#F5EFE6] text-black" },
-                      { emoji: "🥰", bg: "bg-[#F5EFE6] text-black" },
-                      { emoji: "🤩", bg: "bg-[#F5EFE6] text-black" },
-                      { emoji: "😊", bg: "bg-[#F5EFE6] text-black" },
-                      { emoji: "😌", bg: "bg-[#F5EFE6] text-black" },
-                      { emoji: "🥰", bg: "bg-[#F5EFE6] text-black" },
-                      { emoji: "😌", bg: "bg-[#F5EFE6] text-black" }
-                    ].map((item, idx) => (
-                      <div key={idx} className={`h-12 rounded-xl flex items-center justify-center text-lg ${item.bg}`}>
-                        {item.emoji}
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-
-              {activePreviewTab === "letters" && (
-                <motion.div
-                  key="letters"
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-4"
-                >
-                  <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-3">
-                    <h4 className="font-serif text-xl font-extrabold text-black">
-                      ⭐ Sealed Future Time Capsule Letters
-                    </h4>
-                    <span className="text-xs text-black font-extrabold">Automatic Email Notification</span>
-                  </div>
-                  <div className="p-5 rounded-2xl bg-[#F5EFE6] border border-[#EFE6D8] space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-extrabold text-black uppercase tracking-wider">
-                        🔒 Sealed Letter to Future Self (🌸 Cherry Blossom Stamp)
-                      </span>
-                      <span className="text-xs text-black font-extrabold">Unlocks: Feb 20, 2027</span>
-                    </div>
-                    <p className="font-serif text-lg font-extrabold text-black">
-                      &ldquo;To Me on My 30th Birthday: Are You Still Living Softly?&rdquo;
-                    </p>
-                    <p className="text-xs text-black italic font-bold">
-                      Sealed with 256-bit encryption. Countdown active: 180 Days remaining.
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-
-              {activePreviewTab === "themes" && (
-                <motion.div
-                  key="themes"
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-4"
-                >
-                  <div className="flex items-center justify-between border-b border-[#EFE6D8] pb-3">
-                    <h4 className="font-serif text-xl font-extrabold text-black">
-                      ⭐ 5 Premium Themes & Atmosphere
-                    </h4>
-                    <span className="text-xs font-extrabold text-black">Instant 1-Click Theme Switch</span>
-                  </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs font-extrabold text-black">
-                    <div className="p-3 rounded-xl bg-[#F5EFE6] border border-[#EFE6D8]">🌸 Soft Blush Pink</div>
-                    <div className="p-3 rounded-xl bg-[#F5EFE6] border border-[#EFE6D8]">🪻 Soft Lavender</div>
-                    <div className="p-3 rounded-xl bg-[#F5EFE6] border border-[#EFE6D8]">🌅 Sunset Peach</div>
-                    <div className="p-3 rounded-xl bg-[#F5EFE6] border border-[#EFE6D8]">🌙 Night Sky Stars</div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Grid Section - 5 Core Features Only */}
-      <section id="features" className="py-24">
+      {/* Features Grid Section - 4 Core Features Only */}
+      <section id="features" className="pt-4 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -399,73 +166,14 @@ export default function LandingPage() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-black">
-              Focusing exclusively on the 5 core features that matter most.
+              Focusing exclusively on the 4 core features that matter most.
             </h2>
             <p className="mt-4 text-black text-lg font-semibold">
               Every single feature is engineered to be 100% functional, private, and beautifully responsive.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Sparkles,
-                title: "⭐ AI Diary Companion",
-                desc: "Get daily writing prompts, summarize memory chapters, and receive gentle emotional reflections when you feel stuck.",
-                link: "/dashboard/ai"
-              },
-              {
-                icon: Clock,
-                title: "⭐ Memory Timeline",
-                desc: "Look back on your journey through a visual timeline filtered by years, months, emotional states, and custom tags.",
-                link: "/dashboard/timeline"
-              },
-              {
-                icon: Smile,
-                title: "⭐ Mood Analytics",
-                desc: "Log daily emotional intensity, discover patterns, view monthly calendars, and gain compassionate mood insights.",
-                link: "/dashboard/mood"
-              },
-              {
-                icon: Mail,
-                title: "⭐ Future Letters",
-                desc: "Write letters to your future self or loved ones with flower stamps, scheduled unlock dates, and automated email notifications.",
-                link: "/dashboard/letters"
-              },
-              {
-                icon: Palette,
-                title: "⭐ Premium Themes",
-                desc: "Switch between 5 aesthetic color themes (Blush Pink, Lavender, Sunset Peach, Rose Mist, and Cosmic Night Sky) instantly.",
-                link: "/dashboard/themes"
-              }
-            ].map((feat, idx) => {
-              const Icon = feat.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="glass-card glass-card-hover rounded-3xl p-8 border border-[#EFE6D8] space-y-4 bg-[#FAF5F0]"
-                >
-                  <div className="w-12 h-12 rounded-2xl bg-[#F5EFE6] text-black flex items-center justify-center border border-[#EFE6D8]">
-                    <Icon className="w-6 h-6 text-pink-500" />
-                  </div>
-                  <h3 className="font-serif text-2xl font-extrabold text-black">{feat.title}</h3>
-                  <p className="text-black text-sm leading-relaxed font-normal">
-                    {feat.desc}
-                  </p>
-                  <Link
-                    href={feat.link}
-                    className="inline-flex items-center gap-1 text-xs font-extrabold text-pink-600 hover:opacity-80 pt-2"
-                  >
-                    Try Feature Live <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
+          <FeatureCardsGrid />
         </div>
       </section>
 
@@ -484,113 +192,57 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-black">
-              Simple, transparent pricing.
-            </h2>
-            <p className="mt-4 text-black text-lg font-semibold">
-              Start writing completely free today. Upgrade anytime for unlimited memories & AI reflection tools.
-            </p>
-
-            {/* Toggle Monthly / Yearly */}
-            <div className="mt-8 inline-flex items-center gap-3 p-1.5 rounded-full bg-[#FAF5F0] border border-[#EFE6D8] text-xs font-extrabold">
-              <button
-                onClick={() => setSelectedPlan("monthly")}
-                className={`px-4 py-2 rounded-full transition-all ${
-                  selectedPlan === "monthly" ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm font-extrabold" : "text-black"
-                }`}
-              >
-                Monthly Billing
-              </button>
-              <button
-                onClick={() => setSelectedPlan("yearly")}
-                className={`px-4 py-2 rounded-full transition-all flex items-center gap-1.5 ${
-                  selectedPlan === "yearly" ? "bg-gradient-to-r from-pink-400 to-rose-400 text-black shadow-sm font-extrabold" : "text-black"
-                }`}
-              >
-                Yearly Billing <span className="px-2 py-0.5 rounded-full bg-[#F5EFE6] text-black text-[10px] font-extrabold border border-[#EFE6D8]">SAVE 30%</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Free Tier */}
-            <div className="glass-card rounded-3xl p-8 border border-[#EFE6D8] space-y-6 flex flex-col justify-between bg-[#FAF5F0]">
-              <div>
-                <span className="px-3 py-1 rounded-full bg-[#F5EFE6] text-black text-xs font-extrabold uppercase border border-[#EFE6D8]">
-                  Free Forever
-                </span>
-                <h3 className="font-serif text-3xl font-extrabold text-black mt-4">$0</h3>
-                <p className="text-xs text-black font-extrabold">Perfect for casual daily journaling.</p>
-
-                <ul className="mt-6 space-y-3 text-sm text-black font-extrabold">
-                  <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> All 5 Core Functional Features Included
-                  </li>
-                  <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Memory Timeline & Search
-                  </li>
-                  <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Basic Mood Tracking
-                  </li>
-                </ul>
-              </div>
-
-              <Link
-                href="/dashboard"
-                className="w-full py-3.5 rounded-2xl glass-card hover:bg-pink-50 text-center text-black font-extrabold text-sm border border-[#EFE6D8] transition-colors btn-shimmer"
-              >
-                Get Started Free
-              </Link>
+      {/* Donate to Developer Section (100% Free App) */}
+      <section id="donate" className="py-12 bg-gradient-to-b from-transparent via-rose-50/50 dark:via-rose-950/20 to-transparent">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="glass-card rounded-3xl p-8 sm:p-12 border border-[#EFE6D8] bg-[#FAF5F0] text-center space-y-8 shadow-xl relative overflow-hidden">
+            <div className="max-w-2xl mx-auto space-y-4">
+              <span className="px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-xs font-extrabold uppercase border border-pink-200 inline-flex items-center gap-1.5">
+                <Heart className="w-3.5 h-3.5 fill-pink-500 text-pink-500" /> 100% Free Forever • Zero Ads
+              </span>
+              <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-black">
+                Support & Donate to the Developer
+              </h2>
+              <p className="text-black text-base sm:text-lg font-semibold leading-relaxed">
+                DearDiary is completely free with no paywalls or mandatory subscriptions. If this private sanctuary brings calm to your day, consider supporting the solo developer with a small coffee donation to help cover server hosting & maintenance!
+              </p>
             </div>
 
-            {/* Premium Tier */}
-            <div className="glass-card rounded-3xl p-8 border-2 border-pink-400 space-y-6 flex flex-col justify-between relative shadow-xl shadow-pink-100 bg-[#FAF5F0]">
-              <div className="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-gradient-to-r from-pink-400 to-rose-400 text-black text-[11px] font-extrabold uppercase tracking-wider shadow-md border border-pink-300">
-                Most Popular
-              </div>
+            {/* Donation Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+              {[
+                { amount: "$3", title: "Buy a Coffee ☕", desc: "Keep the developer energized!" },
+                { amount: "$5", title: "Sanctuary Supporter 💖", desc: "Helps cover monthly database costs." },
+                { amount: "$10+", title: "Super Sponsor 🚀", desc: "Sponsors new feature development!" },
+              ].map((tier, idx) => (
+                <motion.button
+                  key={idx}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => alert(`Thank you so much for your generosity & support! ☕✨ (${tier.amount} donation link)`)}
+                  className="p-6 rounded-2xl bg-[#F5EFE6] hover:bg-pink-100 border border-[#EFE6D8] text-left space-y-2 transition-all shadow-sm group"
+                >
+                  <div className="text-2xl font-serif font-extrabold text-pink-600">{tier.amount}</div>
+                  <div className="font-bold text-sm text-black group-hover:text-pink-600 transition-colors">{tier.title}</div>
+                  <div className="text-xs text-black font-medium">{tier.desc}</div>
+                </motion.button>
+              ))}
+            </div>
 
-              <div>
-                <span className="px-3 py-1 rounded-full bg-[#F5EFE6] text-black text-xs font-extrabold uppercase border border-[#EFE6D8]">
-                  Premium Sanctuary
-                </span>
-                <div className="flex items-baseline gap-1 mt-4">
-                  <h3 className="font-serif text-4xl font-extrabold text-black">
-                    {selectedPlan === "yearly" ? "$4.99" : "$6.99"}
-                  </h3>
-                  <span className="text-xs text-black font-extrabold">/ month {selectedPlan === "yearly" && "(billed annually)"}</span>
-                </div>
-                <p className="text-xs text-pink-600 font-extrabold">Includes 14-day free trial. Cancel anytime.</p>
-
-                <ul className="mt-6 space-y-3 text-sm text-black font-extrabold">
-                  <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Unlimited Memories & Future Time Capsules
-                  </li>
-                  <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> Full AI Companion Reflection Chat
-                  </li>
-                  <li className="flex items-center gap-2 text-black">
-                    <CheckCircle2 className="w-4 h-4 text-pink-500" /> All 5 Premium Aesthetic Themes
-                  </li>
-                </ul>
-              </div>
-
-              <Link
-                href="/dashboard"
-                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black text-center font-extrabold text-sm shadow-md shadow-pink-200 border border-pink-300 transition-all btn-shimmer"
-              >
-                Start Free Trial
-              </Link>
+            <div className="pt-4 border-t border-[#EFE6D8] flex flex-wrap items-center justify-center gap-6 text-xs font-extrabold text-black">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500" /> All 4 Sanctuary Features 100% Free
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Lock className="w-4 h-4 text-pink-500" /> Private Data Security Guaranteed
+              </span>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-transparent border-t border-[#EFE6D8]">
+      <section id="faq" className="py-12 bg-transparent border-t border-[#EFE6D8]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-black">
@@ -613,9 +265,8 @@ export default function LandingPage() {
                 >
                   <span className="text-base text-black">{faq.q}</span>
                   <ChevronDown
-                    className={`w-5 h-5 text-pink-500 transition-transform duration-200 ${
-                      openFaq === idx ? "rotate-180" : ""
-                    }`}
+                    className={`w-5 h-5 text-pink-500 transition-transform duration-200 ${openFaq === idx ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
                 {openFaq === idx && (

@@ -8,18 +8,10 @@ import { Heart, Sparkles, Moon, Sun, Menu, X, ArrowRight, Clock, Smile, Mail, Pa
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Navbar() {
-  const { theme, setTheme, isDarkMode, toggleDarkMode } = useTheme();
+  const { isDarkMode, toggleDarkMode } = useTheme();
   const { user, isAuthenticated, openAuthModal, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-
-  const themeOptions: { id: "blush" | "lavender" | "sunset" | "midnight"; name: string; icon: string }[] = [
-    { id: "blush", name: "Soft Blush Pink", icon: "🌸" },
-    { id: "lavender", name: "Aesthetic Lavender", icon: "🪻" },
-    { id: "sunset", name: "Sunset Peach", icon: "🌅" },
-    { id: "midnight", name: "Rose Mist", icon: "🌹" },
-  ];
 
   return (
     <motion.header
@@ -65,141 +57,109 @@ export function Navbar() {
           <Link href="/dashboard/letters" className="text-black hover:opacity-70 transition-opacity flex items-center gap-1">
             <Mail className="w-3.5 h-3.5 text-pink-500" /> Future Letters
           </Link>
-          <Link href="/dashboard/themes" className="text-black hover:opacity-70 transition-opacity flex items-center gap-1">
-            <Palette className="w-3.5 h-3.5 text-pink-500" /> Premium Themes
-          </Link>
         </nav>
 
         {/* Action Controls */}
         <div className="hidden md:flex items-center gap-2">
-          {/* Theme Palette Switcher Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setThemeDropdownOpen(!themeDropdownOpen)}
-              className="p-2.5 rounded-xl bg-[#FAF5F0] text-black hover:bg-pink-50 transition-all border border-[#EFE6D8] shadow-sm flex items-center gap-1.5 text-xs font-extrabold btn-shimmer"
-              title="Select Premium Theme"
-            >
-              <Palette className="w-4 h-4 text-pink-500" />
-              <span className="capitalize text-black">{theme}</span>
-            </button>
-
-            <AnimatePresence>
-              {themeDropdownOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  className="absolute right-0 mt-2 w-48 rounded-2xl bg-[#FAF5F0] border border-[#EFE6D8] shadow-xl p-2 z-50"
-                >
-                  <p className="text-[10px] font-extrabold text-black uppercase tracking-wider px-3 py-1.5">
-                    Select Theme Palette
-                  </p>
-                  {themeOptions.map((t) => (
-                    <button
-                      key={t.id}
-                      onClick={() => {
-                        setTheme(t.id);
-                        setThemeDropdownOpen(false);
-                      }}
-                      className={`w-full text-left px-3 py-2 rounded-xl text-xs font-extrabold flex items-center gap-2 transition-colors ${
-                        theme === t.id ? "bg-pink-200 text-black" : "hover:bg-pink-100 text-black"
-                      }`}
-                    >
-                      <span className="text-base">{t.icon}</span>
-                      <span className="text-black">{t.name}</span>
-                    </button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Day / Night Mode Switcher Button */}
+          {/* Day / Night Mode Icon-Only Pill Switcher */}
           <button
             onClick={toggleDarkMode}
-            className="p-2.5 rounded-xl bg-[#FAF5F0] text-black hover:bg-pink-50 transition-all border border-[#EFE6D8] shadow-sm flex items-center gap-1.5 text-xs font-extrabold btn-shimmer"
-            title="Toggle Day / Night Mode"
+            className="relative w-14 h-8 rounded-full bg-[#FAF5F0] dark:bg-zinc-800 border border-[#EFE6D8] dark:border-zinc-700 p-1 flex items-center justify-between transition-colors shadow-inner"
+            title={isDarkMode ? "Switch to Day Mode" : "Switch to Night Mode"}
           >
-            {isDarkMode ? (
-              <>
-                <Sun className="w-4 h-4 text-amber-500 fill-amber-500/20 animate-spin" style={{ animationDuration: "12s" }} />
-                <span className="text-black">Day Mode</span>
-              </>
-            ) : (
-              <>
-                <Moon className="w-4 h-4 text-pink-500 fill-pink-500/20" />
-                <span className="text-black">Night Mode</span>
-              </>
-            )}
+            <div
+              className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white dark:bg-zinc-900 shadow-md flex items-center justify-center transition-transform duration-300 ${
+                isDarkMode ? "translate-x-6" : "translate-x-0"
+              }`}
+            >
+              {isDarkMode ? (
+                <Moon className="w-3.5 h-3.5 text-pink-400 fill-pink-400/30" />
+              ) : (
+                <Sun className="w-3.5 h-3.5 text-amber-500 fill-amber-500/20" />
+              )}
+            </div>
+            <Sun className="w-3.5 h-3.5 text-amber-500 ml-1.5 opacity-40" />
+            <Moon className="w-3.5 h-3.5 text-pink-400 mr-1.5 opacity-40" />
           </button>
 
-          {/* User Account Controls */}
+          {/* User Account & Vault Controls */}
           {isAuthenticated && user ? (
-            <div className="relative">
-              <button
-                onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                className="px-3 py-2 rounded-xl bg-[#FAF5F0] border border-[#EFE6D8] hover:bg-pink-50 text-xs font-extrabold flex items-center gap-2 transition-all shadow-sm"
+            <div className="flex items-center gap-3">
+              <Link
+                href="/dashboard"
+                className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 via-rose-300 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-xs shadow-md shadow-pink-200 flex items-center gap-1.5 group border border-pink-300 btn-shimmer"
               >
-                <div className="w-6 h-6 rounded-full bg-pink-300 flex items-center justify-center font-bold text-black text-[11px]">
-                  {user.avatar || user.name.charAt(0)}
-                </div>
-                <span className="text-black">{user.name}</span>
-                <ChevronDown className="w-3.5 h-3.5 text-pink-500 opacity-80" />
-              </button>
+                <span className="text-black">Open Vault</span>
+                <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
+              </Link>
 
-              <AnimatePresence>
-                {userDropdownOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute right-0 mt-2 w-56 rounded-2xl bg-[#FAF5F0] border border-[#EFE6D8] shadow-xl p-3 z-50 space-y-2"
-                  >
-                    <div className="pb-2 border-b border-[#EFE6D8]">
-                      <p className="text-xs font-extrabold text-black">{user.name}</p>
-                      <p className="text-[10px] font-semibold text-pink-600 truncate">{user.email}</p>
-                    </div>
+              <div className="relative">
+                <button
+                  onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                  className="px-3 py-2 rounded-xl bg-[#FAF5F0] border border-[#EFE6D8] hover:bg-pink-50 text-xs font-extrabold flex items-center gap-2 transition-all shadow-sm"
+                >
+                  <div className="w-6 h-6 rounded-full bg-pink-300 flex items-center justify-center font-bold text-black text-[11px]">
+                    {user.avatar || user.name.charAt(0)}
+                  </div>
+                  <span className="text-black hidden sm:inline">{user.name}</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-pink-500 opacity-80" />
+                </button>
 
-                    <Link
-                      href="/dashboard"
-                      onClick={() => setUserDropdownOpen(false)}
-                      className="block px-3 py-2 rounded-xl text-xs font-extrabold text-black hover:bg-pink-100 transition-colors"
+                <AnimatePresence>
+                  {userDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      className="absolute right-0 mt-2 w-56 rounded-2xl bg-[#FAF5F0] border border-[#EFE6D8] shadow-xl p-3 z-50 space-y-2"
                     >
-                      Open Private Vault
-                    </Link>
+                      <div className="pb-2 border-b border-[#EFE6D8]">
+                        <p className="text-xs font-extrabold text-black">{user.name}</p>
+                        <p className="text-[10px] font-semibold text-pink-600 truncate">{user.email}</p>
+                      </div>
 
-                    <button
-                      onClick={() => {
-                        logout();
-                        setUserDropdownOpen(false);
-                      }}
-                      className="w-full text-left px-3 py-2 rounded-xl text-xs font-extrabold text-red-600 hover:bg-red-50 flex items-center gap-2 transition-colors"
-                    >
-                      <LogOut className="w-3.5 h-3.5 text-red-500" /> Log Out
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                      <Link
+                        href="/dashboard"
+                        onClick={() => setUserDropdownOpen(false)}
+                        className="block px-3 py-2 rounded-xl text-xs font-extrabold text-black hover:bg-pink-100 transition-colors"
+                      >
+                        Open Private Vault
+                      </Link>
+
+                      <Link
+                        href="/profile"
+                        onClick={() => setUserDropdownOpen(false)}
+                        className="block px-3 py-2 rounded-xl text-xs font-extrabold text-black hover:bg-pink-100 transition-colors"
+                      >
+                        Account & Profile
+                      </Link>
+
+                      <button
+                        onClick={() => {
+                          logout();
+                          setUserDropdownOpen(false);
+                        }}
+                        className="w-full text-left px-3 py-2 rounded-xl text-xs font-extrabold text-red-600 hover:bg-red-50 flex items-center gap-2 transition-colors"
+                      >
+                        <LogOut className="w-3.5 h-3.5 text-red-500" /> Log Out
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           ) : (
-            <button
-              onClick={() => openAuthModal("login")}
-              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 to-rose-400 text-black font-extrabold text-xs shadow-md border border-pink-300 flex items-center gap-1.5 btn-shimmer"
-            >
-              <User className="w-4 h-4 text-black" /> Sign In / Sign Up
-            </button>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+              <button
+                onClick={() => openAuthModal("login")}
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 via-rose-300 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-xs shadow-md shadow-pink-200 flex items-center gap-2 border border-pink-300 btn-shimmer"
+              >
+                <User className="w-4 h-4 text-black" />
+                <span>Sign In / Open Vault</span>
+                <ArrowRight className="w-4 h-4 text-black" />
+              </button>
+            </motion.div>
           )}
-
-          {/* Dashboard Entry CTA */}
-          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-            <Link
-              href="/dashboard"
-              className="ml-1 px-4 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 via-rose-300 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-black font-extrabold text-xs shadow-md shadow-pink-200 flex items-center gap-1.5 group border border-pink-300 btn-shimmer"
-            >
-              <span className="text-black">Open Vault</span>
-              <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
         </div>
 
         {/* Mobile Menu Button */}

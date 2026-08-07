@@ -18,9 +18,11 @@ import {
   Upload,
   X
 } from "lucide-react";
+import { useAuth } from "@/lib/auth";
 
 export default function JournalEditorPage() {
   const router = useRouter();
+  const { user } = useAuth();
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -111,9 +113,9 @@ export default function JournalEditorPage() {
       createdAt: new Date().toISOString()
     };
 
-    const existing = getStoredData<DiaryEntry[]>("deardiary_entries", []);
+    const existing = getStoredData<DiaryEntry[]>("deardiary_entries", [], user?.id);
     const updated = [newEntry, ...existing];
-    setStoredData("deardiary_entries", updated);
+    setStoredData("deardiary_entries", updated, user?.id);
 
     setSavedSuccess(true);
     setTimeout(() => {

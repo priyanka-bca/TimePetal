@@ -3,11 +3,14 @@
 import { useState } from "react";
 import { Sparkles, Send, Bot, RefreshCw } from "lucide-react";
 
+import { useAuth } from "@/lib/auth";
+
 export default function AiPage() {
+  const { user } = useAuth();
   const [messages, setMessages] = useState([
     {
       sender: "ai",
-      text: "Hello Sophia. I am your DearDiary Reflection Companion. What thought or feeling would you like to reflect on today?"
+      text: `Hello ${user?.name || "Friend"}. I am your DearDiary Reflection Companion. What thought or feeling would you like to reflect on today?`
     }
   ]);
   const [input, setInput] = useState("");

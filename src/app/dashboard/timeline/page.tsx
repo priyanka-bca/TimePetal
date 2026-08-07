@@ -16,9 +16,11 @@ import {
   Search,
   Sparkles
 } from "lucide-react";
+import { useAuth } from "@/lib/auth";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function TimelinePage() {
+  const { user } = useAuth();
   const [entries, setEntries] = useState<DiaryEntry[]>([]);
   const [selectedMood, setSelectedMood] = useState<string>("ALL");
   const [selectedTag, setSelectedTag] = useState<string>("ALL");
@@ -26,15 +28,15 @@ export default function TimelinePage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    setEntries(getStoredData("deardiary_entries", []));
-  }, []);
+    setEntries(getStoredData("deardiary_entries", [], user?.id));
+  }, [user]);
 
   const toggleFavorite = (id: string) => {
     const updated = entries.map((e) =>
       e.id === id ? { ...e, isFavorite: !e.isFavorite } : e
     );
     setEntries(updated);
-    setStoredData("deardiary_entries", updated);
+    setStoredData("deardiary_entries", updated, user?.id);
   };
 
   const allTags = Array.from(new Set(entries.flatMap((e) => e.tags)));
