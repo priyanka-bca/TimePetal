@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     const cleanEmail = String(email).toLowerCase().trim();
 
     // Rate limiting: 1 attempt per 60 seconds per email
-    const rateLimit = checkRateLimit(`resend:${cleanEmail}`, 1, 60 * 1000);
+    const rateLimit = await checkRateLimit(`resend:${cleanEmail}`, 1, 60 * 1000);
     if (!rateLimit.success) {
       return NextResponse.json(
         { error: `Please wait ${rateLimit.resetInSeconds} seconds before requesting another email.` },

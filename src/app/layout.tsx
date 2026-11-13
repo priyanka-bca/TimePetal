@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "TimePetal • Private Digital Diary & Memory Preservation",
     description: "Preserve life's softest moments with rich text journaling, mood trends, photo albums, and time-capsule letters.",
-    url: "https://timepetal.app",
+    url: process.env.NEXT_PUBLIC_APP_URL || "https://time-petal.vercel.app",
     siteName: "TimePetal",
     images: [
       {

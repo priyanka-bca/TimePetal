@@ -11,7 +11,7 @@ const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()_+\-=\[\]{};':"\\|,
 export async function POST(req: Request) {
   try {
     const ip = req.headers.get("x-forwarded-for") || "127.0.0.1";
-    const rateLimit = checkRateLimit(`signup:${ip}`, 5, 15 * 60 * 1000);
+    const rateLimit = await checkRateLimit(`signup:${ip}`, 5, 15 * 60 * 1000);
     if (!rateLimit.success) {
       return NextResponse.json(
         { error: `Too many signup attempts. Please try again in ${rateLimit.resetInSeconds} seconds.` },

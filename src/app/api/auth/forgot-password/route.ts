@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     const cleanEmail = String(email).toLowerCase().trim();
 
     // Rate limiting: 3 attempts per 15 mins per IP/email
-    const rateLimit = checkRateLimit(`forgot:${cleanEmail}:${ip}`, 3, 15 * 60 * 1000);
+    const rateLimit = await checkRateLimit(`forgot:${cleanEmail}:${ip}`, 3, 15 * 60 * 1000);
     if (!rateLimit.success) {
       return NextResponse.json(
         { error: `Too many password reset requests. Please try again in ${rateLimit.resetInSeconds} seconds.` },

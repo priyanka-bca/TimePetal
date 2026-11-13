@@ -64,10 +64,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="space-y-6">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 px-2 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-300 to-pink-400 p-0.5 shadow-sm shadow-pink-200">
-              <div className="w-full h-full bg-[#FAF5F0] rounded-[10px] flex items-center justify-center border border-[#EFE6D8]">
-                <Heart className="w-5 h-5 text-pink-500 fill-pink-500/20" />
-              </div>
+            <div className="w-10 h-10 rounded-xl p-0.5 shadow-sm shadow-pink-200 overflow-hidden border border-[#EFE6D8]">
+              <img
+                src="/logo.jpg"
+                alt="TimePetal Official Logo"
+                className="w-full h-full object-cover rounded-[10px]"
+              />
             </div>
             <div>
               <h1 className="font-serif text-xl font-bold tracking-tight text-black">
@@ -175,7 +177,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Mobile App Header Bar */}
         <header className="md:hidden flex items-center justify-between px-4 py-3 border-b border-[#EFE6D8] bg-[#FAF5F0]/95 backdrop-blur-md sticky top-0 z-40">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <Heart className="w-5 h-5 text-pink-500 fill-pink-500" />
+            <img src="/logo.jpg" alt="TimePetal" className="w-7 h-7 rounded-lg object-cover" />
             <span className="font-serif font-bold text-black text-lg">TimePetal</span>
           </Link>
           <div className="flex items-center gap-2">

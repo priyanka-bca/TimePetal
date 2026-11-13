@@ -296,9 +296,6 @@ export default function LandingPage() {
             <Link href="#terms" className="text-black hover:opacity-75 transition-opacity">
               Terms of Service
             </Link>
-            <Link href="/admin" className="text-black hover:opacity-75 transition-opacity">
-              Admin Portal
-            </Link>
           </div>
         </div>
       </footer>

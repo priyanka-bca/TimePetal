@@ -26,11 +26,13 @@ export function Navbar() {
           <motion.div
             whileHover={{ scale: 1.1, rotate: 4 }}
             whileTap={{ scale: 0.94 }}
-            className="w-10 h-10 rounded-2xl bg-gradient-to-br from-pink-300 via-rose-300 to-pink-400 p-0.5 shadow-sm shadow-pink-200"
+            className="w-10 h-10 rounded-2xl p-0.5 shadow-sm shadow-pink-200 overflow-hidden"
           >
-            <div className="w-full h-full bg-[#FAF5F0] rounded-[14px] flex items-center justify-center border border-[#EFE6D8]">
-              <Heart className="w-4 h-4 text-pink-500 fill-pink-500/30 group-hover:fill-pink-500 transition-colors" />
-            </div>
+            <img
+              src="/logo.jpg"
+              alt="TimePetal Official Logo"
+              className="w-full h-full object-cover rounded-[14px]"
+            />
           </motion.div>
           <div className="flex flex-col">
             <span className="font-serif text-2xl font-bold tracking-tight text-black flex items-center gap-1.5">

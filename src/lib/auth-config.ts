@@ -50,6 +50,8 @@ export const authOptions: NextAuthConfig = {
           image: user.image,
           emailVerified: user.emailVerified,
           provider: user.provider,
+          isAdmin: user.isAdmin,
+          isPremium: user.isPremium,
         };
       },
     }),
@@ -88,6 +90,16 @@ export const authOptions: NextAuthConfig = {
         token.id = user.id;
         token.emailVerified = (user as { emailVerified?: Date | null }).emailVerified;
         token.provider = (user as { provider?: string }).provider || "email";
+        token.isAdmin = (user as { isAdmin?: boolean }).isAdmin || false;
+        token.isPremium = (user as { isPremium?: boolean }).isPremium || false;
+      } else if (token.id) {
+        // Fetch current isAdmin & isPremium state if user is logged in
+        const dbUser = await prisma.user.findUnique({
+          where: { id: token.id as string },
+          select: { isAdmin: true, isPremium: true },
+        });
+        token.isAdmin = dbUser?.isAdmin || false;
+        token.isPremium = dbUser?.isPremium || false;
       }
 
       if (trigger === "update" && session) {
@@ -103,6 +115,8 @@ export const authOptions: NextAuthConfig = {
         session.user.id = token.id as string;
         session.user.emailVerified = token.emailVerified as Date | null;
         (session.user as { provider?: string }).provider = token.provider as string;
+        (session.user as { isAdmin?: boolean }).isAdmin = (token.isAdmin as boolean) || false;
+        (session.user as { isPremium?: boolean }).isPremium = (token.isPremium as boolean) || false;
       }
       return session;
     },

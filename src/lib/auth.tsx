@@ -12,6 +12,8 @@ export interface User {
   joinedDate: string;
   emailVerified?: boolean | null;
   provider?: string;
+  isAdmin?: boolean;
+  isPremium?: boolean;
 }
 
 interface AuthContextType {
@@ -49,10 +51,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         name: session.user.name || "Sanctuary Member",
         email: session.user.email || "",
         avatar: session.user.image || session.user.name?.charAt(0).toUpperCase() || "U",
-        plan: "premium",
+        plan: (session.user as { isPremium?: boolean }).isPremium ? "premium" : "free",
         joinedDate: "Member",
         emailVerified: !!(session.user as { emailVerified?: Date | boolean | null }).emailVerified,
         provider: (session.user as { provider?: string }).provider || "email",
+        isAdmin: !!(session.user as { isAdmin?: boolean }).isAdmin,
+        isPremium: !!(session.user as { isPremium?: boolean }).isPremium,
       }
     : null;
 

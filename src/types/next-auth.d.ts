@@ -6,6 +6,8 @@ declare module "next-auth" {
       id: string;
       emailVerified?: Date | boolean | null;
       provider?: string;
+      isAdmin?: boolean;
+      isPremium?: boolean;
     } & DefaultSession["user"];
   }
 
@@ -13,6 +15,8 @@ declare module "next-auth" {
     id?: string;
     emailVerified?: Date | boolean | null;
     provider?: string;
+    isAdmin?: boolean;
+    isPremium?: boolean;
   }
 }
 
@@ -21,5 +25,7 @@ declare module "next-auth/jwt" {
     id?: string;
     emailVerified?: Date | boolean | null;
     provider?: string;
+    isAdmin?: boolean;
+    isPremium?: boolean;
   }
 }
